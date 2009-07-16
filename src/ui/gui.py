@@ -23,7 +23,7 @@ import gtk.glade
 import os
 
 import gettext
-_ = lambda x: gettext.ldgettext("anaconda", x)
+_ = lambda x: gettext.ldgettext("python-meh", x)
 
 def findGladeFile(file):
     path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/")
@@ -67,7 +67,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
     def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
         self.rc = 0
 
-        xml = gtk.glade.XML(findGladeFile("detailed-dialog.glade"), domain="anaconda")
+        xml = gtk.glade.XML(findGladeFile("detailed-dialog.glade"), domain="python-meh")
         self.dialog = xml.get_widget("detailedDialog")
         self.mainVBox = xml.get_widget("mainVBox")
         self.hbox = xml.get_widget("hbox1")
@@ -154,7 +154,7 @@ class ExitWindow(MessageWindow):
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
     def __init__(self, longTracebackFile=None, *args, **kwargs):
-        exnxml = gtk.glade.XML(findGladeFile("exnSave.glade"), domain="anaconda")
+        exnxml = gtk.glade.XML(findGladeFile("exnSave.glade"), domain="python-meh")
 
         self.bugzillaNameEntry = exnxml.get_widget("bugzillaNameEntry")
         self.bugzillaPasswordEntry = exnxml.get_widget("bugzillaPasswordEntry")

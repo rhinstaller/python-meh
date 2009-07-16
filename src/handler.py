@@ -24,7 +24,7 @@ import signal
 import sys
 
 import gettext
-_ = lambda x: gettext.ldgettext("anaconda", x)
+_ = lambda x: gettext.ldgettext("python-meh", x)
 
 class NoNetwork(Exception):
     def __init__(self, msg=""):

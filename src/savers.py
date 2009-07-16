@@ -23,7 +23,7 @@ import rpmUtils.arch
 import xmlrpclib
 
 import gettext
-_ = lambda x: gettext.ldgettext("anaconda", x)
+_ = lambda x: gettext.ldgettext("python-meh", x)
 
 def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
     def withBugzillaDo(bz, fn):
