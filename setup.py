@@ -7,5 +7,6 @@ setup(name='python-meh', version='0.1',
       author='Chris Lumens', author_email='clumens@redhat.com',
       url='http://fedoraproject.org/wiki/python-meh',
       package_dir = {'meh': 'src'},
-      data_files = [('/usr/share/python-meh', ['ui/detailed-dialog.glade', 'ui/exnSave.glade'])],
+      data_files = [('/usr/share/python-meh', ['ui/detailed-dialog.glade', 'ui/exnSave.glade',
+                                               'pixmaps/exception.png'])],
       packages=['meh', 'meh.ui'])
