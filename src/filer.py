@@ -394,7 +394,7 @@ class BugzillaFiler(AbstractFiler):
 
         # If the version given to us by the caller isn't valid, fall back to
         # asking the running system and then to something hard coded.
-        if self.version not in bugzillaVers:
+        if not int(self.version) in bugzillaVers:
             defaultVersion = getVersion()
             if defaultVersion in bugzillaVers:
                 return defaultVersion
