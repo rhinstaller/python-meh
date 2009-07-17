@@ -1,4 +1,4 @@
-# Copyright (C) 2008  Red Hat, Inc.
+# Copyright (C) 2008, 2009  Red Hat, Inc.
 # All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,41 @@
 #
 # Author(s): Chris Lumens <clumens@redhat.com>
 #
-import xmlrpclib
+import rpm
 import socket
+import xmlrpclib
+
+def getProduct():
+    """Attempt to determine the product of the running system by first asking
+       rpm, and then falling back on a hardcoded default.
+    """
+    try:
+        ts = rpm.TransactionSet()
+        mi = ts.dbMatch('provides', 'system-release')
+        for h in mi:
+            if h['name']:
+                return h['name'].split("-")[0].capitalize()
+
+        return "Fedora"
+    except:
+        # Fall back to hardcoded defaults.  Sorry.
+        return "Fedora"
+
+def getVersion():
+    """Attempt to determine the version of the running system by first asking
+       rpm, and then falling back on a hardcoded default.
+    """
+    try:
+        ts = rpm.TransactionSet()
+        mi = ts.dbMatch('provides', 'system-release')
+        for h in mi:
+            if h['version']:
+                return h['version']
+
+        return "rawhide"
+    except:
+        # Fall back to hardcoded defaults.  Sorry.
+        return "rawhide"
 
 class LoginError(Exception):
     """An error occurred while logging into the bug reporting system."""
@@ -64,20 +97,12 @@ class AbstractFiler(object):
        ValueError         -- For all other operations where the client
                              supplied values are not correct.
     """
-    def __init__(self, bugUrl, displayUrl, version, product, develVersion=None,
-                 defaultProduct=None):
+    def __init__(self, bugUrl, displayUrl, version, product):
         """Create a new AbstractFiler instance.  This method need not be
            overridden by subclasses.
 
            bugUrl       -- The XML-RPC interface to the bug tracking system.
            displayUrl   -- The URL to use in the UI.
-           develVersion -- What version of the product should be treated as
-                           the development version.  This is used in case
-                           we attempt to file a bug against an invalid
-                           version.  It need not be set.
-           defaultProduct -- The product bugs should be filed against, should
-                             we not be able to automatically determine one.
-                             This must be set.
            product      -- The name of the product we should attempt to file
                            bugs against.  This must be set.
            version      -- The version of the product we should attempt to
@@ -87,8 +112,6 @@ class AbstractFiler(object):
         self.displayUrl = displayUrl
         self.version = version
         self.product = product
-        self.develVersion = develVersion
-        self.defaultProduct = defaultProduct
 
     def login(self, username, password):
         """Using the given username and password, attempt to login to the
@@ -131,10 +154,9 @@ class AbstractFiler(object):
     def getversion(self):
         """Verify that self.version is a valid version number for the product
            name self.product.  If it is, return that same version number.  If
-           not, return self.develVersion if it exists or the latest version
-           number otherwise.  This method queries the bug filing system for a
-           list of valid versions numbers.  It must be provided by all
-           subclasses.
+           not, return "rawhide" if it exists or the latest version number
+           otherwise.  This method queries the bug filing system for a list of
+           valid versions numbers.  It must be provided by all subclasses.
         """
         raise NotImplementedError
 
@@ -305,11 +327,8 @@ class BugzillaFiler(AbstractFiler):
         except socket.error, e:
             raise CommunicationError(str(e))
 
-    def __init__(self, bugUrl, displayUrl, version, product, develVersion=None,
-                 defaultProduct=None):
-        AbstractFiler.__init__(self, bugUrl, displayUrl, version, product,
-                               develVersion=develVersion,
-                               defaultProduct=defaultProduct)
+    def __init__(self, bugUrl, displayUrl, version, product):
+        AbstractFiler.__init__(self, bugUrl, displayUrl, version, product)
         self._bz = None
 
     def login(self, username, password):
@@ -359,21 +378,28 @@ class BugzillaFiler(AbstractFiler):
             if d['name'] == self.product:
                 return self.product
 
-        if self.defaultProduct:
-            return self.defaultProduct
-        else:
-            raise ValueError, "The product %s is not valid and no defaultProduct is set." % self.product
+        # If the product given to us by the caller isn't valid, fall back
+        # to asking the running system and then to something hard coded.
+        defaultProduct = getProduct()
+        for d in details:
+            if d['name'] == defaultProduct:
+                return defaultProduct
+
+        return "Fedora"
 
     def getversion(self):
         details = self.__withBugzillaDo(lambda b: b._proxy.bugzilla.getProductDetails(self.product))
         bugzillaVers = details[1]
         bugzillaVers.sort()
 
+        # If the version given to us by the caller isn't valid, fall back to
+        # asking the running system and then to something hard coded.
         if self.version not in bugzillaVers:
-            if self.develVersion:
-                return self.develVersion
-            else:
-                return bugzillaVers[-1]
+            defaultVersion = getVersion()
+            if defaultVersion in bugzillaVers:
+                return defaultVersion
+
+            return "rawhide"
         else:
             return self.version
 
