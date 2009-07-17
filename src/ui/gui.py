@@ -26,7 +26,7 @@ import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
 
 def findGladeFile(file):
-    path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/")
+    path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/:/usr/share/python-meh/")
     for dir in path.split(":"):
         fn = dir + file
         if os.access(fn, os.R_OK):
@@ -34,7 +34,7 @@ def findGladeFile(file):
     raise RuntimeError, "Unable to find glade file %s" % file
 
 def findPixmap(file):
-    path = os.environ.get("PIXMAPPATH", "./:pixmaps/:/tmp/updates/:/tmp/updates/pixmaps/")
+    path = os.environ.get("PIXMAPPATH", "./:pixmaps/:/tmp/updates/:/tmp/updates/pixmaps/:/usr/share/python-meh/")
     for dir in path.split(":"):
         fn = dir + file
         if os.access(fn, os.R_OK):
