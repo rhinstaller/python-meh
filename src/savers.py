@@ -68,7 +68,7 @@ def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
     # Are there any existing bugs with this hash value?  If so we will just
     # add this traceback to the bug report and put the reporter on the CC
     # list.  Otherwise, we need to create a new bug.
-    wb = "%s_trace_hash:%s" % (exn.programName, exn.hash)
+    wb = "%s_trace_hash:%s" % (conf.programName, exn.hash)
     buglist = withBugzillaDo(filer, lambda b: b.query({'status_whiteboard': wb,
                                                        'status_whiteboard_type':'allwordssubstr',
                                                        'bug_status': []}))
@@ -77,7 +77,7 @@ def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
 
     if len(buglist) == 0:
         bug = withBugzillaDo(filer, lambda b: b.createbug(product=filer.getproduct(),
-                                       component=exn.programName,
+                                       component=conf.programName,
                                        version=filer.getversion(),
                                        platform=rpmUtils.arch.getBaseArch(),
                                        bug_severity="medium",
@@ -85,13 +85,13 @@ def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
                                        op_sys="Linux",
                                        bug_file_loc="http://",
                                        summary=summary,
-                                       comment="The following was filed automatically by %s:\n%s" % (exn.programName, str(exn)),
+                                       comment="The following was filed automatically by %s:\n%s" % (conf.programName, str(exn)),
                                        status_whiteboard=wb))
         if bug is None:
             return False
 
         withBugzillaDo(bug, lambda b: b.attachfile(exnFile,
-                               "Attached traceback automatically from %s." % exn.programName,
+                               "Attached traceback automatically from %s." % conf.programName,
                                contenttype="text/plain", filename=os.path.basename(exnFile)))
 
         # Tell the user we created a new bug for them and that they should
@@ -105,7 +105,7 @@ def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
     else:
         bug = buglist[0]
         withBugzillaDo(bug, lambda b: b.attachfile(exnFile,
-                               "Attached traceback automatically from %s." % exn.programName,
+                               "Attached traceback automatically from %s." % conf.programName,
                                contenttype="text/plain", filename=os.path.basename(exnFile)))
         withBugzillaDo(bug, lambda b: b.addCC(user))
 
