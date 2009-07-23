@@ -32,14 +32,14 @@ archive: tag
 	@rm -f ChangeLog
 	@make ChangeLog
 	git archive --format=tar --prefix=$(PKGNAME)-$(VERSION)/ $(TAG) > $(PKGNAME)-$(VERSION).tar
-	mkdir -p $(PKGNAME)-$(VERSION)/docs/
+	mkdir -p $(PKGNAME)-$(VERSION)/
 	cp ChangeLog $(PKGNAME)-$(VERSION)/
 	tar -rf $(PKGNAME)-$(VERSION).tar $(PKGNAME)-$(VERSION)
 	gzip -9 $(PKGNAME)-$(VERSION).tar
 	rm -rf $(PKGNAME)-$(VERSION)
 	@echo "The archive is in $(PKGNAME)-$(VERSION).tar.gz"
 
-local: docs
+local:
 	@rm -f ChangeLog
 	@make ChangeLog
 	@rm -rf $(PKGNAME)-$(VERSION).tar.gz
