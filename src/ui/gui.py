@@ -27,23 +27,23 @@ _ = lambda x: gettext.ldgettext("python-meh", x)
 
 def findGladeFile(file):
     path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/:/usr/share/python-meh/")
-    for dir in path.split(":"):
-        fn = dir + file
+    for d in path.split(":"):
+        fn = d + file
         if os.access(fn, os.R_OK):
             return fn
     raise RuntimeError, "Unable to find glade file %s" % file
 
 def findPixmap(file):
     path = os.environ.get("PIXMAPPATH", "./:pixmaps/:/tmp/updates/:/tmp/updates/pixmaps/:/usr/share/python-meh/")
-    for dir in path.split(":"):
-        fn = dir + file
+    for d in path.split(":"):
+        fn = d + file
         if os.access(fn, os.R_OK):
             return fn
     return None
 
 class GraphicalIntf(AbstractIntf):
     def __init__(self, *args, **kwargs):
-        pass
+        AbstractIntf.__init__(self, *args, **kwargs)
 
     def exitWindow(self, title, message, *args, **kwargs):
         win = ExitWindow(title, message, *args, **kwargs)
@@ -65,7 +65,8 @@ class GraphicalIntf(AbstractIntf):
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
     def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
-        self.rc = 0
+        AbstractMainExceptionWindow.__init__(self, shortTraceback, longTracebackFile,
+                                             *args, **kwargs)
 
         xml = gtk.glade.XML(findGladeFile("detailed-dialog.glade"), domain="python-meh")
         self.dialog = xml.get_widget("detailedDialog")
@@ -98,7 +99,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
             f = open(longTracebackFile)
 
             textbuf = gtk.TextBuffer()
-            iter = textbuf.get_start_iter()
+            i = textbuf.get_start_iter()
 
             while True:
                 # Wish readline would give StopIteration at the end of a file.
@@ -109,10 +110,10 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
                 if __builtins__.get("type")(line) != unicode:
                     try:
                         line = unicode(line, encoding='utf-8')
-                    except UnicodeDecodeError as e:
+                    except UnicodeDecodeError:
                         pass
 
-                textbuf.insert(iter, line)
+                textbuf.insert(i, line)
 
             f.close()
             self.detailedView.set_buffer(textbuf)
@@ -129,6 +130,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 
 class MessageWindow(AbstractMessageWindow):
     def __init__(self, title, text, *args, **kwargs):
+        AbstractMessageWindow.__init__(self, title, text, *args, **kwargs)
         self.dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK,
                                         type=gtk.MESSAGE_INFO,
                                         message_format=text)
@@ -154,6 +156,7 @@ class ExitWindow(MessageWindow):
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
     def __init__(self, longTracebackFile=None, *args, **kwargs):
+        AbstractSaveExceptionWindow.__init__(self, longTracebackFile, *args, **kwargs)
         exnxml = gtk.glade.XML(findGladeFile("exnSave.glade"), domain="python-meh")
 
         self.bugzillaNameEntry = exnxml.get_widget("bugzillaNameEntry")
@@ -194,7 +197,7 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
                                                     self.scpHostEntry,
                                                     self.scpDestEntry]))
 
-    def getrc(self):
+    def getrc(self, *args, **kwargs):
         if self.rc == gtk.RESPONSE_OK:
             return SAVE_RESPONSE_OK
         elif self.rc == gtk.RESPONSE_CANCEL:

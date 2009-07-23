@@ -18,7 +18,6 @@
 #
 from meh import *
 from meh.ui import *
-import os
 from snack import *
 
 import gettext
@@ -26,7 +25,7 @@ _ = lambda x: gettext.ldgettext("python-meh", x)
 
 class TextIntf(AbstractIntf):
     def __init__(self, *args, **kwargs):
-        pass
+        AbstractIntf.__init__(self, *args, **kwargs)
 
     def exitWindow(self, title, message, *args, **kwargs):
         win = ExitWindow(title, message, *args, **kwargs)
@@ -48,7 +47,8 @@ class TextIntf(AbstractIntf):
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
     def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
-        self.rc = 0
+        AbstractMainExceptionWindow.__init__(self, shortTraceback, longTracebackFile,
+                                             *args, **kwargs)
 
         self.text = "%s\n\n" % shortTraceback
         self.screen = kwargs.get("screen", None)
@@ -59,7 +59,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         self.screen.popWindow()
         self.screen.refresh()
 
-    def getrc(self):
+    def getrc(self, *args, **kwargs):
         if self.rc == string.lower(_("Debug")):
             return MAIN_RESPONSE_DEBUG
         elif self.rc == string.lower(_("Save")):
@@ -73,11 +73,14 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 
 class MessageWindow(AbstractMessageWindow):
     def __init__(self, title, text, *args, **kwargs):
+        AbstractMessageWindow.__init__(self, title, text, *args, **kwargs)
         self.screen = kwargs.get("screen", None)
+        self.title = title
+        self.text = text
 
-    def run(self, *args, **kwargs)
-        self.rc = ButtonChoiceWindow(self.screen, title, text, width=60,
-                                     buttons=[_("OK")])
+    def run(self, *args, **kwargs):
+        self.rc = ButtonChoiceWindow(self.screen, self.title, self.text,
+                                     width=60, buttons=[_("OK")])
 
     def destroy(self, *args, **kwargs):
         self.screen.popWindow()
@@ -86,10 +89,12 @@ class MessageWindow(AbstractMessageWindow):
 class ExitWindow(MessageWindow):
     def __init__(self, title, text, *args, **kwargs):
         self.screen = kwargs.get("screen", None)
+        self.title = title
+        self.text = text
 
-    def run(self, *args, **kwargs)
-        self.rc = ButtonChoiceWindow(self.screen, title, text, width=60,
-                                     buttons=[_("Exit")])
+    def run(self, *args, **kwargs):
+        self.rc = ButtonChoiceWindow(self.screen, self.title, self.text,
+                                     width=60, buttons=[_("Exit")])
 
     def destroy(self, *args, **kwargs):
         self.screen.popWindow()
@@ -97,6 +102,8 @@ class ExitWindow(MessageWindow):
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
     def __init__(self, longTracebackFile=None, *args, **kwargs):
+        AbstractSaveExceptionWindow.__init__(self, longTracebackFile, *args,
+                                             **kwargs)
         self.screen = kwargs.get("screen", None)
         self._method = "disk"
 
@@ -110,7 +117,7 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
         entryGrid.setField(Label(_("Directory")), 0, 0, anchorLeft=1)
         entryGrid.setField(self.dirEntry, 1, 0)
 
-        toplevel.add(bugzillaGrid, 0, 0, (0, 0, 0, 1))
+        toplevel.add(entryGrid, 0, 0, (0, 0, 0, 1))
         toplevel.add(buttons, 0, 1, growx=1)
 
         result = toplevel.run()
@@ -138,7 +145,7 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
         result = toplevel.run()
         return buttons.buttonPressed(result)
 
-    def runSaveToRemote(self):
+    def _runSaveToRemote(self):
         toplevel = GridForm(self.screen, _("Send to remote server (scp)"), 1, 2)
 
         buttons = ButtonBar(self.screen, [_("OK"), _("Cancel")])
@@ -203,18 +210,18 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
 
             break
 
-    def getrc(self):
+    def getrc(self, *args, **kwargs):
         return self.rc
 
     def getDest(self, *args, **kwargs):
         if self._method == "disk":
-            return (0, self.diskList.current())
+            return (0, self.dirEntry.value())
         elif self._method == "bugzilla":
             return (1, map(lambda e: e.value(), [self.bugzillaNameEntry,
                                                  self.bugzillaPasswordEntry,
                                                  self.bugDesc]))
         elif self._method == "scp":
-            return (2, map(lambda e.value(), [self.scpNameEntry,
-                                              self.scpPasswordEntry,
-                                              self.scpHostEntry,
-                                              self.scpDestEntry]))
+            return (2, map(lambda e: e.value(), [self.scpNameEntry,
+                                                 self.scpPasswordEntry,
+                                                 self.scpHostEntry,
+                                                 self.scpDestEntry]))

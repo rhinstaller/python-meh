@@ -180,7 +180,7 @@ class AbstractSaveExceptionWindow:
            longTracebackFile -- A file containing the output of
                                 ExceptionDump.write().
         """
-        pass
+        self.rc = 0
 
     def destroy(self, *args, **kwargs):
         """Destroy the current dialog.  This method must be provided by all
