@@ -392,9 +392,16 @@ class BugzillaFiler(AbstractFiler):
         bugzillaVers = details[1]
         bugzillaVers.sort()
 
+        # getProductDetails gives us a list of numbers, oh but things like
+        # "rawhide" and "development" are strings.  First 
+        try:
+            ver = int(self.version)
+        except:
+            ver = self.version
+
         # If the version given to us by the caller isn't valid, fall back to
         # asking the running system and then to something hard coded.
-        if not int(self.version) in bugzillaVers:
+        if not ver in bugzillaVers:
             defaultVersion = getVersion()
             if defaultVersion in bugzillaVers:
                 return defaultVersion
