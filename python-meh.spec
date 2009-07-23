@@ -2,7 +2,7 @@
 
 Summary:  A python library for handling exceptions
 Name: python-meh
-Url: http://fedoraproject.org/wiki/python-meh
+Url: http://git.fedoraproject.org/git/?p=python-meh.git
 Version: 0.1
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
@@ -10,10 +10,9 @@ Release: 1%{?dist}
 # within this srpm.
 Source0: %{name}-%{version}.tar.gz
 
-License: GPLv2
+License: GPLv2+
 Group: System Environment/Libraries
 BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel
 Requires: python, python-bugzilla, dbus-python, pygtk2, pygtk2-libglade
 Requires: openssh-clients, rpm, yum, newt-python
@@ -31,12 +30,11 @@ make
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
-%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
 
-%files -f %{name}.lang
+%files 
 %defattr(-,root,root,-)
 %doc ChangeLog
 %{python_sitelib}/*
