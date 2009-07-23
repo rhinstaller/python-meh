@@ -208,8 +208,7 @@ class ExceptionHandler(object):
                     if responseHash[choice](dest):
                         self.intf.exitWindow(_("Dump Written"),
                                              _("The error file has been successfully "
-                                               "written to the disk.  The program "
-                                               "will now exit."))
+                                               "written.  The program will now exit."))
                         self.runQuit((ty, value, tb))
                     else:
                         self.intf.messageWindow(_("Dump Not Written"),
