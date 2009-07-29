@@ -1,0 +1,216 @@
+# translation of pl.po to Polish
+# Piotr Drąg <piotrdrag@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-07-20 14:17+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Zapisano zrzut"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr ""
+"Plik błędu został z powodzeniem zapisany na dysk. Program zostanie teraz "
+"zakończony."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Nie zapisano zrzutu"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Wystąpił problem podczas zapisywania raportu błędu."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Brak dostępnych sieci"
+
+#: ../src/handler.py:220
+msgid ""
+"Cannot save a bug report since there is no active network device available."
+msgstr ""
+"Nie można zapisać raportu błędu, ponieważ nie ma dostępnego aktywnego "
+"urządzenia sieciowego."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Nie można zgłosić błędu z powodu następującego błędu podczas komunikacji z "
+"Bugzillą:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Nie można zgłosić błędu z powodu błędnych informacji w polach błędu. Jest to "
+"najprawdopodobniej błąd w programie do zgłaszania błędów:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Nie można zgłosić błędu"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Zgłaszanie błędów jest nieobsługiwane"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"Dystrybucja nie dostarcza wspieranego systemu zgłaszania błędów, więc nie "
+"można zapisać wyjątku w ten sposób."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Nieprawidłowa informacja o błędzie"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "Podaj prawidłową nazwę użytkownika, hasło i krótki opis błędu."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Nie można się zalogować"
+
+#: ../src/savers.py:63
+#, python-format
+msgid ""
+"There was an error logging into %s using the provided username and password."
+msgstr ""
+"Wystąpił błąd podczas logowania się do %s używając podanej nazwy użytkownika "
+"i hasła."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Utworzono błąd"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Nowy błąd został utworzony z załączonym wyjątkiem. Dodaj inne informacje, "
+"takie jak wykonywane czynności podczas wystąpienia błędu, zrzuty ekranu i "
+"wszystko inne, co może pomóc do poniższego błędu:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Błąd został zaktualizowany"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Błąd zawierający te informacje już istnieje. Twoje konto zostało dodane do "
+"listy CC, a wyjątek dodany jako komentarz. Dodaj inne informacje do "
+"poniższego błędu:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Debuguj"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Zakończ"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"Wystąpił nieobsługiwany wyjątek. Prawdopodobnie jest to błąd. Proszę zapisać "
+"kopię szczegółowego wyjątku i zgłosić raport błędu."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Informacje"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Szczegóły"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "_Opis błędu"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "_Plik docelowy"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Lokalna pamięć masowa\n"
+"Bugzilla\n"
+"Zdalny serwer (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Wybierz miejsce docelowe do zapisania wyjątku."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Zapisz"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Wybierz plik"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Komputer (komputer:port)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Hasło"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "Nazwa _użytkownika"
