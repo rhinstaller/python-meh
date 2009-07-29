@@ -45,5 +45,5 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
-* Thu Jul 16 2009 Chris Lumens <clumens@redhat.com> 0.1-1
+* Tue Jul 28 2009 Chris Lumens <clumens@redhat.com> - 0.1-1
 - Initial package.
