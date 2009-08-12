@@ -34,11 +34,12 @@ make
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
 
-%files 
+%files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc ChangeLog COPYING
 %{python_sitelib}/*
