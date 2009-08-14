@@ -96,11 +96,16 @@ def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
 
         # Tell the user we created a new bug for them and that they should
         # go add a descriptive comment.
+        if filer.displayUrl.endswith("/"):
+            bugUrl = "%s%s" % (filer.displayUrl, bug.id())
+        else:
+            bugUrl = "%s/%s" % (filer.displayUrl, bug.id())
+
         conf._intf.exitWindow(_("Bug Created"),
             _("A new bug has been created with your traceback attached. "
               "Please add additional information such as what you were doing "
               "when you encountered the bug, screenshots, and whatever else "
-              "is appropriate to the following bug:\n\n%s/%s") % (filer.displayUrl, bug.id()))
+              "is appropriate to the following bug:\n\n%s") % bugUrl)
         return True
     else:
         bug = buglist[0]
@@ -111,11 +116,16 @@ def saveToBugzilla(conf, exnFile, exn, (user, password, summary)):
 
         # Tell the user which bug they've been CC'd on and that they should
         # go add a descriptive comment.
+        if filer.displayUrl.endswith("/"):
+            bugUrl = "%s%s" % (filer.displayUrl, bug.id())
+        else:
+            bugUrl = "%s/%s" % (filer.displayUrl, bug.id())
+
         conf._intf.exitWindow(_("Bug Updated"),
             _("A bug with your information already exists.  Your account has "
               "been added to the CC list and your traceback added as a "
               "comment.  Please add additional descriptive information to the "
-              "following bug:\n\n%s/%s") % (filer.displayUrl, bug.id()))
+              "following bug:\n\n%s") % bugUrl)
         return True
 
 def scpAuthenticate(master, childpid, password):
