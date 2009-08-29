@@ -1,0 +1,220 @@
+# Finnish translation of python-meh.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Ville-Pekka Vainio <vpivaini@cs.helsinki.fi>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-08-29 23:53+0300\n"
+"Last-Translator: Ville-Pekka Vainio <vpivaini@cs.helsinki.fi>\n"
+"Language-Team: Finnish <laatu@lokalisointi.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.4.0\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Vedos kirjoitettu"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr "Virhetiedoston kirjoitus levylle onnistui. Ohjelma lopetetaan nyt."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Vedosta ei kirjoitettu"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Virheraportin kirjoittamisessa oli ongelma."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Verkko ei ole käytettävissä"
+
+#: ../src/handler.py:220
+msgid ""
+"Cannot save a bug report since there is no active network device available."
+msgstr ""
+"Vikailmoitusta ei voida tallentaa, koska järjestelmässä ei ole aktiivista "
+"verkkolaitetta."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Vikailmoitusta ei voitu tehdä, koska bugzillan kanssa kommunikoitaessa "
+"tapahtui seuraava virhe:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Vikailmoitusta ei voitu tehdä, koska ilmoituksen kentissä oli virheellistä "
+"tietoa. Tämä on todennäköisesti virhe vianraportointiohjelmassa:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Vikailmoituksen lähettäminen ei onnistunut"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Vikailmoituksen lähettämistä ei tueta"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"Tämä jakelu ei tarjoa tuettua vikailmoitusjärjestelmää, joten poikkeusta ei "
+"voi tallentaa näin."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Virheelliset vikailmoitustiedot"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr ""
+"Anna voimassa oleva käyttäjätunnus, salasana ja lyhyt kuvaus ohjelmaviasta."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Kirjautuminen ei onnistunut"
+
+#: ../src/savers.py:63
+#, python-format
+msgid ""
+"There was an error logging into %s using the provided username and password."
+msgstr ""
+"Järjestelmään %s kirjauduttaessa käyttäen annettua käyttäjätunnusta ja "
+"salasanaa tapahtui virhe."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Vikailmoitus on luotu"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Uusi vikailmoitus on luotu ja siihen on liitetty virheenjäljitystiedot. Voit "
+"lisätä tietoja kuten mitä olit tekemässä, kun vika ilmaantui, "
+"kuvakaappauksia ja muuta tarvittavaa seuraavaan vikailmoitukseen:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Vikailmoitus on päivitetty"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Näiden tietojen perusteella on jo tehty vikailmoitus. Tilisi on lisätty CC-"
+"listalle ja virheenjäljitystiedot on lisätty kommenttina. Voit lisätä "
+"tietoja seuraavaan vikailmoitukseen:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Vianjäljitys"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Lopeta"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"On ilmennyt käsittelemätön poikkeustilanne. Tämä on luultavasti ohjelmavika. "
+"Voit tallentaa kopion poikkeustilanteen yksityiskohdista ja tehdä "
+"vikailmoituksen."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Tiedot"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Yksityiskohdat"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "Vian _kuvaus"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "_Kohdetiedosto"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Paikallinen levy\n"
+"Bugzilla\n"
+"Etäpalvelin (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Valitse minne virheenjäljitystiedot tallennetaan."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Tallenna"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Valitse tiedosto"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Kone (kone:portti)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Salasana"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "_Käyttäjätunnus"
