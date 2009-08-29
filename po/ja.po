@@ -1,47 +1,47 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hyu_gabaru Ryu_ichi <hyu_gabaru@yahoo.co.jp>, 2009.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: python-meh 1\n"
+"Report-Msgid-Bugs-To: fedora-trans-ja@redhat.com\n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-08-29 20:01+0900\n"
+"Last-Translator: Hyu_gabaru Ryu_ichi <hyu_gabaru@yahoo.co.jp>\n"
+"Language-Team: Japanese <fedora-trans-ja@redhat.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/handler.py:209
 msgid "Dump Written"
-msgstr ""
+msgstr "ダンプが書かれました"
 
 #: ../src/handler.py:210
 msgid ""
 "The error file has been successfully written to the disk.  The program will "
 "now exit."
-msgstr ""
+msgstr "エラーファイルは正常にディスクに書かれました。プログラムは終了します。"
 
 #: ../src/handler.py:215
 msgid "Dump Not Written"
-msgstr ""
+msgstr "ダンプが書かれませんでした"
 
 #: ../src/handler.py:216
 msgid "There was a problem writing the error report."
-msgstr ""
+msgstr "エラーレポートの書き込みに問題がありました。"
 
 #: ../src/handler.py:219
 msgid "No Network Available"
-msgstr ""
+msgstr "ネットワークが利用不可能"
 
 #: ../src/handler.py:220
 msgid ""
 "Cannot save a bug report since there is no active network device available."
 msgstr ""
+"アクティブなネットワーク装置が利用不可能なのでバグレポートを保存できません。"
 
 #: ../src/savers.py:34
 #, python-format
@@ -51,6 +51,10 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"あなたのバグは bugzilla との通信時に以下のエラーのため、記録できません"
+"でした。\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:37
 #, python-format
@@ -60,44 +64,51 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"あなたのバグはバグ領域にある悪い情報のため、記録できませんでした。これは"
+"たいていはバグ記録プログラムのエラーです:\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:41
 msgid "Unable To File Bug"
-msgstr ""
+msgstr "バグ記録不可"
 
 #: ../src/savers.py:47
 msgid "Bug Filing Not Supported"
-msgstr ""
+msgstr "バグ記録はサポートされていません"
 
 #: ../src/savers.py:48
 msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
 msgstr ""
+"あなたのディストリビューションはサポートしているバグ記録システムを提供して"
+"いないので、あなたの例外はこの方法では保存できません。"
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
-msgstr ""
+msgstr "不正なバグ情報"
 
 #: ../src/savers.py:55
 msgid "Please provide a valid username, password, and short bug description."
-msgstr ""
+msgstr "正しい利用者名と、パスワード、簡単なバグ記述を入れてください。"
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
-msgstr ""
+msgstr "ログインできません"
 
 #: ../src/savers.py:63
 #, python-format
 msgid ""
 "There was an error logging into %s using the provided username and password."
 msgstr ""
+"指定された利用者名とパスワードで %s にログインする時にエラーになりました。"
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:99
 msgid "Bug Created"
-msgstr ""
+msgstr "バグが作成されました"
 
 #: ../src/savers.py:100
 #, python-format
@@ -108,12 +119,17 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"添付のあなたのトレースバックと共に新しいバグが作成されました。以下のバグに"
+"バグに出会った時に何をしていたかや、スクリーンショットなど何でもいいから"
+"追加情報を付加してください:\n"
+"\n"
+"%s/%s"
 
 #. Tell the user which bug they've been CC'd on and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:114
 msgid "Bug Updated"
-msgstr ""
+msgstr "バグが更新されました"
 
 #: ../src/savers.py:115
 #, python-format
@@ -124,37 +140,44 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"あなたの情報のバグは既にあります。あなたのアカウントは CC リストに追加され、"
+"あなたのトレースバックはコメントとして追加されます。以下のバグに追加の記述"
+"情報を追加してください:\n"
+"\n"
+"%s/%s"
 
 #. Set the buttons.
 #: ../src/ui/gui.py:85
 msgid "_Debug"
-msgstr ""
+msgstr "デバッグ(_D)"
 
 #: ../src/ui/gui.py:87 ../src/ui/gui.py:152
 msgid "_Exit"
-msgstr ""
+msgstr "終了(_E)"
 
 #: ../src/ui/gui.py:92
 msgid ""
 "An unhandled exception has occurred.  This is most likely a bug.  Please "
 "save a copy of the detailed exception and file a bug report."
 msgstr ""
+"取り扱えない例外が発生しました。これはたいていはバグです。詳細な例外の"
+"コピーを保存し、バグレポートを作成してください。"
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
-msgstr ""
+msgstr "情報"
 
 #: tmp/detailed-dialog.glade.h:2
 msgid "_Details"
-msgstr ""
+msgstr "詳細(_D)"
 
 #: tmp/exnSave.glade.h:1
 msgid "Bug _description"
-msgstr ""
+msgstr "バグ記述(_D)"
 
 #: tmp/exnSave.glade.h:2
 msgid "Destination _file"
-msgstr ""
+msgstr "ファイルの宛先(_F)"
 
 #: tmp/exnSave.glade.h:3
 msgid ""
@@ -162,27 +185,30 @@ msgid ""
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
+"ローカル記憶\n"
+"バグジラ\n"
+"リモートサーバー (scp)"
 
 #: tmp/exnSave.glade.h:6
 msgid "Please choose a destination for saving your traceback."
-msgstr ""
+msgstr "あなたのトレースバックを保存する宛先を選んでください。"
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: tmp/exnSave.glade.h:8
 msgid "Select A File"
-msgstr ""
+msgstr "ファイルの選択"
 
 #: tmp/exnSave.glade.h:9
 msgid "_Host (host:port)"
-msgstr ""
+msgstr "ホスト (ホスト:ポート)(_H)"
 
 #: tmp/exnSave.glade.h:10
 msgid "_Password"
-msgstr ""
+msgstr "パスワード"
 
 #: tmp/exnSave.glade.h:11
 msgid "_User name"
-msgstr ""
+msgstr "利用者名"
