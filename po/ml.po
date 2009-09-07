@@ -1,0 +1,214 @@
+# translation of python-meh.master.python-meh.ml.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the python-meh package.
+# ANI PETER <apeter@redhat.com>, 2009
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh.master.python-meh.ml\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-09-07 16:06+0530\n"
+"Last-Translator: ANI PETER <apeter@redhat.com>\n"
+"Language-Team: Swathantra Malayalam Computing|സ്വതന്ത്ര മലയാളം കമ്പ്യൂട്ടിങ് <smc-discuss@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "ഡംപ് സൂക്ഷിച്ചു"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr ""
+"പിശകുള്ള ഫയല്‍ ഡിസ്കിലേക്ക് സൂക്ഷിച്ചു.  പ്രോഗ്രാമില്‍ നിന്നും പുറത്ത് "
+"കടക്കുന്നു."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "ഡംപ് സൂക്ഷിച്ചിട്ടില്ല"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "പിശകിനുള്ള റിപോര്‍ട്ട് രേഖപ്പെടുത്തുന്നതില്‍ പിശക്."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "നെറ്റ്‌വര്‍ക്ക് ലഭ്യമല്ല"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "സജീവമായ നെറ്റ്‌വര്‍ക്ക് ഡിവൈസ് ലഭ്യമല്ലാത്തതിനാല്‍, ഒരു ബഗ് റിപോര്‍ട്ട് സൂക്ഷിക്കുവാന്‍ സാധ്യമല്ല."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"ബഗ്സിലയുമായി ബന്ധപ്പെടുന്നതിനിടയിലുണ്ടായ ഈ പിശക് കാരണം നിങ്ങളുടെ ബഗ് "
+"രേഖപ്പെടുത്തുവാനായില്ല:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"ബഗിനുള്ള ഫീള്‍ഡുകളിലെ തെറ്റായ വിവരങ്ങള്‍ കാരണം നിങ്ങളുടെ ബഗ് രേഖപ്പെടുത്തുവാനായില്ല.  "
+"ഇതു് ബഗ് രേഖപ്പെടുത്തുന്ന പ്രോഗ്രാമിലെ പിശകാവാം:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "ബഗ് രേഖപ്പെടുത്തുവാന്‍ സാധ്യമല്ല"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "ബഗ് രേഖപ്പെടുത്തല്‍ പിന്തുണയ്ക്കുന്നില്ല"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"നിങ്ങളുടെ വിതരണത്തില്‍ പിന്തുണയുള്ള ഒരു ബഗ് രേഖപ്പെടുത്തല്‍ സിസ്റ്റം ലഭ്യമല്ല. "
+"അതിനാല്‍ ഇപ്രകാരം നിങ്ങളുടെ എക്സെപ്ഷന്‍ സൂക്ഷിക്കുവാന്‍ സാധ്യമല്ല."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "ബഗിന്റെ തെറ്റായ വിവരങ്ങള്‍"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "ശരിയായ ഒരു ഉപയോക്തൃനാമം, അടയാളവാക്ക്, ബഗിനുള്ള ലഘു വിവരണം എന്നിവ നല്‍കുക."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "ലോഗിന്‍ ചെയ്യുവാന്‍ സാധ്യമല്ല"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "നല്‍കിയ ഉപയോക്തൃനാമവും അടയാളവാക്കും ഉപയോഗിച്ചു് %s-ലേക്ക് പ്രവേശിക്കുന്നതില്‍ പിശക്."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "ബഗ് ഉണ്ടാക്കി"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"നിങ്ങളുടെ ട്രെയിസ്ബാക്ക് ചേര്‍ത്തു് ഒരു പുതിയ ബഗ് ഉണ്ടാക്കി. നിങ്ങള്‍ക്കീ ബഗ് "
+"എപ്പോഴുണ്ടായി, സ്ക്രീന്‍ഷോട്ടുകള്‍, താഴെ പറയുന്ന ബഗിനാവശ്യമുള്ള മറ്റു് വിവരങ്ങള്‍ "
+"ദയവായി ഉള്‍പ്പെടുത്തുക:\n"
+"\n"
+"%s/%s "
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "ബഗ് പരിഷ്കരിച്ചു"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"നിങ്ങളുടെ വിവരങ്ങളുള്‍പ്പെടുത്തിയ ഒരു ബഗ് നിലവിലുണ്ടു്. നിങ്ങളുടെ അക്കൌണ്ട് "
+"CC-ലും ട്രെയിസ്ബാക്ക് comment ആയും ചേര്‍ത്തിരിക്കുന്നു.  ദയവായി കൂടുതല്‍ വിശദമായ "
+"വിവരങ്ങള്‍ താഴെ നല്‍കുക:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_ഡീബഗ് ചെയ്യുക"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_പുറത്ത് കടക്കുക"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"അപരിചിതമായ എക്സെപ്ഷനുണ്ടായിരിക്കുന്നു.  ഇതൊരു ബഗാവാം.  ദയവായി, "
+"വിശദമായ ഒരു പകര്‍പ്പു് സൂക്ഷിച്ചു് ബഗ് രേഖപ്പെടുത്തുക."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "വിവരം"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_വിശദാംശങ്ങള്‍"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "ബഗ് _വിവരണം"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "ലക്ഷ്യസ്ഥാനത്തുള്ള _ഫയല്‍"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"ലോക്കല്‍ സ്റ്റോറേജ്\n"
+"ബഗ്സിലാ\n"
+"റിമോട്ട് സര്‍വര്‍ (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "നിങ്ങളുടെ ട്രെയിസ്ബാക്ക് സൂക്ഷിക്കുവാനുള്ള സ്ഥലം തെരഞ്ഞെടുക്കുക."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "സൂക്ഷിക്കുക"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "ഒരു ഫയല്‍ തെരഞ്ഞെടുക്കുക"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_ഹോസ്റ്റ് (host:port)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_അടയാളവാക്ക്"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "_ഉപയോക്തൃനാമം"
+
