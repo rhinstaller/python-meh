@@ -1,0 +1,216 @@
+# translation of python-meh.master.python-meh.or.po to Oriya
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Manoj Kumar Giri <mgiri@redhat.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh.master.python-meh.or\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-09-04 16:32+0530\n"
+"Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
+"Language-Team: Oriya <oriya-it@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n!=1);\n\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "ଅଦରକାରୀ ଜିନିଷ ଲେଖା ଯାଇଛି"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr "ତ୍ରୁଟି ଫାଇଲଟି ସଫଳତାର ସହିତ ଡିସ୍କରେ ଲେଖା ସରିଛି।  ପ୍ରଗ୍ରାମଟି ବର୍ତ୍ତମାନ ପ୍ରସ୍ଥାନ କରିବ।"
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "ଅଦରକାରୀ ଜିନିଷ ଲେଖା ଯାଇନାହିଁ"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "ତ୍ରୁଟି ଖବରକୁ ଲେଖିବାରେ ଗୋଟିଏ ସମସ୍ୟା ଦେଖାଦେଇଛି।"
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "କୌଣସି ନେଟୱାର୍କ ଉପକରଣ ଉପଲବ୍ଧ ନାହିଁ"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "ତ୍ରୁଟି ଖବରକୁ ସଂରକ୍ଷଣ କରିହେବ ନାହିଁ ଯେହେତୁ ସେଠାରେ କୌଣସି ସକ୍ରିୟ ନେଟୱର୍କ ଉପକରଣ ଉପଲବ୍ଧ ନାହିଁ।"
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"ବଗଜିଲା ସହିତ ଯୋଗାଯୋଗ କରିବା ସମୟରେ ନିମ୍ନଲିଖିତ କାରଣ ହେତୁ ଆପଣଙ୍କର ତ୍ରୁଟି ପୁରଣ ହୋଇପାରିଲା ନାହିଁ:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"ତ୍ରୁଟି ବିବରଣୀ କ୍ଷେତ୍ରରେ ଭୁଲ ସୂଚନା ହେତୁ ଆପଣଙ୍କର ତ୍ରୁଟିକୁ ଦାଖଲ କରିହେଲା ନାହିଁ।  ଏହା ସମ୍ଭବତଃ "
+"ତ୍ରୁଟି ପୁରଣ ପ୍ରଗ୍ରାମରେ ଥିବା ଗୋଟିଏ ତ୍ରୁଟି:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "ତ୍ରୁଟି ଦାଖଲ କରିବାରେ ଅସମର୍ଥ"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "ତ୍ରୁଟି ଭରଣ ସହାୟକ ନୁହେଁ"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"ଆପଣଙ୍କର ବଣ୍ଟନ ସମର୍ଥିତ ତ୍ରୁଟି ପୁରଣ ତନ୍ତ୍ର ପ୍ରଦାନ କରିନଥାଏ, ତେଣୁ ଆପଣ ଆପଣଙ୍କର ବ୍ୟତିକ୍ରମକୁ ଏହି "
+"ଉପାୟରେ ସଂରକ୍ଷଣ କରିପାରିବେ ନାହିଁ."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "ଅବୈଧ ତ୍ରୁଟି ସୂଚନା"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "ଦୟାକରି ଗୋଟିଏ ବୈଧ ଚାଳକ ନାମ, ପ୍ରବେଶ ସଂକେତ, ଏବଂ ସଂକ୍ଷିପ୍ତ ତ୍ରୁଟି ବର୍ଣ୍ଣନା ପ୍ରଦାନ କରନ୍ତୁ. "
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "ଲଗଇନ କରିବାରେ ଅସମର୍ଥ"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "ପ୍ରଦତ୍ତ ଚାଳକ ନାମ ଏବଂ ପ୍ରବେଶ ସଂକେତ ବ୍ୟବହାର କରି %sରେ ଲଗଇନ କରିବା ସମୟରେ ତ୍ରୁଟି ଘଟିଲା."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "ତ୍ରୁଟି ନିର୍ମିତ ହୋଇଛି"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"ଆପଣଙ୍କର ସଂଲଗ୍ନ ପଛଖୋଜା ସହିତ ଗୋଟିଏ ନୂତନ ତ୍ରୁଟି ସୃଷ୍ଟି ହୋଇଛି. ଦୟାକରି ଅତିରିକ୍ତ ସୂଚନା ଯୋଗକରନ୍ତୁ "
+"ଯେପରିକି ସେହି ତ୍ରୁଟିର ସମ୍ମୁଖିନ ହେଲା ପରେ ଆପଣ କଣ କରୁଛନ୍ତି, ସ୍କ୍ରିନସଟ, ଏବଂ ନିମ୍ନଲିଖିତ ତ୍ରୁଟି ପାଇଁ "
+"ଯାହାକିଛି ଉଚିତ:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "ତ୍ରୁଟି ଅଦ୍ଯତିତ ହୋଇଛି"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"ଆପଣଙ୍କର ସୂଚନା ସହିତ ପୂରବରୁ ଗୋଟିଏ ତ୍ରୁଟି ଅବସ୍ଥିତ ଅଛି.  ଆପଣଙ୍କର ଖାତାକୁ CC ତାଲିକାରେ ଯୋଗ "
+"କରିଦିଆଯାଇଛି ଏବଂ ଆପଣଙ୍କର ପଛଖୋଜାକୁ ଟୀପ୍ପଣୀ ଆକାରରେ ଯୋଗକରାଯାଇଛି.  ଦୟାକରି ନିମ୍ନଲିଖିତ ତ୍ରୁଟି ପାଇଁ "
+"ଅତିରିକ୍ତ ବର୍ଣ୍ଣନାତ୍ମକ ସୂଚନା ଯୋଗକରନ୍ତୁ:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "ତୃଟିମୁକ୍ତ କରନ୍ତୁ (_D)"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "ପ୍ରସ୍ଥାନ କରନ୍ତୁ (_E)"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"ଗୋଟିଏ ଅନିୟନ୍ତ୍ରିତ ବ୍ୟତିକ୍ରମ ଘଟିଛି।  ଏହା ସମ୍ଭବତଃ ଗୋଟିଏ ତ୍ରୁଟି ହୋଇପାରେ।  ଦୟାକରି ବିସ୍ତୃତ ବିବରଣୀର "
+"ଗୋଟିଏ ନକଲ ସଂରକ୍ଷଣ କରନ୍ତୁ ଏବଂ ଗୋଟିଏ ତ୍ରୁଟି ଖବର ଦାଖଲ କରନ୍ତୁ।"
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "ସୂଚନା"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "ବିସ୍ତୃତ ବିବରଣୀ (_D)"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "ତ୍ରୁଟି ବର୍ଣ୍ଣନା (_d)"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "ଲକ୍ଷ୍ୟ ସ୍ଥଳ ଫାଇଲ (_f)"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"ସ୍ଥାନୀୟ ସଂରକ୍ଷଣକାରୀ\n"
+"Bugzilla\n"
+"ସୁଦୂର ସର୍ଭର (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "ଆପଣଙ୍କର ପଛଖୋଜାକୁ ସଂରକ୍ଷଣ କରିବା ପାଇଁ ଦୟାକରି ଗୋଟିଏ ଲକ୍ଷ୍ଯସ୍ଥଳ ଚୟନକରନ୍ତୁ"
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "ଗୋଟିଏ ଫାଇଲ ବାଛନ୍ତୁ"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "ଆଧାର (ଆଧାର:ସଂଯୋଗିକୀ) (_H)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "ପ୍ରବେଶ ସଙ୍କେତ (_P)"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "ଚାଳକ ନାମ (_U)"
+
