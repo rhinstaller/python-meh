@@ -1,0 +1,205 @@
+# translation of python-meh.master.po to Marathi
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sandeep Shedmake <sshedmak@redhat.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh.master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-09-07 22:40+0530\n"
+"Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
+"Language-Team: Marathi <fedora-trans-mr@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "डंप लिहीले"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr "त्रुटी फाइल यशस्वीरित्या डिस्कवर लिहीले.  कार्यक्रम आत्ता बाहेर पडेल."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "डंप लिहीले नाही"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "त्रुटी अहवाल लिहीतेवेळी अडचण आढळली."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "नेटवर्क उपलब्ध नाही"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "सक्रीय नेटवर्क उपकरन उबलब्ध नसल्यामुळे बग अहवाल साठवण्यास अशक्य."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"बगझीलाशी संपर्क साधतेवेळी खालील त्रुटीमुळे तुमचे बग सादर झाले नाही:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"बग क्षेत्रमध्ये अयोग्य माहिती भरल्यामुळे तुमचे बग सादर झाले नाही.  हे सहसा बग भरण्याच्या प्रणालीतील त्रुटी असू शकते:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "बग सादर करण्यास अशक्य"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "बग सादरीकरण समर्थीत नाही"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr "तुमचे वितरण समर्थीत बग सादरीकरण प्रणाली पुरवत नाही, म्हणून तुम्ही अपवाद याप्रकारे साठवू शकत नाही."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "अवैध बग माहिती"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "कृपया वैध वापरकर्त्याचे नाव, पासवर्ड, व लहान बग वर्णन पुरवा."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "प्रवेश करण्यास अशक्य"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "वापरकर्त्याचे नाव व पासवर्डचा वापर करतेवेळी %s मध्ये प्रवेश करतेवेळी त्रुटी आढळली."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "बग निर्माण झाले"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"तुमच्या जुळलेल्या traceback सह नवीन बग निर्माण केले आहे. कृपया अगाऊ माहिती "
+"जसे की बग आढळले तेव्हा तुम्ही काय करत होता, स्क्रीनशॉट्स्, व खालील बगसासठी आवश्यक माहिती समाविष्ट करा:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "बग सुधारीत झाले"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"तुम्ही दिलेली माहितीचे बग आधिपासूनच अस्तित्वात आहे.  तुमचे खाते "
+"CC सूचीत समाविष्ट केले व तुमचे traceback टिपण्णी नुरूप समाविष्ट केले.  कृपया खालील बगमध्ये अगाऊची वर्णनीय माहिती समाविष्ट करा:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "डीबग (_D)"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "बाहेर पडा (_E)"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr "न हाताळलेले अपवाद आढळले.  हे सहसा बग असू शकते.  कृपया तपशील अपवादाची प्रत साठवा व बग अहवाल सादर करा."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "माहिती"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "तपशील (_D)"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "वग वर्णन (_d)"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "लक्ष्य फाइल (_f)"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"स्थानीय स्टोरेज\n"
+"बगझीला\n"
+"दूरस्थ सर्व्हर (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "तुमचे traceback साठवण्याकरीता कृपया लक्ष्य ठरवा."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "साठवा"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "फाइल नीवडा"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "यजमान (यजमान:पोर्ट) (_H)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "पासवर्ड (_P)"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "वापरकर्त्याचे नाव (_U)"
+
