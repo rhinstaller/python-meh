@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: python-meh\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: 2009-09-01 20:59+0100\n"
+"PO-Revision-Date: 2009-09-09 23:09+0100\n"
 "Last-Translator: Miloš Komarčević <kmilos@gmail.com>\n"
 "Language-Team: Serbian (sr) <fedora-trans-sr@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgid ""
 "The error file has been successfully written to the disk.  The program will "
 "now exit."
 msgstr ""
-"Datoteka sa greškama je uspešno upisana na disk.  Program če sada izaći."
+"Datoteka sa greškama je uspešno upisana na disk.  Program će sada izaći."
 
 #: ../src/handler.py:215
 msgid "Dump Not Written"
@@ -55,6 +55,10 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Vaša greška ne može da bude podneta zbog sledeće greške u komunikaciji sa "
+"bubaždajom:\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:37
 #, python-format
@@ -64,44 +68,52 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Vaša greška ne može da bude podneta zbog loših podataka u poljima greške.  "
+"Ovo je najverovatnije greška u programu za podnošenje grešaka:\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:41
 msgid "Unable To File Bug"
-msgstr ""
+msgstr "Ne mogu da podnesem grešku"
 
 #: ../src/savers.py:47
 msgid "Bug Filing Not Supported"
-msgstr ""
+msgstr "Podnošenje grešaka nije podržano"
 
 #: ../src/savers.py:48
 msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
 msgstr ""
+"Vaša distribucija ne pruža podržani sistem za podnošenje grešaka, tako da ne "
+"možete sačuvati odstupanje na ovaj način. "
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
-msgstr ""
+msgstr "Neispravni podaci o grešci"
 
 #: ../src/savers.py:55
 msgid "Please provide a valid username, password, and short bug description."
-msgstr ""
+msgstr "Dostavite ispravno korisničko ime, lozinku, i kratak opis greške."
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
-msgstr ""
+msgstr "Ne mogu da se prijavim"
 
 #: ../src/savers.py:63
 #, python-format
 msgid ""
 "There was an error logging into %s using the provided username and password."
 msgstr ""
+"Došlo je do greške pri prijavi na %s koristeći pruženo korisničko ime i "
+"lozinku."
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:99
 msgid "Bug Created"
-msgstr ""
+msgstr "Greška je napravljena"
 
 #: ../src/savers.py:100
 #, python-format
@@ -112,12 +124,17 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"Nova greška je napravljena sa vašim povratnim tragom u prilogu.  Dodajte "
+"dodatne podatke kao šta ste radili kada ste naišli na grešku, snimke ekrana, "
+"i šta god je prikladno sledećoj grešci:\n"
+"\n"
+"%s/%s"
 
 #. Tell the user which bug they've been CC'd on and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:114
 msgid "Bug Updated"
-msgstr ""
+msgstr "Greška je ažurirana"
 
 #: ../src/savers.py:115
 #, python-format
@@ -128,37 +145,44 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"Greška sa vašim podacima već postoji.  Vaš nalog je dodat u spisak za kopije "
+"i vaš povratni trag je dodat kao komentar.  Dodajte dodatne opisne podatke "
+"sledećoj grešci:\n"
+"\n"
+"%s/%s"
 
 #. Set the buttons.
 #: ../src/ui/gui.py:85
 msgid "_Debug"
-msgstr ""
+msgstr "Otklon _grešaka"
 
 #: ../src/ui/gui.py:87 ../src/ui/gui.py:152
 msgid "_Exit"
-msgstr ""
+msgstr "_Izlaz"
 
 #: ../src/ui/gui.py:92
 msgid ""
 "An unhandled exception has occurred.  This is most likely a bug.  Please "
 "save a copy of the detailed exception and file a bug report."
 msgstr ""
+"Došlo je do neobrađenog odstupanja.  Ovo je najverovatnije greška.  "
+"Sačuvajte umnožak detaljisanog odstupanja i podnesite izveštaj o grešci."
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: tmp/detailed-dialog.glade.h:2
 msgid "_Details"
-msgstr ""
+msgstr "_Detalji"
 
 #: tmp/exnSave.glade.h:1
 msgid "Bug _description"
-msgstr ""
+msgstr "_Opis greške"
 
 #: tmp/exnSave.glade.h:2
 msgid "Destination _file"
-msgstr ""
+msgstr "Odredišna da_toteka"
 
 #: tmp/exnSave.glade.h:3
 msgid ""
@@ -166,27 +190,30 @@ msgid ""
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
+"Lokalno skladište\n"
+"Bubaždaja\n"
+"Udaljeni server (scp)"
 
 #: tmp/exnSave.glade.h:6
 msgid "Please choose a destination for saving your traceback."
-msgstr ""
+msgstr "Izaberite odredište za čuvanje povratnog traga."
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
-msgstr ""
+msgstr "Sačuvaj"
 
 #: tmp/exnSave.glade.h:8
 msgid "Select A File"
-msgstr ""
+msgstr "Izaberite datoteku"
 
 #: tmp/exnSave.glade.h:9
 msgid "_Host (host:port)"
-msgstr ""
+msgstr "Do_maćin (domaćin:port)"
 
 #: tmp/exnSave.glade.h:10
 msgid "_Password"
-msgstr ""
+msgstr "_Lozinka"
 
 #: tmp/exnSave.glade.h:11
 msgid "_User name"
-msgstr ""
+msgstr "_Korisničko ime"
