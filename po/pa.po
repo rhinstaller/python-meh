@@ -1,20 +1,20 @@
-# translation of python-meh.master.python-meh.po to Punjabi
+# translation of python-meh.master.pa.po to Punjabi
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Jaswinder Singh <jsingh@redhat.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: python-meh.master.python-meh\n"
+"Project-Id-Version: python-meh.master.pa\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: 2009-09-08 21:18+0530\n"
-"Last-Translator: \n"
-"Language-Team: Punjabi/Panjabi <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2009-09-10 11:38+0530\n"
+"Last-Translator: Jaswinder Singh <jsingh@redhat.com>\n"
+"Language-Team: Punjabi <Punjabi-users@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../src/handler.py:209
@@ -40,10 +40,8 @@ msgid "No Network Available"
 msgstr "ਕੋਈ ਨੈੱਟਵਰਕ ਉਪਲੱਬਧ ਨਹੀਂ"
 
 #: ../src/handler.py:220
-msgid ""
-"Cannot save a bug report since there is no active network device available."
-msgstr ""
-"ਬੱਗ ਰਿਪੋਰਟ ਸੰਭਾਲ ਨਹੀਂ ਸਕਦਾ ਕਿਉਂਕਿ ਕੋਈ ਸਰਗਰਮ ਨੈੱਟਵਰਕ ਜੰਤਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ।"
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "ਬੱਗ ਰਿਪੋਰਟ ਸੰਭਾਲ ਨਹੀਂ ਸਕਦਾ ਕਿਉਂਕਿ ਕੋਈ ਸਰਗਰਮ ਨੈੱਟਵਰਕ ਜੰਤਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ।"
 
 #: ../src/savers.py:34
 #, python-format
@@ -53,8 +51,7 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"ਤੁਹਾਡਾ ਬੱਗ ਫਾਇਲ ਨਹੀਂ ਹੋ ਸਕਦਾ ਕਿਉਂਕਿ ਬੱਗਜ਼ੀਲਾ ਨਾਲ ਸੰਪਰਕ ਕਰਨ ਤੇ ਹੇਠਲੀ ਗਲਤੀ ਆਈ "
-"ਹੈ:\n"
+"ਤੁਹਾਡਾ ਬੱਗ ਫਾਇਲ ਨਹੀਂ ਹੋ ਸਕਦਾ ਕਿਉਂਕਿ ਬੱਗਜ਼ੀਲਾ ਨਾਲ ਸੰਪਰਕ ਕਰਨ ਤੇ ਹੇਠਲੀ ਗਲਤੀ ਆਈ ਹੈ:\n"
 "\n"
 "%s"
 
@@ -66,8 +63,8 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"ਬੱਗ ਖੇਤਰ ਵਿੱਚ ਗਲਤ ਜਾਣਕਾਰੀ ਕਰਕੇ ਤੁਹਾਡਾ ਬੱਗ ਫਾਇਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। ਇਸ ਦਾ "
-"ਕਾਰਨ ਬੱਗ ਫਾਇਲਿੰਗ ਪਰੋਗਰਾਮ ਵਿੱਚ ਇੱਕ ਗਲਤੀ ਹੈ:\n"
+"ਬੱਗ ਖੇਤਰ ਵਿੱਚ ਗਲਤ ਜਾਣਕਾਰੀ ਕਰਕੇ ਤੁਹਾਡਾ ਬੱਗ ਫਾਇਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। ਇਸ ਦਾ ਕਾਰਨ ਬੱਗ "
+"ਫਾਇਲਿੰਗ ਪਰੋਗਰਾਮ ਵਿੱਚ ਇੱਕ ਗਲਤੀ ਹੈ:\n"
 "\n"
 "%s"
 
@@ -84,8 +81,8 @@ msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
 msgstr ""
-"ਤੁਹਾਡੀ ਡਿਸਟਰੀਬਿਊਸ਼ਨ ਇੱਕ ਸਹਿਯੋਗੀ ਬੱਗ ਫਾਇਲਿੰਗ ਸਿਸਟਮ ਨਹੀਂ ਦਿੰਦਾ, ਇਸ ਲਈ ਤੁਸੀਂ "
-"ਆਪਣਾ ਅੱਪਵਾਦ ਇਸ ਤਰਾਂ ਸੰਭਾਲ ਨਹੀਂ ਸਕਦੇ।"
+"ਤੁਹਾਡੀ ਡਿਸਟਰੀਬਿਊਸ਼ਨ ਇੱਕ ਸਹਿਯੋਗੀ ਬੱਗ ਫਾਇਲਿੰਗ ਸਿਸਟਮ ਨਹੀਂ ਦਿੰਦਾ, ਇਸ ਲਈ ਤੁਸੀਂ ਆਪਣਾ ਅੱਪਵਾਦ "
+"ਇਸ ਤਰਾਂ ਸੰਭਾਲ ਨਹੀਂ ਸਕਦੇ।"
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
@@ -101,8 +98,7 @@ msgstr "ਲਾਗਇਨ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
 #: ../src/savers.py:63
 #, python-format
-msgid ""
-"There was an error logging into %s using the provided username and password."
+msgid "There was an error logging into %s using the provided username and password."
 msgstr "ਦਿੱਤਾ ਗਿਆ ਯੂਜ਼ਰ-ਨਾਂ ਅਤੇ ਪਾਸਵਰਡ ਵਰਤ ਕੇ %s ਵਿੱਚ ਲਾਗਇਨ ਕਰਨ ਵਿੱਚ ਗਲਤੀ ਸੀ।"
 
 #. Tell the user we created a new bug for them and that they should
@@ -120,9 +116,8 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
-"ਤੁਹਾਡੀ ਨੱਥੀ ਟਰੇਸਬੈਕ ਨਾਲ ਇੱਕ ਨਵਾਂ ਬੱਗ ਬਣਾਇਆ ਗਿਆ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਵਾਧੂ ਜਾਣਕਾਰੀ "
-"ਸ਼ਾਮਿਲ ਕਰੋ ਜਿਵੇਂ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ ਜਦੋਂ ਬੱਗ ਵੇਖਿਆ, ਸਕਰੀਨਸ਼ਆਟ, ਅਤੇ ਹੋਰ ਜੋ "
-"ਵੀ ਬੱਗ ਨਾਲ ਸੰਬੰਧਿਤ ਹੈ:\n"
+"ਤੁਹਾਡੀ ਨੱਥੀ ਟਰੇਸਬੈਕ ਨਾਲ ਇੱਕ ਨਵਾਂ ਬੱਗ ਬਣਾਇਆ ਗਿਆ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਵਾਧੂ ਜਾਣਕਾਰੀ ਸ਼ਾਮਿਲ ਕਰੋ "
+"ਜਿਵੇਂ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ ਜਦੋਂ ਬੱਗ ਵੇਖਿਆ, ਸਕਰੀਨਸ਼ਆਟ, ਅਤੇ ਹੋਰ ਜੋ ਵੀ ਬੱਗ ਨਾਲ ਸੰਬੰਧਿਤ ਹੈ:\n"
 "\n"
 "%s/%s"
 
@@ -141,9 +136,9 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
-"ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਵਾਲਾ ਇੱਕ ਬੱਗ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।  ਤੁਹਾਡਾ ਅਕਾਊਂਟ CC ਸੂਚੀ ਵਿੱਚ "
-"ਸ਼ਾਮਿਲ ਕੀਤਾ ਹੈ ਅਤੇ ਤੁਹਾਡੀ ਟਰੇਸਬੈਕ ਟਿੱਪਣੀ ਤੌਰ ਤੇ ਸ਼ਾਮਿਲ ਕੀਤੀ ਹੈ।  ਕਿਰਪਾ ਕਰਕੇ "
-"ਹੇਠਲੇ ਬੱਗ ਵਿੱਚ ਵਾਧੂ ਜਾਣਕਾਰੀ ਸ਼ਾਮਿਲ ਕਰੋ:\n"
+"ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਵਾਲਾ ਇੱਕ ਬੱਗ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।  ਤੁਹਾਡਾ ਅਕਾਊਂਟ CC ਸੂਚੀ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕੀਤਾ "
+"ਹੈ ਅਤੇ ਤੁਹਾਡੀ ਟਰੇਸਬੈਕ ਟਿੱਪਣੀ ਤੌਰ ਤੇ ਸ਼ਾਮਿਲ ਕੀਤੀ ਹੈ।  ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਲੇ ਬੱਗ ਵਿੱਚ ਵਾਧੂ ਜਾਣਕਾਰੀ "
+"ਸ਼ਾਮਿਲ ਕਰੋ:\n"
 "\n"
 "%s/%s"
 
@@ -161,8 +156,8 @@ msgid ""
 "An unhandled exception has occurred.  This is most likely a bug.  Please "
 "save a copy of the detailed exception and file a bug report."
 msgstr ""
-"ਇੱਕ ਨਾ-ਪਰਬੰਧਿਤ ਅੱਪਵਾਦ ਆਇਆ ਹੈ।  ਇਹ ਬੱਗ ਲੱਗਦਾ ਹੈ।  ਕਿਰਪਾ ਕਰਕੇ ਵਿਸਥਆਰ ਜਾਣਕਾਰੀ "
-"ਦੀ ਨਕਲ ਸੰਭਾਲੋ ਅਤੇ ਬੱਗ ਰਿਪੋਰਟ ਫਾਇਲ ਕਰੋ।"
+"ਇੱਕ ਨਾ-ਪਰਬੰਧਿਤ ਅੱਪਵਾਦ ਆਇਆ ਹੈ।  ਇਹ ਬੱਗ ਲੱਗਦਾ ਹੈ।  ਕਿਰਪਾ ਕਰਕੇ ਵਿਸਥਆਰ ਜਾਣਕਾਰੀ ਦੀ ਨਕਲ "
+"ਸੰਭਾਲੋ ਅਤੇ ਬੱਗ ਰਿਪੋਰਟ ਫਾਇਲ ਕਰੋ।"
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
