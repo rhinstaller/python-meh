@@ -110,7 +110,13 @@ class ExceptionHandler(object):
 
             win.run()
             rc = win.getrc()
-            responseHash[rc]((ty, value, tb))
+
+            try:
+                responseHash[rc]((ty, value, tb))
+            except KeyError:
+                # This happens if (for example) the user hits Escape instead
+                # of pressing a button.
+                continue
 
         win.destroy()
 
