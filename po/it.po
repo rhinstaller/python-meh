@@ -1,0 +1,227 @@
+# Italian translation of python-meh.
+# Copyright (C) 2009 Red Hat, Inc.
+# This file is distributed under the same license as the python-meh package.
+# Pierro Silvio <perplesso82@gmail.com>, 2009.
+# Daniele Catanesi <translate@ccielogs.com>, 2009.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-09-18 15:21+0200\n"
+"Last-Translator: Pierro Silvio <perplesso82@gmail.com>\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Dump scritto"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr ""
+"L'errore è stato scritto su disco con successo.  Il programma verrà chiuso."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Dump non scritto"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr ""
+"Si è verificato un problema durante la scrittura del rapporto di errore."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Nessuna rete disponibile"
+
+#: ../src/handler.py:220
+msgid ""
+"Cannot save a bug report since there is no active network device available."
+msgstr ""
+"Impossibile salvare un bug report dato che non è disponibile nessun "
+"dispositivo di rete attivo."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Il bug non può essere inviato a causa del seguente errore durante la "
+"comunicazione con bugzilla:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Il bug non può essere inviato a causa di informazioni errate nei campi bug.  "
+"Questo molto probabilmente è un errore nel programma di schedaturau bug:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Impossibile schedare il bug"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Schedatura bug non supportata"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"L'attuale distribuzione non fornisce un sistema di schedatura bug "
+"supportato, quindi non è possibile salvare la propria eccezione in questo "
+"modo."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Informazioni di bug non valide"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr ""
+"Si prega di fornire un nome utente, password validi e una breve descrizione "
+"del bug."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Impossibile accedere"
+
+#: ../src/savers.py:63
+#, python-format
+msgid ""
+"There was an error logging into %s using the provided username and password."
+msgstr ""
+"Si è verificato un errore durante l'accesso a %s usando il nome utente e la "
+"password forniti."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Bug creato"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"E' stato creato un nuovo bug con il tuo commento allegato. Si prega di "
+"aggiungere informazioni aggiuntive tipo cosa si stava facendo mentre si è "
+"riscontrato il problema, schermate e qualsiasi altra cosa sia appropriata al "
+"seguente bug:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Bug aggiornato"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Esiste già un bug con le tue informazioni.  Il tuo account è stato aggiunto "
+"alla lista CC e la descrizione aggiunta come commento.  Si prega di "
+"aggiungere informazioni descrittive al seguente bug:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Debug"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Esci"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"Si è verificata una eccezione non gestita.  Molto probabilmente questo è un "
+"bug.  Prego, salvare una copia dettagliata dell'eccezione e inviare un bug "
+"report."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Info"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Dettagli"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "_Descrizione bug"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "_File di destinazione"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Memoria locale\n"
+"Bugzilla\n"
+"Server remoto (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr ""
+"Si prega di selezionare una destinazione per il salvataggio del commento."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Salva"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Selezionare un file"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Host (host:port)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Password"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "Nome _Utente"
+
