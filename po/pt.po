@@ -13,22 +13,20 @@ msgstr ""
 "X-Poedit-Country: PORTUGAL\n"
 
 #: ../src/handler.py:209
-#, fuzzy
 msgid "Dump Written"
-msgstr "Mensagem de erro escrita"
+msgstr "Resultado Escrito"
 
 #: ../src/handler.py:210
 msgid "The error file has been successfully written to the disk.  The program will now exit."
-msgstr ""
+msgstr "O erro foi gravado em disco com sucesso.  O programa vai agora terminar."
 
 #: ../src/handler.py:215
-#, fuzzy
 msgid "Dump Not Written"
-msgstr "O Resultado Não Foi Escrito"
+msgstr "Resultado Não Escrito"
 
 #: ../src/handler.py:216
 msgid "There was a problem writing the error report."
-msgstr ""
+msgstr "Houve um problema ao gravar o relatório."
 
 #: ../src/handler.py:219
 msgid "No Network Available"
@@ -56,6 +54,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"O erro não pode ser submetido devido a má informação nos campos do erro.  Isto é provavelmente um erro na aplicação de submissão de erros:\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:41
 msgid "Unable To File Bug"
@@ -74,18 +75,17 @@ msgid "Invalid Bug Information"
 msgstr "Informação do Erro Inválida"
 
 #: ../src/savers.py:55
-#, fuzzy
 msgid "Please provide a valid username, password, and short bug description."
-msgstr "Envie por favor um utilizador, uma senha e uma breve descrição válidos."
+msgstr "Por favor, indique um utilizador, uma senha válidos, assim como uma breve descrição do erro."
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
 msgstr "Não é Possível Iniciar Sessão"
 
 #: ../src/savers.py:63
-#, fuzzy, python-format
+#, python-format
 msgid "There was an error logging into %s using the provided username and password."
-msgstr "Ocorreu um erro ao registar em %s com o utilizador e senha indicados."
+msgstr "Ocorreu um erro ao iniciar sessão em %s com o utilizador e senha indicados."
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
@@ -94,13 +94,13 @@ msgid "Bug Created"
 msgstr "Erro Criado"
 
 #: ../src/savers.py:100
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "A new bug has been created with your traceback attached. Please add additional information such as what you were doing when you encountered the bug, screenshots, and whatever else is appropriate to the following bug:\n"
 "\n"
 "%s/%s"
 msgstr ""
-"Foi criado um novo erro com o seu registo de chamadas em anexo. Por favor adicione algumas informações adicionais, como o que estava a fazer quando lhe ocorreu o erro, algumas imagens e tudo o que seja apropriado para o seguinte ero:\n"
+"Foi criado um novo erro com o seu registo de chamadas em anexo. Por favor adicione algumas informações adicionais, como o que estava a fazer quando lhe ocorreu o erro, algumas imagens e tudo o que seja apropriado para o seguinte erro:\n"
 "\n"
 "%s/%s"
 
@@ -111,7 +111,7 @@ msgid "Bug Updated"
 msgstr "Erro Actualizado"
 
 #: ../src/savers.py:115
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "A bug with your information already exists.  Your account has been added to the CC list and your traceback added as a comment.  Please add additional descriptive information to the following bug:\n"
 "\n"
@@ -132,9 +132,8 @@ msgid "_Exit"
 msgstr "_Sair"
 
 #: ../src/ui/gui.py:92
-#, fuzzy
 msgid "An unhandled exception has occurred.  This is most likely a bug.  Please save a copy of the detailed exception and file a bug report."
-msgstr "Ocorreu um erro não recuperável.  Provavelmente isto é um erro do programa. Por favor, guarde a cópia detalhada da excepção e envie um relatório do erro"
+msgstr "Ocorreu um erro não recuperável.  Provavelmente isto é um erro do programa. Por favor, guarde a cópia detalhada da excepção e envie um relatório do erro."
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
@@ -158,11 +157,13 @@ msgid ""
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
+"Armazenamento local\n"
+"Bugzilla\n"
+"Servidor remoto (scp)"
 
 #: tmp/exnSave.glade.h:6
-#, fuzzy
 msgid "Please choose a destination for saving your traceback."
-msgstr "Escolha por favor um destino para onde copiar o seu registo de chamadas."
+msgstr "Por favor, escolha um destino para gravar o registo de traçagem."
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
