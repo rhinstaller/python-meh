@@ -1,0 +1,216 @@
+# Danish translation of python-meh
+# Copyright (C) 2009 python-meh
+# This file is distributed under the same license as the python-meh package.
+# Kris Thomsen <lakristho@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2009-09-21 23:13+0200\n"
+"Last-Translator: Kris Thomsen <lakristho@gmail.com>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Dump skrevet"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr ""
+"Fejlfilen er blevet skrevet til disken uden problemer.  Programmet vil nu "
+"blive afsluttet."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Dump ikke skrevet"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Der opstod et problem under skrivning af fejlrapporten."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Intet netværk tilgængeligt"
+
+#: ../src/handler.py:220
+msgid ""
+"Cannot save a bug report since there is no active network device available."
+msgstr ""
+"Kan ikke gemme en fejlrapport eftersom der ikke er nogen aktiv netværksenhed tilgængelig."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Din rapport er ikke blevet sendt på grund af følgende fejl under kommunikation "
+"med bugzilla:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Din fejlrapport kunne ikke blive indsendt på grund af dårlig information i fejlfelterne.  "
+"Dette er højst sandsynligt en fejl i fejlrapporteringsprogrammet:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Kunne ikke indsende fejlrapport"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Indsending af fejlrapport er ikke understøttet"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"Din distribution udbyder ikke et understøttet fejlrapporteringssystem, så du "
+"kan ikke gemme din undtagelse på denne måde."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Ugyldig fejlinformation"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "Angiv venligst et gyldigt brugernavn, adgangskode og en kort fejlbeskrivelse."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Kunne ikke logge ind"
+
+#: ../src/savers.py:63
+#, python-format
+msgid ""
+"There was an error logging into %s using the provided username and password."
+msgstr ""
+"Der opstod en fejl ved indlogning på %s ved brug af det angivne brugernavn og adgangskode."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Fejlrapport oprettet"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"En ny fejlrapport er blevet oprettet med din traceback vedhæftet. Tilføj gerne "
+"ekstra information, som f.eks. hvad du var igang med da du opdagede fejlen, "
+"skærmbilleder og hvad der ellers er passende til følgende fejl:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Fejlrapport opdateret"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"En fejlrapport med din information findes allerede.  Din konto er blevet tilføjet "
+"til CC-listen, og din traceback er tilføjet som en kommentar.  Tilføj gerne ekstra, "
+"beskrivende information til følgende fejlrapport:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Fejlsøg"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Afslut"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"En ubehandlet undtagelse er opstået.  Dette er højst sandsynligt en fejl.  "
+"Gem venligst en kopi af den detaljerede undtagelse og udfyld en fejlrapport."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Information"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Detaljer"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "Fejl_beskrivelse"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "Destinations_fil"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Lokalopbevaring\n"
+"Bugzilla\n"
+"Fjernserver (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Vælg venligst en placering til at gemme din traceback i."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Gem"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Vælg en fil"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Vært (vært:port)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Adgangskode"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "_Brugernavn"
