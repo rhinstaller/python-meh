@@ -1,47 +1,46 @@
-# SOME DESCRIPTIVE TITLE.
+# translation of python-meh.master.fr.po to French
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Sam Friedmann <sam.friedmann@redhat.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: python-meh.master.fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-09-18 17:28+1000\n"
+"Last-Translator: Sam Friedmann <sam.friedmann@redhat.com>\n"
+"Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../src/handler.py:209
 msgid "Dump Written"
-msgstr ""
+msgstr "Dump écrit"
 
 #: ../src/handler.py:210
 msgid ""
 "The error file has been successfully written to the disk.  The program will "
 "now exit."
-msgstr ""
+msgstr "Le fichier d'erreurs a été écrit sur le disque. Ce programme se fermer."
 
 #: ../src/handler.py:215
 msgid "Dump Not Written"
-msgstr ""
+msgstr "Cliché non écrit"
 
 #: ../src/handler.py:216
 msgid "There was a problem writing the error report."
-msgstr ""
+msgstr "Un problème est survenu lors de l'écriture du rapport d'erreurs."
 
 #: ../src/handler.py:219
 msgid "No Network Available"
-msgstr ""
+msgstr "Aucun réseau n'est disponible"
 
 #: ../src/handler.py:220
-msgid ""
-"Cannot save a bug report since there is no active network device available."
-msgstr ""
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "Impossible de sauvegarder le rapport de bogues puisqu'il n'y a pas de périphérique réseau disponible."
 
 #: ../src/savers.py:34
 #, python-format
@@ -51,6 +50,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Votre bogue n'a pas pu être enregistré sur Bugzilla à cause de l'erreur de communication suivante :\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:37
 #, python-format
@@ -60,44 +62,46 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Votre bogue n'a pas pu être enregistré sur Bugzilla à cause d'informations erronées dans les champs de bogues. Ceci est sans doute dû à une erreur dans le programme de rapport de bogues :\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:41
 msgid "Unable To File Bug"
-msgstr ""
+msgstr "Impossible de soumettre le bogue"
 
 #: ../src/savers.py:47
 msgid "Bug Filing Not Supported"
-msgstr ""
+msgstr "La soumission de rapport de bogue n'est pas prise en charge"
 
 #: ../src/savers.py:48
 msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
-msgstr ""
+msgstr "Votre distribution ne prends pas en charge le système de rapport de bogue, vous ne pouvez donc pas sauvegarder votre exception de cette façon."
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
-msgstr ""
+msgstr "Informations du bogue invalides"
 
 #: ../src/savers.py:55
 msgid "Please provide a valid username, password, and short bug description."
-msgstr ""
+msgstr "Veuillez fournir un nom d'utilisateur valide, un mot de passe, et une brève description du bogue."
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
-msgstr ""
+msgstr "Connexion impossible"
 
 #: ../src/savers.py:63
 #, python-format
-msgid ""
-"There was an error logging into %s using the provided username and password."
-msgstr ""
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "Une erreur est survenue lors de la connexion à %s avec le nom d'utilisateur et le mot de passe fourni."
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:99
 msgid "Bug Created"
-msgstr ""
+msgstr "Bogue créé"
 
 #: ../src/savers.py:100
 #, python-format
@@ -108,12 +112,15 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"Un nouveau bogue a été créé avec votre traceback attaché. Veuillez ajouter les informations additionnelles, telles que ce que vous étiez en train de faire lorsque le bogue est apparu, des captures d'écran, ainsi que toute autre information jugée utile :\n"
+"\n"
+"%s/%s"
 
 #. Tell the user which bug they've been CC'd on and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:114
 msgid "Bug Updated"
-msgstr ""
+msgstr "Mise à jour du bogue"
 
 #: ../src/savers.py:115
 #, python-format
@@ -124,37 +131,40 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"Un bogue contenant vos informations existe déjà. Votre compte a été ajouté à la liste des destinataires en copie et votre traceback a été ajouté en tant que commentaire. Veuillez ajouter toute information descriptive au bogue suivant :\n"
+"\n"
+"%s/%s"
 
 #. Set the buttons.
 #: ../src/ui/gui.py:85
 msgid "_Debug"
-msgstr ""
+msgstr "_Déboguer"
 
 #: ../src/ui/gui.py:87 ../src/ui/gui.py:152
 msgid "_Exit"
-msgstr ""
+msgstr "_Fermer"
 
 #: ../src/ui/gui.py:92
 msgid ""
 "An unhandled exception has occurred.  This is most likely a bug.  Please "
 "save a copy of the detailed exception and file a bug report."
-msgstr ""
+msgstr "Une exception non gérée est survenue. Il s'agit sans doute d'un bogue. Veuillez sauvegarder une copie de l'exception détaillée et remplir un rapport de bogue."
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
-msgstr ""
+msgstr "Informations"
 
 #: tmp/detailed-dialog.glade.h:2
 msgid "_Details"
-msgstr ""
+msgstr "_Détails"
 
 #: tmp/exnSave.glade.h:1
 msgid "Bug _description"
-msgstr ""
+msgstr "_Description du bogue"
 
 #: tmp/exnSave.glade.h:2
 msgid "Destination _file"
-msgstr ""
+msgstr "_Fichier de destination"
 
 #: tmp/exnSave.glade.h:3
 msgid ""
@@ -162,27 +172,31 @@ msgid ""
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
+"Stockage local\n"
+"Bugzilla\n"
+"Serveur distant (scp)"
 
 #: tmp/exnSave.glade.h:6
 msgid "Please choose a destination for saving your traceback."
-msgstr ""
+msgstr "Choisissez une destination pour la sauvegarde de votre traceback."
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
-msgstr ""
+msgstr "Sauvegarder"
 
 #: tmp/exnSave.glade.h:8
 msgid "Select A File"
-msgstr ""
+msgstr "Sélectionner un fichier"
 
 #: tmp/exnSave.glade.h:9
 msgid "_Host (host:port)"
-msgstr ""
+msgstr "_Hôte (hôte:port)"
 
 #: tmp/exnSave.glade.h:10
 msgid "_Password"
-msgstr ""
+msgstr "_Mot de passe"
 
 #: tmp/exnSave.glade.h:11
 msgid "_User name"
-msgstr ""
+msgstr "_Nom d'utilisateur"
+
