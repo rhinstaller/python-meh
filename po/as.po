@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: python-meh.master.python-meh.as\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: 2009-09-10 09:05+0530\n"
-"Last-Translator: Amitakhya Phukan <aphukan@fedoraproject.org>\n"
-"Language-Team: Assamese <kde-i18n-doc@lists.kde.org>\n"
+"PO-Revision-Date: 2009-09-22 16:56+0530\n"
+"Last-Translator: \n"
+"Language-Team: Assamese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,34 +18,33 @@ msgstr ""
 
 #: ../src/handler.py:209
 msgid "Dump Written"
-msgstr "ডাম্প লিখা হৈছে"
+msgstr "ডাম্প লিখা হ'ল  "
 
 #: ../src/handler.py:210
 msgid ""
 "The error file has been successfully written to the disk.  The program will "
 "now exit."
 msgstr ""
-"ত্ৰুটিৰ তথ্য বিশিষ্ট নথিপত্ৰ সফলতাৰে সৈতে ডিস্কে লিখা হৈছে ।  প্ৰোগ্ৰামৰ "
-"পৰা বৰ্তমানে "
-"প্ৰস্থান কৰা হ'ব ।"
+"ভুলৰ নথিপত্ৰক সফলভাবে ডিষ্কলৈ লিখা গৈছে । কাৰ্য্যক্ৰম এতিয়া বাহিৰ হ'ব ।"
 
 #: ../src/handler.py:215
 msgid "Dump Not Written"
-msgstr "ডাম্প লিখা নহয়"
+msgstr "ডাম্প লিখা ন'গ'ল"
 
 #: ../src/handler.py:216
 msgid "There was a problem writing the error report."
-msgstr "ত্ৰুটিৰ ৰিপোৰ্ট লিখিবলৈ সমস্যা হৈছে ।"
+msgstr "ভুলৰ প্ৰতিবেদন লিখোঁতে ভুল হৈছে ।     "
 
 #: ../src/handler.py:219
 msgid "No Network Available"
-msgstr "নেটৱৰ্ক উপলব্ধ নাই"
+msgstr "নে'টৱৰ্ক নাই  "
 
 #: ../src/handler.py:220
 msgid ""
 "Cannot save a bug report since there is no active network device available."
 msgstr ""
-"সক্ৰিয় নেটৱৰ্ক যন্ত্ৰ উপলব্ধ নথকাৰ কাৰণে বাগ ৰিপোৰ্ট সংৰক্ষণ কৰিবলৈ ব্যৰ্থ ।"
+"সক্ৰিয় নে'টৱৰ্ক যন্ত্ৰ নথকাৰ কাৰণে বাগ প্ৰতিবেদন ৰক্ষা কৰিব পৰা ন'গ'ল ।     "
+"      "
 
 #: ../src/savers.py:34
 #, python-format
@@ -55,10 +54,8 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"bugzilla-ৰ সৈতে যোগাযোগসময়ত নিম্নলিখিত সমস্যাৰ কাৰণে বাগ প্ৰতিবেদন কৰা "
-"নাযায়:\n"
-"\n"
-"%s"
+"bugzilla ৰ সৈতে কথা পাতোঁতে হোৱা এই ভুলৰ কাৰণে আপোনাৰ বাগ প্ৰতিবেদন কৰিব "
+"পৰা ন'গ'ল:\n \n %s"
 
 #: ../src/savers.py:37
 #, python-format
@@ -68,55 +65,51 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"বাগৰ কিছু ক্ষেত্ৰত ভুল তথ্য উপস্থিত থকাৰ ফলত এই বাগটি প্ৰতিবেদন কৰা সম্ভৱ "
-"নহয় ।  বাগ "
-"প্ৰতিবেদন কৰাৰ প্ৰোগ্ৰামত উপস্থিত ত্ৰুটিৰ ফলত সম্ভৱত এই সমস্যা দেখা দিছে:\n"
-"\n"
-"%s"
+"বাগৰ ক্ষেত্ৰত থকা বেয়া তথ্যৰ কাৰণে আপোনাৰ বাগৰ প্ৰতিবেদন কৰিব পৰা ন'গ'ল । "
+"এইটো অতি সম্ভৱ বাগ প্ৰতিবেদন অনুপ্ৰয়োগত ভুল:\n \n %s"
 
 #: ../src/savers.py:41
 msgid "Unable To File Bug"
-msgstr "বাগ প্ৰতিবেদন কৰিবলৈ ব্যৰ্থ"
+msgstr "বাত প্ৰতিবেদন কৰিব নোৱাৰি   "
 
 #: ../src/savers.py:47
 msgid "Bug Filing Not Supported"
-msgstr "বাগ প্ৰতিবেদন কৰাৰ ব্যৱস্থা সমৰ্থিত নহয়"
+msgstr "বাগ প্ৰতিবেদন কৰা অসমৰ্থিত     "
 
 #: ../src/savers.py:48
 msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
 msgstr ""
-"আপোনাৰ ব্যৱহৃত বিতৰণ দ্বাৰা বাগ প্ৰতিবেদন কৰাৰ কোনো ব্যৱস্থা সমৰ্থিত নহয় । "
-"এই "
-"কাৰণে, এই ব্যতিক্ৰম এই প্ৰক্ৰিয়াত সংৰক্ষণ কৰা সম্ভৱ নহয় ।"
+"আপোনাৰ বিতৰণে বাগ প্ৰতিবেদন কৰাৰ প্ৰণালীৰ সমৰ্থন নিদিয়ে, সেইকাৰণে আপুনি এই "
+"ধৰণে এই অব্যাহতি ৰক্ষা কৰিব নোৱাৰে ।স"
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
-msgstr "বাগ সংক্ৰান্ত তথ্য বৈধ নহয়"
+msgstr "অবৈধ বাগৰ তথ্য    "
 
 #: ../src/savers.py:55
 msgid "Please provide a valid username, password, and short bug description."
 msgstr ""
-"অনুগ্ৰহ কৰি বৈধ ব্যৱহাৰকৰ্তাৰ নাম, গুপ্তশব্দ আৰু বাগৰ সংক্ষিপ্ত বিৱৰণত "
-"উপলব্ধ কৰক ।"
+"অনুগ্ৰহ কৰি এটা বৈধ ব্যৱহাৰকৰ্তাৰ নাম, গুপ্তশব্দ, আৰু সৰুকৈ বাগৰ বিৱৰণ দিয়ক "
+"।"
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
-msgstr "প্ৰৱেশ কৰিবলৈ ব্যৰ্থ"
+msgstr "প্ৰৱেশ কৰিব পৰা নাই  "
 
 #: ../src/savers.py:63
 #, python-format
 msgid ""
 "There was an error logging into %s using the provided username and password."
 msgstr ""
-"উল্লিখিত ব্যৱহাৰকৰ্তাৰ নাম আৰু গুপ্তশব্দ সহযোগে %s-ত প্ৰৱেশ কৰিবলৈ সমস্যা ।"
+"দিয়া ব্যৱহাৰকৰ্তাৰ নাম আৰু গুপ্তশব্দৰে %s ত প্ৰৱেশ কৰোঁতে এটা ভুল হৈছে ।    "
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:99
 msgid "Bug Created"
-msgstr "বাগ নিৰ্মিত হৈছে"
+msgstr "বাগ সৃষ্টি কৰা হৈছে  "
 
 #: ../src/savers.py:100
 #, python-format
@@ -127,19 +120,15 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
-"আপোনাৰ দ্বাৰা উপলব্ধ traceback সহ এটা নতুন বাগ নিৰ্মাণ কৰা হৈছে । অনুগ্ৰহ "
-"কৰি "
-"কিছু অতিৰিক্ত তথ্য যেনে, বাগ উৎপন্ন হোৱাৰ সময় সঞ্চালিত কৰ্ম, স্ক্ৰিন-ছট আৰু "
-"অন্যান্য "
-"প্ৰয়োজনীয় সামগ্ৰী এই বাগত অন্তৰ্ভুক্ত কৰক:\n"
-"\n"
-"%s/%s"
+"আপুনি দিয়া ট্ৰেচবেক লগ লগাই এটা নতুন বাগ সৃষ্টি কৰা হৈছে । অনুগ্ৰহ কৰি "
+"অতিৰিক্ত তথ্য যেনে বাগ পাওঁতে আপুনি কি কৰি আছিলে, স্ক্ৰীনছ'ট, আৰু যি কোনো "
+"উপকাৰী তথ্য আপুনি এই বাগত যোগ কৰিব পাৰিব:\n \n %s/%s"
 
 #. Tell the user which bug they've been CC'd on and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:114
 msgid "Bug Updated"
-msgstr "বাগ উন্নত কৰা হৈছে"
+msgstr "বাগ উন্নত কৰা হ'ল   "
 
 #: ../src/savers.py:115
 #, python-format
@@ -150,19 +139,14 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
-"এই তথ্য বিশিষ্ট এটা বাগ বৰ্তমানে উপস্থিত আছে ।  সংশ্লিষ্ট বাগৰ অনুলিপি "
-"প্ৰাপকৰ "
-"তালিকাত আপোনাৰ হিচাপ যোগ কৰা হৈছে আৰু আপোনাৰ দ্বাৰা উপলব্ধ traceback এটা "
-"বিৱৃতি ৰূপে সংযোজন কৰা হৈছে ।  অনুগ্ৰহ কৰি নিম্নলিখিত বাগত অতিৰিক্ত তথ্য "
-"যোগ "
-"কৰক:\n"
-"\n"
-"%s/%s"
+"আপুনি দিয়া তথ্যৰে এটা বাগ ইতিমধ্যে আছে । আপোনাৰ হিচাপক CC তালিকালৈ যোগ কৰা "
+"হৈছে আৰু আপোনাৰ ট্ৰেচবেকক মন্তব্য হিচাপে যোগ কৰা হৈছে । এই বাগত আৰু অধিক "
+"বিৱৰণৰ তথ্য দিয়ক:\n \n %s/%s"
 
 #. Set the buttons.
 #: ../src/ui/gui.py:85
 msgid "_Debug"
-msgstr "ডিবাগ কৰক (_D)"
+msgstr "ডিবাগ  (_D)"
 
 #: ../src/ui/gui.py:87 ../src/ui/gui.py:152
 msgid "_Exit"
@@ -173,9 +157,8 @@ msgid ""
 "An unhandled exception has occurred.  This is most likely a bug.  Please "
 "save a copy of the detailed exception and file a bug report."
 msgstr ""
-"ব্যৱস্থা নকৰা এটা ব্যতিক্ৰম উৎপন্ন হৈছে ।  এইটো সম্ভৱতঃ এটা বাগ ।  অনুগ্ৰহ "
-"কৰি, "
-"ব্যতিক্ৰমৰ বিৱৰণৰ এটা প্ৰতিলিপি সংৰক্ষণ কৰক আৰু এটা বাগ প্ৰতিবেদন কৰক ।"
+"এটা অপ্ৰত্যাশিত অব্যাহতি হৈছে । এইটো অতি সম্ভৱ এটা বাগ । বিস্তৃত অব্যাহতিৰ "
+"এটা নকল ৰক্ষা কৰক আৰু বাগ প্ৰতিবেদন কৰক ।"
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
@@ -187,7 +170,7 @@ msgstr "বিৱৰণ (_D)"
 
 #: tmp/exnSave.glade.h:1
 msgid "Bug _description"
-msgstr "বাগৰ বিৱৰণ (_d)"
+msgstr "বাগৰ বিৱৰণ  (_d)"
 
 #: tmp/exnSave.glade.h:2
 msgid "Destination _file"
@@ -199,21 +182,20 @@ msgid ""
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
-"স্থানীয় সংগ্ৰহস্থল\n"
-"Bugzilla\n"
-"দূৰবৰ্তী সেৱক (scp)"
+"স্থানীয় ভঁৰাল \n Bugzilla\n"
+"দূৰৰ সেৱক (scp)"
 
 #: tmp/exnSave.glade.h:6
 msgid "Please choose a destination for saving your traceback."
-msgstr "traceback-ৰ তথ্য সংৰক্ষণৰ বাবে অনুগ্ৰহ কৰি এটা স্থান নিৰ্বাচন কৰক ।"
+msgstr "আপোবাৰ ট্ৰেচবেক ৰক্ষা কৰিবলৈ এটা গন্তব্য বাচি লওক ।"
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
-msgstr "সংৰক্ষণ কৰক"
+msgstr "ৰক্ষা কৰক "
 
 #: tmp/exnSave.glade.h:8
 msgid "Select A File"
-msgstr "এটা নথিপত্ৰ নিৰ্বাচন কৰক"
+msgstr "এটা নথিপত্ৰ বাচি লওক   "
 
 #: tmp/exnSave.glade.h:9
 msgid "_Host (host:port)"
@@ -225,5 +207,5 @@ msgstr "গুপ্তশব্দ (_P)"
 
 #: tmp/exnSave.glade.h:11
 msgid "_User name"
-msgstr "ব্যৱহাৰকৰ্তাৰ নাম (_U)"
+msgstr "ব্যৱহাৰকৰ্তাৰ নাম  (_U)"
 
