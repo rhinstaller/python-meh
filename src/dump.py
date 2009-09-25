@@ -52,6 +52,17 @@ class ExceptionDump(object):
 
         self._dumpHash = {}
 
+    @property
+    def desc(self):
+        # The description is a single line of text that should be used anywhere
+        # the bug needs to quickly be summarized.  The most obvious example of
+        # this is when saving to bugzilla.  We can populate the UI with this
+        # string so the user doesn't need to come up with one.
+        if self.type and self.value:
+            return traceback.format_exception_only(self.type, self.value)[0].strip()
+        else:
+            return ""
+
     def __str__(self):
         lst = self._format_stack()
 

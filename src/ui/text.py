@@ -41,8 +41,8 @@ class TextIntf(AbstractIntf):
         win.run()
         win.destroy()
 
-    def saveExceptionWindow(self, exnFile, *args, **kwargs):
-        win = SaveExceptionWindow(exnFile, *args, **kwargs)
+    def saveExceptionWindow(self, exnFile, desc="", *args, **kwargs):
+        win = SaveExceptionWindow(exnFile, desc=desc, *args, **kwargs)
         return win
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
@@ -101,10 +101,10 @@ class ExitWindow(MessageWindow):
         self.screen.refresh()
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
-    def __init__(self, longTracebackFile=None, *args, **kwargs):
-        AbstractSaveExceptionWindow.__init__(self, longTracebackFile, *args,
-                                             **kwargs)
+    def __init__(self, exnFile, desc="", *args, **kwargs):
+        AbstractSaveExceptionWindow.__init__(self, exnFile, desc=desc, *args, **kwargs)
         self.screen = kwargs.get("screen", None)
+        self._desc = desc
         self._method = "disk"
 
     def _runSaveToDisk(self):
@@ -130,6 +130,8 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
         self.bugzillaNameEntry = Entry(24)
         self.bugzillaPasswordEntry = Entry(24, password=1)
         self.bugDesc = Entry(24)
+
+        self.bugDesc.setText(self._desc)
 
         bugzillaGrid = Grid(2, 3)
         bugzillaGrid.setField(Label(_("Username")), 0, 0, anchorLeft=1)

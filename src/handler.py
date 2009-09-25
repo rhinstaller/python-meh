@@ -199,7 +199,7 @@ class ExceptionHandler(object):
                         1: self.saveToBugzilla,
                         2: self.saveToRemote}
 
-        win = self.intf.saveExceptionWindow(self.exnFile)
+        win = self.intf.saveExceptionWindow(self.exnFile, desc=self.exn.desc)
         if not win:
             self.runQuit((ty, value, tb))
 

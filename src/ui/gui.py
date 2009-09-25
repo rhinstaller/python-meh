@@ -59,8 +59,8 @@ class GraphicalIntf(AbstractIntf):
         win.run()
         win.destroy()
 
-    def saveExceptionWindow(self, exnFile, *args, **kwargs):
-        win = SaveExceptionWindow(exnFile, *args, **kwargs)
+    def saveExceptionWindow(self, exnFile, desc="", *args, **kwargs):
+        win = SaveExceptionWindow(exnFile, desc=desc, *args, **kwargs)
         return win
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
@@ -155,13 +155,15 @@ class ExitWindow(MessageWindow):
         self.dialog.set_position(gtk.WIN_POS_CENTER)
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
-    def __init__(self, longTracebackFile=None, *args, **kwargs):
-        AbstractSaveExceptionWindow.__init__(self, longTracebackFile, *args, **kwargs)
+    def __init__(self, exnFile, desc="", *args, **kwargs):
+        AbstractSaveExceptionWindow.__init__(self, exnFile, desc=desc, *args, **kwargs)
         exnxml = gtk.glade.XML(findGladeFile("exnSave.glade"), domain="python-meh")
 
         self.bugzillaNameEntry = exnxml.get_widget("bugzillaNameEntry")
         self.bugzillaPasswordEntry = exnxml.get_widget("bugzillaPasswordEntry")
         self.bugDesc = exnxml.get_widget("bugDesc")
+
+        self.bugDesc.set_text(desc)
 
         self.scpNameEntry = exnxml.get_widget("scpNameEntry")
         self.scpPasswordEntry = exnxml.get_widget("scpPasswordEntry")

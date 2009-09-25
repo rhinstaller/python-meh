@@ -171,14 +171,15 @@ class AbstractSaveExceptionWindow:
        initial dialog, and presents multiple options for how the traceback
        should be saved.
     """
-    def __init__(self, longTracebackFile=None, *args, **kwargs):
+    def __init__(self, exnFile, desc="", *args, **kwargs):
         """Create a new SaveExceptionWindow instance.  This must handle
            creating the dialog and populating it with widgets, but must not
            run the dialog.  A self.dialog attribute should be created that
            refers to the dialog itself.
 
-           longTracebackFile -- A file containing the output of
-                                ExceptionDump.write().
+           exnFile -- A file containing the output of ExceptionDump.write().
+           desc    -- A description to populate the text entry field with,
+                      since users often do not know what to do.
         """
         self.rc = 0
 
