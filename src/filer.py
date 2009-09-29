@@ -38,14 +38,15 @@ def getProduct():
 
 def getVersion():
     """Attempt to determine the version of the running system by first asking
-       rpm, and then falling back on a hardcoded default.
+       rpm, and then falling back on a hardcoded default.  Always return as
+       a string.
     """
     try:
         ts = rpm.TransactionSet()
         mi = ts.dbMatch('provides', 'system-release')
         for h in mi:
             if h['version']:
-                return h['version']
+                return str(h['version'])
 
         return "rawhide"
     except:
@@ -110,7 +111,7 @@ class AbstractFiler(object):
         """
         self.bugUrl = bugUrl
         self.displayUrl = displayUrl
-        self.version = version
+        self.version = str(version)
         self.product = product
 
     def login(self, username, password):
@@ -153,10 +154,11 @@ class AbstractFiler(object):
 
     def getversion(self):
         """Verify that self.version is a valid version number for the product
-           name self.product.  If it is, return that same version number.  If
-           not, return "rawhide" if it exists or the latest version number
-           otherwise.  This method queries the bug filing system for a list of
-           valid versions numbers.  It must be provided by all subclasses.
+           name self.product.  If it is, return that same version number as a
+           string.  If not, return "rawhide" if it exists or the latest version
+           number otherwise.  This method queries the bug filing system for a
+           list of valid versions numbers.  It must be provided by all
+           subclasses.
         """
         raise NotImplementedError
 
@@ -388,16 +390,16 @@ class BugzillaFiler(AbstractFiler):
         return "Fedora"
 
     def getversion(self):
+        # Convert all version numbers from bugzilla into strings.  Sometimes
+        # bugzilla gives us strings ("rawhide", "development"), sometimes it
+        # gives us integers (11, 12), and sometimes it gives us floats
+        # (5.4, 5.5, 6.0).
         details = self.__withBugzillaDo(lambda b: b._proxy.bugzilla.getProductDetails(self.product))
-        bugzillaVers = details[1]
+        bugzillaVers = map(str, details[1])
         bugzillaVers.sort()
 
-        # getProductDetails gives us a list of numbers, oh but things like
-        # "rawhide" and "development" are strings.  First 
-        try:
-            ver = int(self.version)
-        except:
-            ver = self.version
+        # Double check to make sure this is a string.
+        ver = str(self.version)
 
         # If the version given to us by the caller isn't valid, fall back to
         # asking the running system and then to something hard coded.
@@ -408,7 +410,7 @@ class BugzillaFiler(AbstractFiler):
 
             return "rawhide"
         else:
-            return self.version
+            return str(self.version)
 
     def query(self, query):
         lst = self.__withBugzillaDo(lambda b: b.query(query))
