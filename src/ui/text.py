@@ -131,7 +131,7 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
         self.bugzillaPasswordEntry = Entry(24, password=1)
         self.bugDesc = Entry(24)
 
-        self.bugDesc.setText(self._desc)
+        self.bugDesc.set(self._desc)
 
         bugzillaGrid = Grid(2, 3)
         bugzillaGrid.setField(Label(_("Username")), 0, 0, anchorLeft=1)
