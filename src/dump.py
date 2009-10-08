@@ -89,12 +89,27 @@ class ExceptionDump(object):
     # Create a string representation of a class and write it to fd.  This
     # method will recursively handle all attributes of the base given class.
     def _dumpClass(self, instance, fd, level=0, parentkey="", skipList=[]):
+        # This is horribly cheesy, and bound to require maintainence in the
+        # future.  The problem is that anything subclassed from object fails
+        # the types.InstanceType test we used to have which means those
+        # objects never get dumped.  However, most everything basic in
+        # python is derived from object so we can't just check for the super
+        # class.  Any instances of the following types will just be printed
+        # out, and everything else will be assumed to be something that
+        # needs to be recursed on.
+        def __isSimpleType(instance):
+            return type(instance) in [types.BooleanType, types.ComplexType, types.FloatType,
+                                      types.IntType, types.LongType, types.NoneType,
+                                      types.StringType, types.UnicodeType]
+
         # protect from loops
         try:
-            if not self._dumpHash.has_key(instance):
-                self._dumpHash[instance] = None
+            # Store the id(), not the instance name to protect against
+            # instances that cannot be hashed.
+            if not self._dumpHash.has_key(id(instance)):
+                self._dumpHash[id(instance)] = None
             else:
-                fd.write("Already dumped\n")
+                fd.write("Already dumped (%s instance)\n" % instance.__class__.__name__)
                 return
         except TypeError:
             fd.write("Cannot dump object\n")
@@ -131,10 +146,11 @@ class ExceptionDump(object):
                         fd.write(", ")
                     else:
                         first = 0
-                    if type(item) == types.InstanceType:
-                        self._dumpClass(item, fd, level + 1, skipList=skipList)
-                    else:
+
+                    if __isSimpleType(item):
                         fd.write("%s" % (item,))
+                    else:
+                        self._dumpClass(item, fd, level + 1, skipList=skipList)
                 fd.write("]\n")
             elif type(value) == types.DictType:
                 fd.write("%s%s: {" % (pad, curkey))
@@ -148,16 +164,17 @@ class ExceptionDump(object):
                         fd.write("'%s': " % (k,))
                     else:
                         fd.write("%s: " % (k,))
-                    if type(v) == types.InstanceType:
-                        self._dumpClass(v, fd, level + 1, parentkey = curkey, skipList=skipList)
-                    else:
+
+                    if __isSimpleType(v):
                         fd.write("%s" % (v,))
+                    else:
+                        self._dumpClass(v, fd, level + 1, parentkey = curkey, skipList=skipList)
                 fd.write("}\n")
-            elif type(value) == types.InstanceType:
+            elif __isSimpleType(value):
+                fd.write("%s%s: %s\n" % (pad, curkey, value))
+            else:
                 fd.write("%s%s: " % (pad, curkey))
                 self._dumpClass(value, fd, level + 1, parentkey=curkey, skipList=skipList)
-            else:
-                fd.write("%s%s: %s\n" % (pad, curkey, value))
 
     def dump(self, fd, obj):
         """Dump the local variables and all attributes of a given object to an
