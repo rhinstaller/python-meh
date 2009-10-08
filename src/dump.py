@@ -21,6 +21,7 @@
 #            Erik Troan <ewt@redhat.com>
 #            Chris Lumens <clumens@redhat.com>
 #
+import copy
 import inspect
 from string import joinfields
 import os
@@ -136,6 +137,7 @@ class ExceptionDump(object):
             # None are probably okay.
             if eval("instance.%s is not None" % key) and \
                eval("id(instance.%s)" % key) in skipList:
+                fd.write("%s%s: Skipped\n" % (pad, curkey))
                 continue
 
             if type(value) == types.ListType:
@@ -188,28 +190,34 @@ class ExceptionDump(object):
         """
         idSkipList = []
 
+        # We need to augment the environment eval() will run in with the
+        # bindings that were local when the traceback happened so that the
+        # idSkipList can be populated.  However since we're not allowed to
+        # modify the results of locals(), we'll have to make a copy first.
+        localVars = copy.copy(locals())
+        localVars.update(self.stack[-1][0].f_locals)
+
         # Catch attributes that do not exist at the time we do the exception dump
         # and ignore them.
         for k in self.conf.attrSkipList:
             try:
-                eval("idSkipList.append(id(%s))" % k)
+                eval("idSkipList.append(id(%s))" % k, None, localVars)
             except:
                 pass
 
         # Write local variables to the given file descriptor, ignoring any of
         # the local skips.
-        if self.stack:
-            frame = self.stack[-1][0]
-            fd.write ("\nLocal variables in innermost frame:\n")
-            try:
-                for (key, value) in frame.f_locals.items():
-                    loweredKey = key.lower()
-                    if len(filter(lambda s: loweredKey.find(s) != -1, self.conf.localSkipList)) > 0:
-                        continue
+        frame = self.stack[-1][0]
+        fd.write ("\nLocal variables in innermost frame:\n")
+        try:
+            for (key, value) in frame.f_locals.items():
+                loweredKey = key.lower()
+                if len(filter(lambda s: loweredKey.find(s) != -1, self.conf.localSkipList)) > 0:
+                    continue
 
-                    fd.write ("%s: %s\n" % (key, value))
-            except:
-                pass
+                fd.write ("%s: %s\n" % (key, value))
+        except:
+            pass
 
         # And now dump the object's attributes.
         try:
