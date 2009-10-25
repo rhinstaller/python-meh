@@ -1,0 +1,191 @@
+# Fedora Asturian translation of python-meh.master.python-meh.
+# This file is distributed under the same license as the spython-meh.master.python-meh package.
+# Astur <malditoastur@gmail.com>\, 2009.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Fedora Asturian translation of python-meh.master.python-meh\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Xandru Martino Ruz <xandru.martino@gmail.com>\n"
+"Language-Team: Fedora Asturian <alministradores@softastur.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Asturian\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Volcando lo escrito"
+
+#: ../src/handler.py:210
+msgid "The error file has been successfully written to the disk.  The program will now exit."
+msgstr "El ficheru del fallu escribióse nel discu de mou satisfactoriu. Agora'l programa finará."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Volcando lo nun escrito"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Hebo un problema mientres s'escribía l'informe del fallu."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Nun esiste denguna rede disponible"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "Nun se puede guardar un informe del fallu porque nun esiste disponible dengún preséu de rede."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"El to fallu nun pudo mandase porque hebo'l siguiente fallu nel procesu de comunicación con bugzilla:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"El to fallu nun pudo mandase por una mala información en dalgún campu de los que lu describen. De xuru esto débese a un pilancu del programa d'unvíu de fallos:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Nun se pudo unviar el fallu"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Informe de fallos ensin sofitar"
+
+#: ../src/savers.py:48
+msgid "Your distribution does not provide a supported bug filing system, so you cannot save your exception this way."
+msgstr "La to distribución nun tien sofitu pa un sistema de ficheru de fallos, de mou que la to esceición nun puede atroxase d'esti mou."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Información de fallu inválida"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "Por favor, indica un nome d'usuariu válidu, una contraseña, y una curtia descripción del fallu."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Nun puede rexistrase"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "Hebo un fallu al rexistrase en %s usando'l nome d'usuariu y la contraseña apurríos."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Creóse'l fallu (bug)"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add additional information such as what you were doing when you encountered the bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Creóse un fallu nuevu (bug) cola so descripción axunta. Por favor, amiesta información adicional, como por exemplu, qué ye lo que tabes faciendo cuando atopesti esti fallu, captures de pantalla, o cualesquier cosa que consideres pertinente al fallu en cuestión:\n"
+"\n"
+"%s/%s "
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Fallu anováu"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to the CC list and your traceback added as a comment.  Please add additional descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Yá esiste un fallu cola so información. La to cuenta amestóse a la llista CC y la to descripción axuntóse en forma de comentariu. Por favor, amiesta información descriptiva adicional al siguiente fallu:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Depuración"
+
+#: ../src/ui/gui.py:87
+#: ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Colar"
+
+#: ../src/ui/gui.py:92
+msgid "An unhandled exception has occurred.  This is most likely a bug.  Please save a copy of the detailed exception and file a bug report."
+msgstr "Hebo una esceición non manipulada . Seguramente esto seya un fallu. Por favor, guarda una copia del detalle de la excepción y manda un informe de fallu."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Información"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Detalles"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "_Descripción del fallu"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "Ficheru de destín"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Almacenamientu llocal\n"
+"Bugzilla\n"
+"Sirvidor remotu (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Por favor escueyi un destín au atroxar la descripción del to fallu."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Guardar"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Escoyer un ficheru"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Equipu (nome:puertu)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Contraseña"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "Nome d'_usuariu"
+
