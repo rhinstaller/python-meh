@@ -3,45 +3,47 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Anatoliyg Guskov <anatoliy.guskov@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-10-30 20:14+0200\n"
+"Last-Translator: Anatoliyg Guskov <anatoliy.guskov@gmail.com>\n"
+"Language-Team: ru <fedora-trans-ru@redhat.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/handler.py:209
 msgid "Dump Written"
-msgstr ""
+msgstr "Дамп Записан"
 
 #: ../src/handler.py:210
 msgid ""
 "The error file has been successfully written to the disk.  The program will "
 "now exit."
-msgstr ""
+msgstr "Файл ошибок был успешно записан на диск.  Программа будет завершена."
 
 #: ../src/handler.py:215
 msgid "Dump Not Written"
-msgstr ""
+msgstr "Дамп Не Записан"
 
 #: ../src/handler.py:216
 msgid "There was a problem writing the error report."
-msgstr ""
+msgstr "Возникла проблема при записи отчета об ошибках."
 
 #: ../src/handler.py:219
 msgid "No Network Available"
-msgstr ""
+msgstr "Сеть Не доступна"
 
 #: ../src/handler.py:220
 msgid ""
 "Cannot save a bug report since there is no active network device available."
 msgstr ""
+"Не возможно сохранить отчет об ошибках поскольку недоступны активные сетевые "
+"устройства."
 
 #: ../src/savers.py:34
 #, python-format
@@ -62,8 +64,9 @@ msgid ""
 msgstr ""
 
 #: ../src/savers.py:41
+#, fuzzy
 msgid "Unable To File Bug"
-msgstr ""
+msgstr "Не существующий Файл Ошибки"
 
 #: ../src/savers.py:47
 msgid "Bug Filing Not Supported"
@@ -74,33 +77,39 @@ msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
 msgstr ""
+"Вашему дистрибутиву не предоставляется поддержка системой подачи ошибок, по "
+"этому вы не можете сохранить ваше исключение таким путем."
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
-msgstr ""
+msgstr "Неверная Информация Ошибки"
 
 #: ../src/savers.py:55
 msgid "Please provide a valid username, password, and short bug description."
 msgstr ""
+"Пожалуйста предоставьте действительные имя пользователя, пароль и короткое "
+"описание ошибки."
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
-msgstr ""
+msgstr "Не возможно Войти "
 
 #: ../src/savers.py:63
 #, python-format
 msgid ""
 "There was an error logging into %s using the provided username and password."
 msgstr ""
+"Произошла ошибка входа на %s используя предоставленные имя пользователя и "
+"пароль."
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:99
 msgid "Bug Created"
-msgstr ""
+msgstr "Ошибка Создана"
 
 #: ../src/savers.py:100
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "A new bug has been created with your traceback attached. Please add "
 "additional information such as what you were doing when you encountered the "
@@ -108,12 +117,17 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"Новая ошибка была добавлена с вашим прилепленным прослеживанием. Пожалуйста "
+"добавьте дополнительную информацию такую как вы и где встречали ошибку "
+"снимок экрана и какой бы ни был еще соответствующий следующая ошибка:\n"
+"\n"
+"%s/%s"
 
 #. Tell the user which bug they've been CC'd on and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:114
 msgid "Bug Updated"
-msgstr ""
+msgstr "Ошибка Обновлена"
 
 #: ../src/savers.py:115
 #, python-format
@@ -124,15 +138,20 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
+"Ошибка с вашей информацией уже существует.  Ваш аккаунт был добавлен в "
+"список CC и ваши прослеживания добавлены в качестве комментария.  Пожалуйста "
+"добавьте дополнительную наглядную информацию к следующей ошибке:\n"
+"\n"
+"%s/%s"
 
 #. Set the buttons.
 #: ../src/ui/gui.py:85
 msgid "_Debug"
-msgstr ""
+msgstr "_Отладка"
 
 #: ../src/ui/gui.py:87 ../src/ui/gui.py:152
 msgid "_Exit"
-msgstr ""
+msgstr "_Выход"
 
 #: ../src/ui/gui.py:92
 msgid ""
@@ -142,47 +161,52 @@ msgstr ""
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
-msgstr ""
+msgstr "Инфо"
 
 #: tmp/detailed-dialog.glade.h:2
 msgid "_Details"
-msgstr ""
+msgstr "_Детали"
 
 #: tmp/exnSave.glade.h:1
 msgid "Bug _description"
-msgstr ""
+msgstr "Описание _ошибки"
 
 #: tmp/exnSave.glade.h:2
 msgid "Destination _file"
-msgstr ""
+msgstr "Выходной _фаил"
 
 #: tmp/exnSave.glade.h:3
+#, fuzzy
 msgid ""
 "Local storage\n"
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
+"Локальное хранилище\n"
+"Багзилла\n"
+"Удаленный сервер (scp)"
 
 #: tmp/exnSave.glade.h:6
+#, fuzzy
 msgid "Please choose a destination for saving your traceback."
-msgstr ""
+msgstr "Пожалуйста укажите место для сохранения вашего прослеживания."
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: tmp/exnSave.glade.h:8
 msgid "Select A File"
-msgstr ""
+msgstr "Выберете файл"
 
 #: tmp/exnSave.glade.h:9
 msgid "_Host (host:port)"
-msgstr ""
+msgstr "_Хост (хост:порт)"
 
 #: tmp/exnSave.glade.h:10
 msgid "_Password"
-msgstr ""
+msgstr "_Пароль"
 
 #: tmp/exnSave.glade.h:11
 msgid "_User name"
-msgstr ""
+msgstr "_Имя пользователя"
