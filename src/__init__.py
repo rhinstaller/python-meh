@@ -47,7 +47,13 @@ class Config(object):
                              any attributes found with the same name as an
                              element of this list will not be written to
                              the dump.  This is to prevent writing potentially
-                             sensitive information like passwords.
+                             sensitive information like passwords.  The names
+                             must be given without the leading name of the
+                             object passed to handler.install().  For instance,
+                             if handler.install() gets an Anaconda instance
+                             with the name "anaconda" and you want to skip
+                             anaconda.id.rootPassword, "id.rootPassword" should
+                             be listed in attrSkipList.
            bugFiler       -- An AbstractFiler instance.  This is required for
                              saving to remote bug tracking systems.  Of course
                              this must be an instance of a real subclass, not

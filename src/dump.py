@@ -201,7 +201,7 @@ class ExceptionDump(object):
         # and ignore them.
         for k in self.conf.attrSkipList:
             try:
-                eval("idSkipList.append(id(%s))" % k, None, localVars)
+                eval("idSkipList.append(id(obj.%s))" % k, None, localVars)
             except:
                 pass
 
