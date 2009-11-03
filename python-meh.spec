@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedoraproject.org/git/?p=python-meh.git
-Version: 0.6
+Version: 0.7
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,11 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Nov 03 2009 Chris Lumens <clumens@redhat.com> - 0.7-1
+- Add a test case framework.
+- Move src -> meh for ease of test case writing.
+- Another attempt at making the attrSkipList work (#532612, #532737).
+
 * Thu Oct 08 2009 Chris Lumens <clumens@redhat.com> - 0.6-1
 - Make idSkipList work again.
 - Support dumping objects derived from Python's object.
