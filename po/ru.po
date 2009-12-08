@@ -1,48 +1,48 @@
-# SOME DESCRIPTIVE TITLE.
+# translation of ru.po to Russian
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Anatoliyg Guskov <anatoliy.guskov@gmail.com>, 2009.
+# Yulia <ypoyarko@redhat.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-16 15:00-0400\n"
-"PO-Revision-Date: 2009-10-30 20:14+0200\n"
-"Last-Translator: Anatoliyg Guskov <anatoliy.guskov@gmail.com>\n"
-"Language-Team: ru <fedora-trans-ru@redhat.com>\n"
+"PO-Revision-Date: 2009-12-08 12:14+1100\n"
+"Last-Translator: Yulia <ypoyarko@redhat.com>\n"
+"Language-Team: Russian <fedora-trans-ru@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../src/handler.py:209
 msgid "Dump Written"
-msgstr "Дамп Записан"
+msgstr "Дамп записан"
 
 #: ../src/handler.py:210
 msgid ""
 "The error file has been successfully written to the disk.  The program will "
 "now exit."
-msgstr "Файл ошибок был успешно записан на диск.  Программа будет завершена."
+msgstr "Файл ошибок успешно записан на диск.  Программа будет завершена."
 
 #: ../src/handler.py:215
 msgid "Dump Not Written"
-msgstr "Дамп Не Записан"
+msgstr "Дамп не записан"
 
 #: ../src/handler.py:216
 msgid "There was a problem writing the error report."
-msgstr "Возникла проблема при записи отчета об ошибках."
+msgstr "Проблема при записи отчёта об ошибках."
 
 #: ../src/handler.py:219
 msgid "No Network Available"
-msgstr "Сеть Не доступна"
+msgstr "Сеть недоступна"
 
 #: ../src/handler.py:220
-msgid ""
-"Cannot save a bug report since there is no active network device available."
+msgid "Cannot save a bug report since there is no active network device available."
 msgstr ""
-"Не возможно сохранить отчет об ошибках поскольку недоступны активные сетевые "
+"Не удалось сохранить отчёт об ошибках, поскольку недоступны активные сетевые "
 "устройства."
 
 #: ../src/savers.py:34
@@ -53,6 +53,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Не удалось создать отчёт об ошибке из-за проблемы при подключении к Bugzilla:\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:37
 #, python-format
@@ -62,54 +65,53 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Не удалось создать отчёт об ошибке, так как поля содержат недопустимые данные. Возможная причина &mdash; ошибка в программе создания отчётов:\n"
+"\n"
+"%s"
 
 #: ../src/savers.py:41
-#, fuzzy
 msgid "Unable To File Bug"
-msgstr "Не существующий Файл Ошибки"
+msgstr "Не удалось создать запрос"
 
 #: ../src/savers.py:47
 msgid "Bug Filing Not Supported"
-msgstr ""
+msgstr "Создание отчётов об ошибках не поддерживается"
 
 #: ../src/savers.py:48
 msgid ""
 "Your distribution does not provide a supported bug filing system, so you "
 "cannot save your exception this way."
-msgstr ""
-"Вашему дистрибутиву не предоставляется поддержка системой подачи ошибок, по "
-"этому вы не можете сохранить ваше исключение таким путем."
+msgstr "Ваш дистрибутив не поддерживает создание отчётов об ошибках, поэтому вы не можете сохранить ваше исключение таким способом."
 
 #: ../src/savers.py:54
 msgid "Invalid Bug Information"
-msgstr "Неверная Информация Ошибки"
+msgstr "Неверная информация об ошибке"
 
 #: ../src/savers.py:55
 msgid "Please provide a valid username, password, and short bug description."
 msgstr ""
-"Пожалуйста предоставьте действительные имя пользователя, пароль и короткое "
+"Введите действительное имя пользователя, пароль и краткое "
 "описание ошибки."
 
 #: ../src/savers.py:62
 msgid "Unable To Login"
-msgstr "Не возможно Войти "
+msgstr "Не удаётся войти"
 
 #: ../src/savers.py:63
 #, python-format
-msgid ""
-"There was an error logging into %s using the provided username and password."
+msgid "There was an error logging into %s using the provided username and password."
 msgstr ""
-"Произошла ошибка входа на %s используя предоставленные имя пользователя и "
+"Произошла ошибка входа в %s используя предоставленные имя пользователя и "
 "пароль."
 
 #. Tell the user we created a new bug for them and that they should
 #. go add a descriptive comment.
 #: ../src/savers.py:99
 msgid "Bug Created"
-msgstr "Ошибка Создана"
+msgstr "Отчёт об ошибке создан"
 
 #: ../src/savers.py:100
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "A new bug has been created with your traceback attached. Please add "
 "additional information such as what you were doing when you encountered the "
@@ -117,9 +119,7 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
-"Новая ошибка была добавлена с вашим прилепленным прослеживанием. Пожалуйста "
-"добавьте дополнительную информацию такую как вы и где встречали ошибку "
-"снимок экрана и какой бы ни был еще соответствующий следующая ошибка:\n"
+"Создан новый отчёт об ошибке с вложением трассировки. Добавьте дополнительную информацию, например, опишите, как и где вы столкнулись с этой ошибкой и по возможности приложите снимок экрана:\n"
 "\n"
 "%s/%s"
 
@@ -127,7 +127,7 @@ msgstr ""
 #. go add a descriptive comment.
 #: ../src/savers.py:114
 msgid "Bug Updated"
-msgstr "Ошибка Обновлена"
+msgstr "Отчёт обновлён"
 
 #: ../src/savers.py:115
 #, python-format
@@ -138,9 +138,7 @@ msgid ""
 "\n"
 "%s/%s"
 msgstr ""
-"Ошибка с вашей информацией уже существует.  Ваш аккаунт был добавлен в "
-"список CC и ваши прослеживания добавлены в качестве комментария.  Пожалуйста "
-"добавьте дополнительную наглядную информацию к следующей ошибке:\n"
+"Запрос с этой информацией уже существует.  Ваша учётная запись была добавлена в список CC и данные трассировки добавлены в качестве комментария.  Пожалуйста, добавьте дополнительную информацию к следующей ошибке:\n"
 "\n"
 "%s/%s"
 
@@ -151,13 +149,13 @@ msgstr "_Отладка"
 
 #: ../src/ui/gui.py:87 ../src/ui/gui.py:152
 msgid "_Exit"
-msgstr "_Выход"
+msgstr "В_ыход"
 
 #: ../src/ui/gui.py:92
 msgid ""
 "An unhandled exception has occurred.  This is most likely a bug.  Please "
 "save a copy of the detailed exception and file a bug report."
-msgstr ""
+msgstr "Произошло необрабатываемое исключение. Вероятно, это ошибка. Пожалуйста, сохраните копию исключения и создайте отчёт об ошибке."
 
 #: tmp/detailed-dialog.glade.h:1
 msgid "Info"
@@ -165,7 +163,7 @@ msgstr "Инфо"
 
 #: tmp/detailed-dialog.glade.h:2
 msgid "_Details"
-msgstr "_Детали"
+msgstr "_Подробности"
 
 #: tmp/exnSave.glade.h:1
 msgid "Bug _description"
@@ -173,23 +171,21 @@ msgstr "Описание _ошибки"
 
 #: tmp/exnSave.glade.h:2
 msgid "Destination _file"
-msgstr "Выходной _фаил"
+msgstr "Выходной _файл"
 
 #: tmp/exnSave.glade.h:3
-#, fuzzy
 msgid ""
 "Local storage\n"
 "Bugzilla\n"
 "Remote server (scp)"
 msgstr ""
 "Локальное хранилище\n"
-"Багзилла\n"
-"Удаленный сервер (scp)"
+"Bugzilla\n"
+"Удалённый сервер (scp)"
 
 #: tmp/exnSave.glade.h:6
-#, fuzzy
 msgid "Please choose a destination for saving your traceback."
-msgstr "Пожалуйста укажите место для сохранения вашего прослеживания."
+msgstr "Укажите место для сохранения информации трассировки."
 
 #: tmp/exnSave.glade.h:7
 msgid "Save"
@@ -197,11 +193,11 @@ msgstr "Сохранить"
 
 #: tmp/exnSave.glade.h:8
 msgid "Select A File"
-msgstr "Выберете файл"
+msgstr "Выберите файл"
 
 #: tmp/exnSave.glade.h:9
 msgid "_Host (host:port)"
-msgstr "_Хост (хост:порт)"
+msgstr "_Узел (узел:порт)"
 
 #: tmp/exnSave.glade.h:10
 msgid "_Password"
@@ -210,3 +206,4 @@ msgstr "_Пароль"
 #: tmp/exnSave.glade.h:11
 msgid "_User name"
 msgstr "_Имя пользователя"
+
