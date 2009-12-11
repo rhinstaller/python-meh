@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Author(s): Chris Lumens <clumens@redhat.com>
+#            Will Woods <wwoods@redhat.com>
 #
 from filer import *
 import os
