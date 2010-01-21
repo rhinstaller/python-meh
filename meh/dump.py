@@ -118,8 +118,13 @@ class ExceptionDump(object):
 
         if (instance.__class__.__dict__.has_key("__str__") or
             instance.__class__.__dict__.has_key("__repr__")):
-            fd.write("%s\n" % (instance,))
+            try:
+                fd.write("%s\n" % (instance,))
+            except:
+                fd.write("\n")
+
             return
+
         fd.write("%s instance, containing members:\n" %
                  (instance.__class__.__name__))
         pad = ' ' * ((level) * 2)
