@@ -22,6 +22,8 @@ import os
 from network import hasActiveNetDev
 import signal
 import sys
+import report.accountmanager
+import report.io.GTKIO
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -195,85 +197,20 @@ class ExceptionHandler(object):
         """This method is called when the "Save" button is clicked.  It may
            be overridden by a subclass, but that's going to be a lot of work.
         """
-        responseHash = {0: self.saveToLocal,
-                        1: self.saveToBugzilla,
-                        2: self.saveToRemote}
 
-        win = self.intf.saveExceptionWindow(self.exnFile, desc=self.exn.desc)
-        if not win:
-            self.runQuit((ty, value, tb))
+        summary = self.exn.desc
+        exnFileName = self.exnFile
+        description = "The following was filed automatically by %s:\n%s" % (self.conf.programName, str(self.exn))
 
-        while True:
-            win.run()
-            rc = win.getrc()
+        accountManager = report.accountmanager.AccountManager()
 
-            if rc == SAVE_RESPONSE_OK:
-                try:
-                    (choice, dest) = win.getDest()
+        signature = report.createPythonUnhandledExceptionSignature( \
+            self.conf.programName, 
+            self.conf.programName, self.exn.hash, 
+            summary, description, exnFileName)
 
-                    if responseHash[choice](dest):
-                        self.intf.exitWindow(_("Dump Written"),
-                                             _("The error file has been successfully "
-                                               "written.  The program will now exit."))
-                        self.runQuit((ty, value, tb))
-                    else:
-                        self.intf.messageWindow(_("Dump Not Written"),
-                                                _("There was a problem writing the "
-                                                  "error report."))
-                except NoNetwork:
-                    self.intf.messageWindow(_("No Network Available"),
-                                            _("Cannot save a bug report since there is "
-                                              "no active network device available."))
-            elif rc == SAVE_RESPONSE_CANCEL:
-                break
-
-        win.destroy()
-
-    ### Methods called by the secondary exception saving dialog.
-
-    def saveToLocal(self, dest):
-        """This method is called when the local disk option is selected.  It
-           may be overridden by a subclass.  This method returns True/False
-           depending on if saving worked.
-
-           dest -- The full path of where the exception should be copied to.
-        """
-        import shutil
-
-        try:
-            shutil.copyfile(self.exnFile, "%s/%s" % (dest, os.path.basename(self.exnFile)))
-            return True
-        except:
-            return False
-
-    def saveToRemote(self, dest):
-        """This method is called when the scp option is selected.  It may
-           be overridden by a subclass.  This method returns True/False
-           depending on if saving worked.
-
-           dest -- A (user, password, host, path) tuple describing how and
-                   where to connect.
-        """
-
-        # Have to have the network in order to use this method.
-        if not hasActiveNetDev() and not self.intf.enableNetwork():
-            raise NoNetwork
-
-        from savers import copyExceptionToRemote
-        return copyExceptionToRemote(self.conf, self.exnFile, self.exn, dest)
-
-    def saveToBugzilla(self, dest):
-        """This method is called when the bugzilla option is selected.  It
-           may be overridden by a subclass.  This method returns True/False
-           depending on if saving worked.
-
-           dest -- A (user, password, description) tuple describing how to
-                   connect.
-        """
-
-        # Have to have the network in order to use this method.
-        if not hasActiveNetDev() and not self.intf.enableNetwork():
-            raise NoNetwork
-
-        from savers import saveToBugzilla
-        return saveToBugzilla(self.conf, self.exnFile, self.exn, dest)
+        # Don't need to check the return value of report.report as it handles
+        # all the UI for us.  Also we don't want to automatically quit since
+        # the user may wish to save somewhere else, debug, etc.
+        io = report.io.GTKIO.GTKIO(accountManager)
+        report.report(signature, io)
