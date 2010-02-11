@@ -23,7 +23,6 @@ from network import hasActiveNetDev
 import signal
 import sys
 import report.accountmanager
-import report.io.GTKIO
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -46,7 +45,7 @@ class ExceptionHandler(object):
            exnClass -- An instance of ExceptionDump or a subclass of it.  This
                        is required to know how to represent the Python
                        exception internally.
-           intf     -- An instance of AbstractIntf.  This is required to know
+           intfClass-- An instance of AbstractIntf.  This is required to know
                        what UI classes to use.
         """
         self.conf = confObj
@@ -55,8 +54,6 @@ class ExceptionHandler(object):
 
         self._exitcode = 10
         self._exn = None
-
-        self.conf._intf = self.intf
 
     def _setExitCode(self, code):
         self._exitcode = code
@@ -205,12 +202,10 @@ class ExceptionHandler(object):
         accountManager = report.accountmanager.AccountManager()
 
         signature = report.createPythonUnhandledExceptionSignature( \
-            self.conf.programName, 
-            self.conf.programName, self.exn.hash, 
+            self.conf.programName,
+            self.conf.programName, self.exn.hash,
             summary, description, exnFileName)
 
-        # Don't need to check the return value of report.report as it handles
-        # all the UI for us.  Also we don't want to automatically quit since
-        # the user may wish to save somewhere else, debug, etc.
-        io = report.io.GTKIO.GTKIO(accountManager)
-        report.report(signature, io)
+        # We don't want to automatically quit here since the user may wish to
+        # save somewhere else, debug, etc.
+        self.intf.saveExceptionWindow(accountManager, signature)

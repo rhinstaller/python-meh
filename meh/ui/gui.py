@@ -21,6 +21,7 @@ from meh.ui import *
 import gtk
 import gtk.glade
 import os
+import report
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -59,9 +60,23 @@ class GraphicalIntf(AbstractIntf):
         win.run()
         win.destroy()
 
-    def saveExceptionWindow(self, exnFile, desc="", *args, **kwargs):
-        win = SaveExceptionWindow(exnFile, desc=desc, *args, **kwargs)
-        return win
+    def saveExceptionWindow(self, accountManager, signature, *args, **kwargs):
+        win = SaveExceptionWindow(accountManager, signature)
+        win.run()
+
+class SaveExceptionWindow(AbstractSaveExceptionWindow):
+    def __init__(self, accountManager, signature, *args, **kwargs):
+        import report.io.GTKIO
+
+        self.accountManager = accountManager
+        self.signature = signature
+
+        self.io = report.io.GTKIO.GTKIO(self.accountManager)
+
+    def run(self, *args, **kwargs):
+        # Don't need to check the return value of report since it will
+        # handle all the UI reporting for us.
+        report.report(self.signature, self.io)
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
     def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
@@ -153,58 +168,3 @@ class ExitWindow(MessageWindow):
         self.dialog.set_title(title)
         self.dialog.add_button(_("_Exit"), 0)
         self.dialog.set_position(gtk.WIN_POS_CENTER)
-
-class SaveExceptionWindow(AbstractSaveExceptionWindow):
-    def __init__(self, exnFile, desc="", *args, **kwargs):
-        AbstractSaveExceptionWindow.__init__(self, exnFile, desc=desc, *args, **kwargs)
-        exnxml = gtk.glade.XML(findGladeFile("exnSave.glade"), domain="python-meh")
-
-        self.bugzillaNameEntry = exnxml.get_widget("bugzillaNameEntry")
-        self.bugzillaPasswordEntry = exnxml.get_widget("bugzillaPasswordEntry")
-        self.bugDesc = exnxml.get_widget("bugDesc")
-
-        self.bugDesc.set_text(desc)
-
-        self.scpNameEntry = exnxml.get_widget("scpNameEntry")
-        self.scpPasswordEntry = exnxml.get_widget("scpPasswordEntry")
-        self.scpHostEntry = exnxml.get_widget("scpHostEntry")
-        self.scpDestEntry = exnxml.get_widget("scpDestEntry")
-
-        self.notebook = exnxml.get_widget("destNotebook")
-        self.destCombo = exnxml.get_widget("destCombo")
-
-        self.localChooser = exnxml.get_widget("localChooser")
-        self.dialog = exnxml.get_widget("saveDialog")
-
-        self.destCombo.connect("changed", self._combo_changed)
-        self.destCombo.set_active(0)
-        self.notebook.set_current_page(0)
-
-    def _combo_changed(self, args):
-        self.notebook.set_current_page(self.destCombo.get_active())
-
-    def destroy(self, *args, **kwargs):
-        self.dialog.destroy()
-
-    def getDest(self, *args, **kwargs):
-        if self.notebook.get_current_page() == 0:
-            return (0, self.localChooser.get_filename())
-        elif self.notebook.get_current_page() == 1:
-            return (1, map(lambda e: e.get_text(), [self.bugzillaNameEntry,
-                                                    self.bugzillaPasswordEntry,
-                                                    self.bugDesc]))
-        elif self.notebook.get_current_page() == 2:
-            return (2, map(lambda e: e.get_text(), [self.scpNameEntry,
-                                                    self.scpPasswordEntry,
-                                                    self.scpHostEntry,
-                                                    self.scpDestEntry]))
-
-    def getrc(self, *args, **kwargs):
-        if self.rc == gtk.RESPONSE_OK:
-            return SAVE_RESPONSE_OK
-        elif self.rc == gtk.RESPONSE_CANCEL:
-            return SAVE_RESPONSE_CANCEL
-
-    def run(self, *args, **kwargs):
-        self.dialog.show_all()
-        self.rc = self.dialog.run()

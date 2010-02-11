@@ -18,6 +18,7 @@
 #
 from meh import *
 from meh.ui import *
+import report
 from snack import *
 
 import gettext
@@ -41,9 +42,24 @@ class TextIntf(AbstractIntf):
         win.run()
         win.destroy()
 
-    def saveExceptionWindow(self, exnFile, desc="", *args, **kwargs):
-        win = SaveExceptionWindow(exnFile, desc=desc, *args, **kwargs)
-        return win
+    def saveExceptionWindow(self, accountManager, signature, *args, **kwargs):
+        win = SaveExceptionWindow(accountManager, signature)
+        win.run()
+
+class SaveExceptionWindow(AbstractSaveExceptionWindow):
+    def __init__(self, accountManager, signature, *args, **kwargs):
+        import report.io.NewtIO
+
+        self.accountManager = accountManager
+        self.signature = signature
+        self.screen = kwargs.get("screen")
+
+        self.io = report.io.NewtIO.NewtIO(self.screen)
+
+    def run(self, *args, **kwargs):
+        # Don't need to check the return value of report since it will
+        # handle all the UI reporting for us.
+        report.report(self.signature, self.io)
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
     def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
@@ -99,131 +115,3 @@ class ExitWindow(MessageWindow):
     def destroy(self, *args, **kwargs):
         self.screen.popWindow()
         self.screen.refresh()
-
-class SaveExceptionWindow(AbstractSaveExceptionWindow):
-    def __init__(self, exnFile, desc="", *args, **kwargs):
-        AbstractSaveExceptionWindow.__init__(self, exnFile, desc=desc, *args, **kwargs)
-        self.screen = kwargs.get("screen", None)
-        self._desc = desc
-        self._method = "disk"
-
-    def _runSaveToDisk(self):
-        toplevel = GridForm(self.screen, _("Save to disk"), 1, 2)
-
-        buttons = ButtonBar(self.screen, [_("OK"), _("Cancel")])
-        self.dirEntry = Entry(24)
-
-        entryGrid = Grid(2, 2)
-        entryGrid.setField(Label(_("Directory")), 0, 0, anchorLeft=1)
-        entryGrid.setField(self.dirEntry, 1, 0)
-
-        toplevel.add(entryGrid, 0, 0, (0, 0, 0, 1))
-        toplevel.add(buttons, 0, 1, growx=1)
-
-        result = toplevel.run()
-        return buttons.buttonPressed(result)
-
-    def _runSaveToBugzilla(self):
-        toplevel = GridForm(self.screen, _("Save to bugzilla"), 1, 2)
-
-        buttons = ButtonBar(self.screen, [_("OK"), _("Cancel")])
-        self.bugzillaNameEntry = Entry(24)
-        self.bugzillaPasswordEntry = Entry(24, password=1)
-        self.bugDesc = Entry(24)
-
-        self.bugDesc.set(self._desc)
-
-        bugzillaGrid = Grid(2, 3)
-        bugzillaGrid.setField(Label(_("Username")), 0, 0, anchorLeft=1)
-        bugzillaGrid.setField(self.bugzillaNameEntry, 1, 0)
-        bugzillaGrid.setField(Label(_("Password")), 0, 1, anchorLeft=1)
-        bugzillaGrid.setField(self.bugzillaPasswordEntry, 1, 1)
-        bugzillaGrid.setField(Label(_("Bug Description")), 0, 2, anchorLeft=1)
-        bugzillaGrid.setField(self.bugDesc, 1, 2)
-
-        toplevel.add(bugzillaGrid, 0, 0, (0, 0, 0, 1))
-        toplevel.add(buttons, 0, 1, growx=1)
-
-        result = toplevel.run()
-        return buttons.buttonPressed(result)
-
-    def _runSaveToRemote(self):
-        toplevel = GridForm(self.screen, _("Send to remote server (scp)"), 1, 2)
-
-        buttons = ButtonBar(self.screen, [_("OK"), _("Cancel")])
-        self.scpNameEntry = Entry(24)
-        self.scpPasswordEntry = Entry(24, password=1)
-        self.scpHostEntry = Entry(24)
-        self.scpDestEntry = Entry(24)
-
-        scpGrid = Grid(2, 4)
-        scpGrid.setField(Label(_("User name")), 0, 0, anchorLeft=1)
-        scpGrid.setField(self.scpNameEntry, 1, 0)
-        scpGrid.setField(Label(_("Password")), 0, 1, anchorLeft=1)
-        scpGrid.setField(self.scpPasswordEntry, 1, 1)
-        scpGrid.setField(Label(_("Host (host:port)")), 0, 2, anchorLeft=1)
-        scpGrid.setField(self.scpHostEntry, 1, 2)
-        scpGrid.setField(Label(_("Destination file")), 0, 3, anchorLeft=1)
-        scpGrid.setField(self.scpDestEntry, 1, 3)
-
-        toplevel.add(scpGrid, 0, 0, (0, 0, 0, 1))
-        toplevel.add(buttons, 0, 1, growx=1)
-
-        result = toplevel.run()
-        return buttons.buttonPressed(result)
-
-    def destroy(self, *args, **kwargs):
-        self.screen.popWindow()
-        self.screen.refresh()
-
-    def run(self, *args, **kwargs):
-        mapping = {"disk": self._runSaveToDisk,
-                   "bugzilla": self._runSaveToBugzilla,
-                   "scp": self._runSaveToRemote}
-
-        toplevel = GridForm(self.screen, _("Save"), 1, 4)
-
-        self.rg = RadioGroup()
-        self.diskButton = self.rg.add(_("Save to local"), "disk", True)
-        self.bugzillaButton = self.rg.add(_("Save to bugzilla"), "bugzilla", False)
-        self.scpButton = self.rg.add(_("Save to remote server (scp)"), "scp", False)
-
-        buttons = ButtonBar(self.screen, [_("OK"), _("Cancel")])
-
-        toplevel.add(self.diskButton, 0, 0, (0, 0, 0, 1))
-        toplevel.add(self.bugzillaButton, 0, 1, (0, 0, 0, 1))
-        toplevel.add(self.scpButton, 0, 2, (0, 0, 0, 1))
-        toplevel.add(buttons, 0, 3, growx=1)
-
-        while True:
-            result = toplevel.run()
-            rc = buttons.buttonPressed(result)
-
-            if rc == string.lower(_("OK")):
-                if mapping[self.rg.getSelection()]() == string.lower(_("Cancel")):
-                    self.destroy()
-                    continue
-
-                self.rc = SAVE_RESPONSE_OK
-                self._method = self.rg.getSelection()
-                self.destroy()
-            else:
-                self.rc = SAVE_RESPONSE_CANCEL
-
-            break
-
-    def getrc(self, *args, **kwargs):
-        return self.rc
-
-    def getDest(self, *args, **kwargs):
-        if self._method == "disk":
-            return (0, self.dirEntry.value())
-        elif self._method == "bugzilla":
-            return (1, map(lambda e: e.value(), [self.bugzillaNameEntry,
-                                                 self.bugzillaPasswordEntry,
-                                                 self.bugDesc]))
-        elif self._method == "scp":
-            return (2, map(lambda e: e.value(), [self.scpNameEntry,
-                                                 self.scpPasswordEntry,
-                                                 self.scpHostEntry,
-                                                 self.scpDestEntry]))

@@ -54,10 +54,6 @@ class Config(object):
                              with the name "anaconda" and you want to skip
                              anaconda.id.rootPassword, "id.rootPassword" should
                              be listed in attrSkipList.
-           bugFiler       -- An AbstractFiler instance.  This is required for
-                             saving to remote bug tracking systems.  Of course
-                             this must be an instance of a real subclass, not
-                             of the abstract thing itself.
            fileList       -- A list of files to find on the system and add
                              to the traceback dump.
            localSkipList  -- A list of strings.  When handling a traceback,
@@ -72,14 +68,10 @@ class Config(object):
                              set.
         """
         self.attrSkipList = []
-        self.bugFiler = None
-        self.bugDisplayUrl = None
         self.fileList = []
         self.localSkipList = []
         self.programName = None
         self.programVersion = None
-
-        self._intf = None
 
         # Override the defaults set above with whatever's passed in as an
         # argument.  Unknown arguments get thrown away.

@@ -171,39 +171,13 @@ class AbstractSaveExceptionWindow:
        initial dialog, and presents multiple options for how the traceback
        should be saved.
     """
-    def __init__(self, exnFile, desc="", *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """Create a new SaveExceptionWindow instance.  This must handle
            creating the dialog and populating it with widgets, but must not
            run the dialog.  A self.dialog attribute should be created that
            refers to the dialog itself.
-
-           exnFile -- A file containing the output of ExceptionDump.write().
-           desc    -- A description to populate the text entry field with,
-                      since users often do not know what to do.
         """
-        self.rc = 0
-
-    def destroy(self, *args, **kwargs):
-        """Destroy the current dialog.  This method must be provided by all
-           subclasses.
-        """
-        raise NotImplementedError
-
-    def getrc(self, *args, **kwargs):
-        """Return which button was clicked on the interface.  Unfortunately,
-           this does not tell you which method the user selected for saving
-           the traceback.  This method must be provided by all subclasses.
-        """
-        return self.rc
-
-    def getDest(self, *args, **kwargs):
-        """Return a (number, destInfo) tuple corresponding to which method was
-           selected for saving the traceback.  The number is the entry in the
-           UI, for deciding which method to call.  The destInfo is usually
-           some tuple containing the text out of the UI elements and should
-           be passed to the saving methods.
-        """
-        raise NotImplementedError
+        pass
 
     def run(self, *args, **kwargs):
         """Run the window and set a return value.  This method does everything
