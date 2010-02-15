@@ -85,17 +85,3 @@ class Config(object):
 
         if not self.programVersion:
             raise ValueError("programVersion must be set.")
-
-def makeRHHandler(programName, programVersion, obj):
-    from meh.dump import ExceptionDump
-    from meh.filer import BugzillaFiler, getVersion, getProduct
-    from meh.handler import ExceptionHandler
-    from meh.ui.gui import GraphicalIntf
-
-    filer = BugzillaFiler("https://bugzilla.redhat.com/xmlrpc.cgi",
-                          "http://bugzilla.redhat.com",
-                          getVersion(), getProduct())
-    conf = Config(programName=programName, programVersion=programVersion,
-                  bugFiler=filer)
-    handler = ExceptionHandler(conf, GraphicalIntf(), ExceptionDump).install(obj)
-    return handler
