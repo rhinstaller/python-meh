@@ -19,7 +19,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
 Requires: python, python-bugzilla, dbus-python, pygtk2, pygtk2-libglade
-Requires: openssh-clients, rpm, yum, newt-python
+Requires: openssh-clients, rpm, yum, newt-python, report-gtk report-newt
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
