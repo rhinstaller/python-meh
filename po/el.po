@@ -1,0 +1,192 @@
+# Greek Translation of python-meh
+# Copyright (C) 2010 Fedora Projct Greek Translation Project
+# This file is distributed under the same license as the python-meh package.
+#
+# Pierros Papadeas <pierros@papadeas.gr>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2010-03-01 12:34+0200\n"
+"Last-Translator: Pierros Papadeas <pierros@papadeas.gr>\n"
+"Language-Team: Greek <trans-el@lists.fedoraproject.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Greek\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Καταγράφηκαν τα απορρίμματα κώδικα"
+
+#: ../src/handler.py:210
+msgid "The error file has been successfully written to the disk.  The program will now exit."
+msgstr "Το αρχείου σφάλματος γράφτηκε επιτυχώς στο δίσκο. Το πρόγραμμα θα τερματιστεί."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Δεν καταγράφηκαν τα απορρίμματα κώδικα"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Υπήρξε ένα πρόβλημα στη αναφορά σφάλματος."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Δεν υπάρχει διαθέσιμο δίκτυο"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "Αδυναμία αποθήκευσης αναφοράς σφάλματος καθώς δεν υπάρχει διαθέσιμη συσκευή δικτύου."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Η αναφορά σφάλματος σας δεν μπορεί να δημιουργηθεί καθώς προέκυψε το ακόλουθο σφάλμα με την επικοινωνία με το bugzilla:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Η αναφορά σφάλματος σας δεν μπορεί να δημιουργηθεί λόγω κακών πληροφοριών στη φόρμα αναφοράς. Κατά πάσα πιθανότητα πρόκειται για σφάλμα του προγράμματος δημιουργίας αναφοράς:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Αδυναμία δήλωσης αναφοράς σφάλματος"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Δεν υποστηρίζεται η δημιουργία αναφοράς σφάλματος"
+
+#: ../src/savers.py:48
+msgid "Your distribution does not provide a supported bug filing system, so you cannot save your exception this way."
+msgstr "Η διανομή σας δεν παρέχει ένα υποστηριζόμενο σύστημα αναφοράς σφαλμάτων, άρα δεν μπορείτε να αποθηκεύσετε το σφάλμα."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Μη έγκυρη πληροφορία αναφοράς σφάλματος"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "Παρακαλώ εισάγετε ένα έγκυρο όνομα χρήστη , κωδικό πρόσβασης και σύντομη περιγραφή του σφάλματος."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Αδυναμία Σύνδεσης"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "Υπήρξε σφάλμα στη σύνδεση στο %s  με τα παρεχόμενα στοιχεία (όνομα χρήστη και κωδικό πρόσβασης)."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Δημιουργία Αναφοράς Σφάλματος"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add additional information such as what you were doing when you encountered the bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Μια νέα αναφορά σφάλματος δημιουργήθηκε με συνημμένες τις traceback πληροφορίες. Παρακαλώ συμπληρώστε πρόσθετες πληροφορίες όπως τι κάνατε όταν εμφανίστηκε το σφάλμα, καταγραφές οθόνης, και ότι άλλο είναι απαραίτητο στη ακόλουθη αναφορά σφάλματος:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Ενημέρωση Αναφοράς Σφάλματος"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to the CC list and your traceback added as a comment.  Please add additional descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Υπάρχει ήδη μια αναφορά σφάλματος με τα στοιχεία σας. Ο λογαριασμός σας έχει προστεθεί στην λίστα κοινοποίησης και το traceback έχει προστεθεί ως σχόλιο. Παρακαλώ προσθέστε επιπλέον περιγραφικά στοιχεία στην ακόλουθη αναφορά σφάλματος:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Αποσφαλμάτωση"
+
+#: ../src/ui/gui.py:87
+#: ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "Έ_ξοδος"
+
+#: ../src/ui/gui.py:92
+msgid "An unhandled exception has occurred.  This is most likely a bug.  Please save a copy of the detailed exception and file a bug report."
+msgstr "Παρουσιάστηκε μια μη αναμενόμενη διακοπή. Κατά πάσα πιθανότητα πρόκειται για σφάλμα. Παρακαλώ αποθηκεύστε ένα αντίγραφο λεπτομερούς περιγραφής και δημιουργήστε μια αναφορά σφάλματος."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Πληροφορίες"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Λεπτομέρειες"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "Περιγραφή _σφάλματος"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "Αρχείο _προορισμού"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Τοπική αποθήκευση\n"
+"Bugzilla\n"
+"Απομακρυσμένος εξυπηρετητής (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Παρακαλώ επιλέξτε προορισμό για αποθήκευση του traceback."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Επιλογή Αρχείου"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Διεύθυνση (διεύθυνση:θύρα)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Κωδικός Πρόσβασης"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "Όν_ομα χρήστη"
+
