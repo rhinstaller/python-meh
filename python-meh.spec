@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedoraproject.org/git/?p=python-meh.git
-Version: 0.7
+Version: 0.8
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,15 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Mar 04 2010 Chris Lumens <clumens@redhat.com> - 0.8-1
+- And add a requirement for report as well. (clumens)
+- filer.py is now completely taken over by meh. (clumens)
+- Everything from savers.py has moved into report. (clumens)
+- Remove unused UI code now that report handles all this for me. (clumens)
+- Switch ExceptionHandler to use report (#562656). (clumens)
+- Don't allow an exception when writing out an attribute stop the whole dump. (clumens)
+- Credit where credit is due. (clumens)
+
 * Tue Nov 03 2009 Chris Lumens <clumens@redhat.com> - 0.7-1
 - Add a test case framework.
 - Move src -> meh for ease of test case writing.
