@@ -212,9 +212,12 @@ class ExceptionHandler(object):
                     (choice, dest) = win.getDest()
 
                     if responseHash[choice](dest):
-                        self.intf.exitWindow(_("Dump Written"),
-                                             _("The error file has been successfully "
-                                               "written.  The program will now exit."))
+                        if choice != 1:
+                            # because the bugzilla choice already displayed a
+                            # dialog along those lines
+                            self.intf.exitWindow(_("Dump Written"),
+                                                 _("The error file has been successfully "
+                                                   "written.  The program will now exit."))
                         self.runQuit((ty, value, tb))
                     else:
                         self.intf.messageWindow(_("Dump Not Written"),
