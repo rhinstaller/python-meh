@@ -1,0 +1,217 @@
+
+# Ukrainian translation of python-meh
+# Copyright (C) Free Software Foundation, 2010
+# This file is distributed under the same license as the python-meh package.
+# Maxim Dzumanenko <dziumanenko@gmail.com>, 2010
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2010-03-21 21:32+0300\n"
+"Last-Translator: Maxim V. Dziumanenko <dziumanenko@gmail.com>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Дамп записано"
+
+#: ../src/handler.py:210
+msgid ""
+"The error file has been successfully written to the disk.  The program will "
+"now exit."
+msgstr "Файл помилок успішно записано на диск.  Програму буде завершено."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Дамп не записано"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Помилка при записі звіту про помилку."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Мережа не доступна"
+
+#: ../src/handler.py:220
+msgid ""
+"Cannot save a bug report since there is no active network device available."
+msgstr ""
+"Не вдається зберегти звіт про помилки, оскільки недоступні активні мережні пристрої."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating "
+"with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Не вдається створити звіт про помилку через проблему при приєднанні до "
+"Bugzilla:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This "
+"is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Не вдається створити звіт про помилку, оскільки поля містять неприпустимі "
+"дані. Можлива причина &mdash; помилка у програмі створення звітів:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Не вдається створити звіт"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Створення звітів про помилки не підтримується"
+
+#: ../src/savers.py:48
+msgid ""
+"Your distribution does not provide a supported bug filing system, so you "
+"cannot save your exception this way."
+msgstr ""
+"Ваш дистрибутив не підтримує створення звітів про помилки, тому ви не "
+"можете зберегти виключну ситуацію таким чином."
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Неправильна інформація про помилку"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr ""
+"Введіть дійсну назву користувача, пароль та короткий опис помилки."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Не вдається увійти"
+
+#: ../src/savers.py:63
+#, python-format
+msgid ""
+"There was an error logging into %s using the provided username and password."
+msgstr ""
+"Виникла помилка входу у %s використовуючи надане користувачем ім'я та "
+"пароль."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Звіт про помилку створено"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add "
+"additional information such as what you were doing when you encountered the "
+"bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Створено новий звіт про помилку із вкладеним трасуванням. Додайте "
+"додаткову інформацію, наприклад, опишіть, як і де ви зіштовхнулися з цією помилкою "
+"та при можливості додайте знімок екрану:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Звіт оновлено"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to "
+"the CC list and your traceback added as a comment.  Please add additional "
+"descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Запит з цією інформацією вже існує.  Ваш обліковий запис був "
+"доданий до списку CC та дані трасування додані у якості "
+"коментарю.  Будь ласка, додайте додаткову інформацію до наступної помилки:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "_Налагодження"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Вийти"
+
+#: ../src/ui/gui.py:92
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report."
+msgstr ""
+"Виникла виключна ситуація, яку неможливо обробити. Ймовірно, це помилка. Будь ласка, "
+"збережіть копію цього виключення та створіть звіт про помилку."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Інформація"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "Подро_биці"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "_Опис помилки"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "Файл _призначення"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Локальне сховище\n"
+"Bugzilla\n"
+"Віддалений сервер (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Вкажіть місце для збереження інформації трасування."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Зберегти"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Вкажіть файл"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "В_узол (вузол:порт)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Пароль"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "_Ім'я"
