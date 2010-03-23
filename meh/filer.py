@@ -404,6 +404,15 @@ class BugzillaFiler(AbstractFiler):
         # If the version given to us by the caller isn't valid, fall back to
         # asking the running system and then to something hard coded.
         if not ver in bugzillaVers:
+            # The given version could be something like "13-Beta", so try
+            # trimming off any suffix and see if that's a valid version.
+            ndx = ver.find("-")
+            if ndx == -1:
+                ndx = ver.find(" ")
+
+            if ndx != -1 and ver[:ndx] in bugzillaVers:
+                return ver[:ndx]
+
             defaultVersion = getVersion()
             if defaultVersion in bugzillaVers:
                 return defaultVersion
