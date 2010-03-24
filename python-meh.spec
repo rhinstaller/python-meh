@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedoraproject.org/git/?p=python-meh.git
-Version: 0.7
+Version: 0.8
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Mar 24 2010 Chris Lumens <clumens@redhat.com> - 0.8-1
+- Try trimming off any suffix like "-Beta" from the version (#574748).
+- Do not make the user click 'Exit installer' twice (#571727). (akozumpl)
+
 * Tue Nov 03 2009 Chris Lumens <clumens@redhat.com> - 0.7-1
 - Add a test case framework.
 - Move src -> meh for ease of test case writing.
