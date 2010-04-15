@@ -1,0 +1,191 @@
+# Bosnian translations for python-meh, from Serbian-Latin translation
+# Copyright (C) 2009 Red Hat, Inc.
+# This file is distributed under the same license as the python-meh package.
+# Edmon Begoli, ebegoli@fedoraproject.org.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2010-04-15 18:38-0500\n"
+"Last-Translator: Edmon Begoli <ebegoli@fedoraproject.org>\n"
+"Language-Team: Bosnian (ba) \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "Izbačaj je zapisan"
+
+#: ../src/handler.py:210
+msgid "The error file has been successfully written to the disk.  The program will now exit."
+msgstr "Datoteka sa greškama je uspješno upisana na disk.  Program će sada izaći."
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "Ispis memorije nije zapisan"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "Pojavio se problem pri upisivanju izvještaja o greškama."
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "Nema raspolozive mreže"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "Ne mogu da sačuvam izvještaj o grešci jer nema nijednog dostupnog aktivnog mrežnog uređaja."
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating with bugzilla:\n"
+"\n"
+"%s"
+msgstr ""
+"Vaša greška ne može biti podnijeta zbog sljedece greške u komunikaciji sa bugzilla-om:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This is most likely an error in the bug filing program:\n"
+"\n"
+"%s"
+msgstr ""
+"Vaša greška ne može biti podnijeta zbog loših podataka u poljima greške.  Ovo je najvjerovatnije greška u programu za podnošenje grešaka:\n"
+"\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "Nije moglo da podnese grešku"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "Podnošenje grešaka nije podržano"
+
+#: ../src/savers.py:48
+msgid "Your distribution does not provide a supported bug filing system, so you cannot save your exception this way."
+msgstr "Vaša distribucija ne podržava sistem za podnošenje grešaka, tako da ne možete sačuvati iznimku na ovaj način. "
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "Neispravni podaci o grešci"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "Dostavite ispravno korisničko ime, šifru, i kratak opis greške."
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "Ne moze da se prijavim"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "Došlo je do greške pri prijavi na %s koristeći pruženo korisničko ime i šifru."
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "Greška je kreairana"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add additional information such as what you were doing when you encountered the bug, screenshots, and whatever else is appropriate to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Nova greška je napravljena sa vašim povratnim tragom ('traceback') prilozenim.  Dodajte dodatne podatke kao šta ste radili kada ste naišli na grešku, snimke ekrana, i šta god je prikladno sljedećoj grešci:\n"
+"\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "Greška je ažurirana"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to the CC list and your traceback added as a comment.  Please add additional descriptive information to the following bug:\n"
+"\n"
+"%s/%s"
+msgstr ""
+"Greška sa vašim podacima već postoji.  Vaš nalog je dodat u spisak kopiranih primalaca ('CC') i vaš povratni trag je dodat kao komentar.  Dodajte dodatne opisne podatke sljedećoj grešci:\n"
+"\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "Otklon _grešaka"
+
+#: ../src/ui/gui.py:87
+#: ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "_Izlaz"
+
+#: ../src/ui/gui.py:92
+msgid "An unhandled exception has occurred.  This is most likely a bug.  Please save a copy of the detailed exception and file a bug report."
+msgstr "Došlo je do neobrađene iznimke.  Ovo je najverovatnije greška.  Sačuvajte kopiju detaljne iznimke i podnesite izvještaj o grešci."
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "Info"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "_Detalji"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "Opis _greške"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "Odredišna _datoteka"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"Lokalno skladište\n"
+"Bugzilla\n"
+"Udaljeni server (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "Izaberite odredište za čuvanje povratnog traga."
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "Sačuvaj"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "Izaberite datoteku"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "_Domaćin (domaćin:port)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "_Lozinka"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "_Korisničko ime"
+
