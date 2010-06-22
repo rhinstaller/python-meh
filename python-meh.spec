@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedoraproject.org/git/?p=python-meh.git
-Version: 0.9
+Version: 0.10
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Jun 22 2010 Chris Lumens <clumens@redhat.com> 0.10-1
+- Treat classes like simple types, too. (clumens)
+
 * Thu Jun 10 2010 Chris Lumens <clumens@redhat.com> - 0.9-1
 - Remove the requirement on python-bugzilla (#602794). (clumens)
 - Rename ba.po -> bs.po (#583055). (clumens)
