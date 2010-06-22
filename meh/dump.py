@@ -101,7 +101,8 @@ class ExceptionDump(object):
         def __isSimpleType(instance):
             return type(instance) in [types.BooleanType, types.ComplexType, types.FloatType,
                                       types.IntType, types.LongType, types.NoneType,
-                                      types.StringType, types.UnicodeType]
+                                      types.StringType, types.UnicodeType] or \
+                   not hasattr(instance, "__class__")
 
         # protect from loops
         try:
