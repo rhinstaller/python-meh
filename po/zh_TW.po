@@ -1,0 +1,184 @@
+# Translation of python-meh to Traditional Chinese.
+# Chinese/Traditional translation of python-meh.
+# Copyright (C) 2009 THE python-meh'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the python-meh package.
+# pingman <pingman@fedoraproject.org>, 2009.
+# Leah Liu <lliu@redhat.com>, 2009.
+# Wei-Lun Chao <chaoweilun@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python-meh 0.10\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-16 15:00-0400\n"
+"PO-Revision-Date: 2010-09-18 15:06+0800\n"
+"Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/handler.py:209
+msgid "Dump Written"
+msgstr "傾印已寫入"
+
+#: ../src/handler.py:210
+msgid "The error file has been successfully written to the disk.  The program will now exit."
+msgstr "錯誤檔案已成功寫入磁碟。 現在程式將離開。"
+
+#: ../src/handler.py:215
+msgid "Dump Not Written"
+msgstr "傾印未寫入"
+
+#: ../src/handler.py:216
+msgid "There was a problem writing the error report."
+msgstr "寫入錯誤報告時發生了問題。"
+
+#: ../src/handler.py:219
+msgid "No Network Available"
+msgstr "沒有可用的網路連線"
+
+#: ../src/handler.py:220
+msgid "Cannot save a bug report since there is no active network device available."
+msgstr "由於沒有現用的網路裝置可用，錯誤報告無法儲存。"
+
+#: ../src/savers.py:34
+#, python-format
+msgid ""
+"Your bug could not be filed due to the following error when communicating with bugzilla:\n\n"
+"%s"
+msgstr ""
+"由於在與 bugzilla 溝通時出現以下錯誤，因此無法將您的錯誤歸檔：\n\n"
+"%s"
+
+#: ../src/savers.py:37
+#, python-format
+msgid ""
+"Your bug could not be filed due to bad information in the bug fields.  This is most likely an error in the bug filing program:\n\n"
+"%s"
+msgstr ""
+"由於錯誤欄位的不當資訊，因此無法將您的錯誤歸檔。這可能是錯誤保存程式所造成的：\n\n"
+"%s"
+
+#: ../src/savers.py:41
+msgid "Unable To File Bug"
+msgstr "無法將錯誤歸檔"
+
+#: ../src/savers.py:47
+msgid "Bug Filing Not Supported"
+msgstr "不支援錯誤歸檔"
+
+#: ../src/savers.py:48
+msgid "Your distribution does not provide a supported bug filing system, so you cannot save your exception this way."
+msgstr "您的發行版本不提供錯誤歸檔支援，因此您不能用這種方法儲存您的異常。"
+
+#: ../src/savers.py:54
+msgid "Invalid Bug Information"
+msgstr "無效的錯誤資訊"
+
+#: ../src/savers.py:55
+msgid "Please provide a valid username, password, and short bug description."
+msgstr "請提供有效的使用者名稱、密碼和一段簡短的錯誤描述。"
+
+#: ../src/savers.py:62
+msgid "Unable To Login"
+msgstr "無法登入"
+
+#: ../src/savers.py:63
+#, python-format
+msgid "There was an error logging into %s using the provided username and password."
+msgstr "當使用提供的使用者名稱和密碼向 %s 寫入日誌時發生了錯誤。"
+
+#. Tell the user we created a new bug for them and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:99
+msgid "Bug Created"
+msgstr "錯誤報告已建立"
+
+#: ../src/savers.py:100
+#, python-format
+msgid ""
+"A new bug has been created with your traceback attached. Please add additional information such as what you were doing when you encountered the bug, screenshots, and whatever else is appropriate to the following bug:\n\n"
+"%s/%s"
+msgstr ""
+"已產生新的錯誤並附加了您的追蹤訊息。請加入附加資訊，像是您遇到這個錯誤時做了什麼、截圖以及與這個錯誤關聯的任何情況：\n\n"
+"%s/%s"
+
+#. Tell the user which bug they've been CC'd on and that they should
+#. go add a descriptive comment.
+#: ../src/savers.py:114
+msgid "Bug Updated"
+msgstr "錯誤報告已更新"
+
+#: ../src/savers.py:115
+#, python-format
+msgid ""
+"A bug with your information already exists.  Your account has been added to the CC list and your traceback added as a comment.  Please add additional descriptive information to the following bug:\n\n"
+"%s/%s"
+msgstr ""
+"包含您提供資訊的錯誤報告已經存在。已將您的帳號加入到 CC 清單中，將您的追蹤訊息做為註釋加入。請在以下錯誤報告中加入額外描述資訊：\n\n"
+"%s/%s"
+
+#. Set the buttons.
+#: ../src/ui/gui.py:85
+msgid "_Debug"
+msgstr "除錯(_D)"
+
+#: ../src/ui/gui.py:87 ../src/ui/gui.py:152
+msgid "_Exit"
+msgstr "離開(_E)"
+
+#: ../src/ui/gui.py:92
+msgid "An unhandled exception has occurred.  This is most likely a bug.  Please save a copy of the detailed exception and file a bug report."
+msgstr "產生了一個未處理的異常。  這很可能是一個程式錯誤。  請儲存一份異常的詳細資訊並提交一份錯誤報告。"
+
+#: tmp/detailed-dialog.glade.h:1
+msgid "Info"
+msgstr "資訊"
+
+#: tmp/detailed-dialog.glade.h:2
+msgid "_Details"
+msgstr "細節(_D)"
+
+#: tmp/exnSave.glade.h:1
+msgid "Bug _description"
+msgstr "錯誤描述(_D)"
+
+#: tmp/exnSave.glade.h:2
+msgid "Destination _file"
+msgstr "目的檔案(_F)"
+
+#: tmp/exnSave.glade.h:3
+msgid ""
+"Local storage\n"
+"Bugzilla\n"
+"Remote server (scp)"
+msgstr ""
+"本地儲存體\n"
+"Bugzilla\n"
+"遠端伺服器 (scp)"
+
+#: tmp/exnSave.glade.h:6
+msgid "Please choose a destination for saving your traceback."
+msgstr "請為您的追蹤回溯資訊選擇一個儲存位置。"
+
+#: tmp/exnSave.glade.h:7
+msgid "Save"
+msgstr "儲存"
+
+#: tmp/exnSave.glade.h:8
+msgid "Select A File"
+msgstr "選取檔案"
+
+#: tmp/exnSave.glade.h:9
+msgid "_Host (host:port)"
+msgstr "主機(host:port)(_H)"
+
+#: tmp/exnSave.glade.h:10
+msgid "_Password"
+msgstr "密碼(_P)"
+
+#: tmp/exnSave.glade.h:11
+msgid "_User name"
+msgstr "使用者名稱(_U)"
