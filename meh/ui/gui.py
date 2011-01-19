@@ -98,7 +98,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         self.hbox.reorder_child(img, 0)
 
         # Set the buttons.
-        for (button, response) in [(_("_Debug"), MAIN_RESPONSE_DEBUG),
+        for (button, response) in [(_("Debu_g"), MAIN_RESPONSE_DEBUG),
                                    ("gtk-save", MAIN_RESPONSE_SAVE),
                                    (_("_Exit"), MAIN_RESPONSE_OK)]:
             self.dialog.add_button(button, response)
