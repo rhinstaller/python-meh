@@ -27,23 +27,24 @@ _ = lambda x: gettext.ldgettext("python-meh", x)
 class TextIntf(AbstractIntf):
     def __init__(self, *args, **kwargs):
         AbstractIntf.__init__(self, *args, **kwargs)
+        self.screen = kwargs.get("screen", None)
 
     def exitWindow(self, title, message, *args, **kwargs):
-        win = ExitWindow(title, message, *args, **kwargs)
+        win = ExitWindow(title, message, *args, screen = self.screen)
         win.run()
         win.destroy()
 
     def mainExceptionWindow(self, text, exnFile, *args, **kwargs):
-        win = MainExceptionWindow(text, exnFile, *args, **kwargs)
+        win = MainExceptionWindow(text, exnFile, *args, screen = self.screen)
         return win
 
     def messageWindow(self, title, message, *args, **kwargs):
-        win = MessageWindow(title, message, *args, **kwargs)
+        win = MessageWindow(title, message, *args, screen = self.screen)
         win.run()
         win.destroy()
 
     def saveExceptionWindow(self, accountManager, signature, *args, **kwargs):
-        win = SaveExceptionWindow(accountManager, signature)
+        win = SaveExceptionWindow(accountManager, signature, screen = self.screen)
         win.run()
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
