@@ -195,16 +195,18 @@ class ExceptionHandler(object):
            be overridden by a subclass, but that's going to be a lot of work.
         """
 
-        summary = self.exn.desc
-        exnFileName = self.exnFile
-        description = "The following was filed automatically by %s:\n%s" % (self.conf.programName, str(self.exn))
+        params = dict()
+        params.update(self.exn.environment_info)
+        params["hashmarkername"] = self.conf.programName
+        params["duphash"] = self.exn.hash
+        params["reason"] = self.exn.desc
+        params["description"] = "The following was filed automatically by %s:\n%s" \
+                                    % (self.conf.programName, str(self.exn))
+        params["exnFileName"] = self.exnFile
 
         accountManager = report.accountmanager.AccountManager()
 
-        signature = report.createPythonUnhandledExceptionSignature( \
-            self.conf.programName,
-            self.conf.programName, self.exn.hash,
-            summary, description, exnFileName)
+        signature = report.createPythonUnhandledExceptionSignature(**params)
 
         # We don't want to automatically quit here since the user may wish to
         # save somewhere else, debug, etc.
