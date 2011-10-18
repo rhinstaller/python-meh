@@ -66,19 +66,20 @@ class ExceptionDump(object):
         else:
             return ""
 
-    def _environment_info(self):
+    def _get_environment_info(self):
         """
-        Returns string containing ABRT-like header for the bugreport including:
+        Returns dictionary containing these items for a bugreport header
 
-        architecture:
-        cmdline:
-        component:
-        executable:
-        kernel:
-        package:
-        release:
-        other involved packages:
+        architecture
+        cmdline
+        component
+        executable
+        kernel
+        package
+        release
+        other involved packages
 
+        @rtype: dict (string -> string)
         """
 
         RELEASE_NAME_FILE = "/etc/system-release"
@@ -190,17 +191,22 @@ class ExceptionDump(object):
         release_ver = get_release_version()
         other_packages = ", ".join(get_other_packages(self))
 
-        ret = "architecture: {0}\n".format(os.uname()[4])
-        ret += "cmdline: {0}{1} {2}\n".format(sys.executable,
+        ret = dict()
+        ret["architecture"] = os.uname()[4]
+        ret["cmdline"] = "{0} {1} {2}".format(sys.executable,
                     " ".join(get_python_opts()), sys.argv[0])
-        ret += "component: {0}\n".format(component)
-        ret += "executable: {0}\n".format(sys.argv[0])
-        ret += "kernel: {0}\n".format(os.uname()[2])
-        ret += "package: {0}\n".format(package)
-        ret += "release: {0}\n".format(get_release_version())
-        ret += "other involved packages: {0}\n\n".format(other_packages)
+        ret["component"] = component
+        ret["executable"] = sys.argv[0]
+        ret["kernel"] = os.uname()[2]
+        ret["package"] = package
+        ret["release"] = get_release_version()
+        ret["other involved packages"] = other_packages
 
         return ret
+
+    @property
+    def environment_info(self):
+        return self._get_environment_info()
 
     def __str__(self):
         lst = self._format_stack()
@@ -412,7 +418,6 @@ class ExceptionDump(object):
            obj -- Any Python object.  This object will have all its attributes
                   written out, except for those mentioned in the attrSkipList.
         """
-        fd.write(self._environment_info())
         ret = str(self)
         fd.write(ret)
         self.dump(fd, obj)
