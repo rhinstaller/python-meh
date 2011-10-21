@@ -176,7 +176,25 @@ class ExceptionDump(object):
                 pass
             return packages
 
+        def get_environment_variables():
+            """
+            Returns a list of strings containing defined environment
+            variables and their values in the following format:
 
+            VARIABLE=VALUE
+
+            @rtype: list
+
+            """
+
+            ret = list()
+            for (key, value) in os.environ.iteritems():
+                ret.append("{0}={1}".format(key, value))
+
+            return ret
+
+
+        #--begining of the method _get_environment_info--
         package, component = None, None
         try:
             package, component = get_package_and_component()
@@ -198,6 +216,7 @@ class ExceptionDump(object):
         ret["package"] = package
         ret["release"] = get_release_version()
         ret["other involved packages"] = other_packages
+        ret["environ"] = "\n".join(get_environment_variables())
 
         return ret
 
