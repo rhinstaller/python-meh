@@ -194,7 +194,8 @@ class ExceptionDump(object):
         ret = dict()
         ret["architecture"] = os.uname()[4]
         ret["cmdline"] = "{0} {1} {2}".format(sys.executable,
-                    " ".join(get_python_opts()), sys.argv[0])
+                    " ".join(get_python_opts()),
+                    " ".join(sys.argv))
         ret["component"] = component
         ret["executable"] = sys.argv[0]
         ret["kernel"] = os.uname()[2]
