@@ -120,9 +120,6 @@ class ExceptionDump(object):
                 if getattr(sys.flags, flag):
                     ret.add(flags_to_opts[flag])
             ret = list(ret)
-            if ret:
-                ret.insert(0, "") #space between executable and options
-
             return ret
 
         def get_package_and_component(file_=sys.argv[0]):
