@@ -29,7 +29,6 @@ import traceback
 import types
 import sys
 import subprocess
-import rpm
 
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
@@ -137,6 +136,7 @@ class ExceptionDump(object):
 
             """
 
+            import rpm
             ts = rpm.TransactionSet()
             mi = ts.dbMatch("basenames", file_)
             try:
