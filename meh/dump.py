@@ -28,7 +28,6 @@ import os
 import traceback
 import types
 import sys
-import subprocess
 
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
