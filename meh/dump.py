@@ -27,6 +27,9 @@ from string import joinfields
 import os
 import traceback
 import types
+import sys
+import subprocess
+import rpm
 
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
@@ -63,6 +66,141 @@ class ExceptionDump(object):
             return traceback.format_exception_only(self.type, self.value)[0].strip()
         else:
             return ""
+
+    def _environment_info(self):
+        """
+        Returns string containing ABRT-like header for the bugreport including:
+
+        architecture:
+        cmdline:
+        component:
+        executable:
+        kernel:
+        package:
+        release:
+        other involved packages:
+
+        """
+
+        RELEASE_NAME_FILE = "/etc/system-release"
+
+        class RPMinfoError(Exception):
+            """Exception for errors in rpm queries"""
+            pass
+
+        def get_python_opts():
+            """
+            Returns python's command line options
+
+            @return: list of python's command line options
+            @rtype: list
+
+            """
+
+            flags_to_opts = {
+                    "debug": "-d",
+                    "py3k_warning": "-3",
+                    "division_new": "-Qnew",
+                    "division_warning": "-Q",
+                    "inspect": "-i",
+                    "interactive": "-i",
+                    "optimize": "-O",
+                    "dont_write_bytecode": "-B",
+                    "no_user_site": "-s",
+                    "no_site": "-S",
+                    "ignore_environment": "-E",
+                    "tabcheck": "-t",
+                    "verbose": "-v",
+                    "unicode": "-u",
+                    "bytes_warning": "-b",
+                    }
+
+            ret = set()
+            for flag in flags_to_opts.keys():
+                if getattr(sys.flags, flag):
+                    ret.add(flags_to_opts[flag])
+            ret = list(ret)
+            if ret:
+                ret.insert(0, "") #space between executable and options
+
+            return ret
+
+        def get_package_and_component(file_=sys.argv[0]):
+            """
+            Returns package and component names for file (by default for script itself).
+
+            @param file_: filename
+            @type file_: string
+            @return: tuple containing package name and component name for the file
+            @rtype: tuple with 2 items
+            @throws RPMinfoError: if package and component for the file cannot be found
+
+            """
+
+            ts = rpm.TransactionSet()
+            mi = ts.dbMatch("basenames", file_)
+            try:
+                header = mi.next()
+            except StopIteration:
+                raise RPMinfoError("Cannot get package and component for file "+
+                        "{0}".format(file_))
+            package = "{0}-{1}-{2}.{3}".format(header["name"], header["version"],
+                                            header["release"], header["arch"])
+            component = header["sourcerpm"].split("-")[0]
+
+            return (package, component)
+
+        def get_release_version():
+            """Returns release version (according to RELEASE_NAME_FILE)"""
+            try:
+                with open(RELEASE_NAME_FILE, "r") as file_:
+                    return file_.readline().rstrip()
+            except IOError:
+                return "Cannot get release name."
+
+        def get_other_packages(self):
+            """
+            Returns a set of additional packages whose files appear in
+            traceback.
+
+            @rtype: set
+
+            """
+            packages = set()
+            for (frame, fn, lineno, func, ctx, idx) in self.stack:
+                try:
+                    packages.add(get_package_and_component(fn)[0])
+                except RPMinfoError:
+                    continue
+
+            try:
+                packages.discard(get_package_and_component()[0])
+            except RPMinfoError:
+                pass
+            return packages
+
+
+        package, component = None, None
+        try:
+            package, component = get_package_and_component()
+        except RPMinfoError as rpmierr:
+            package = str(rpmierr)
+            component = str(rpmierr)
+
+        release_ver = get_release_version()
+        other_packages = ", ".join(get_other_packages(self))
+
+        ret = "architecture: {0}\n".format(os.uname()[4])
+        ret += "cmdline: {0}{1} {2}\n".format(sys.executable,
+                    " ".join(get_python_opts()), sys.argv[0])
+        ret += "component: {0}\n".format(component)
+        ret += "executable: {0}\n".format(sys.argv[0])
+        ret += "kernel: {0}\n".format(os.uname()[2])
+        ret += "package: {0}\n".format(package)
+        ret += "release: {0}\n".format(get_release_version())
+        ret += "other involved packages: {0}\n\n".format(other_packages)
+
+        return ret
 
     def __str__(self):
         lst = self._format_stack()
@@ -274,6 +412,7 @@ class ExceptionDump(object):
            obj -- Any Python object.  This object will have all its attributes
                   written out, except for those mentioned in the attrSkipList.
         """
+        fd.write(self._environment_info())
         ret = str(self)
         fd.write(ret)
         self.dump(fd, obj)
