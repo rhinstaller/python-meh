@@ -4,7 +4,7 @@ Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
 Version: 0.11
-Release: 1%{?dist}
+Release: 2%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -12,6 +12,7 @@ Release: 1%{?dist}
 #   git clone git://git.fedoraproject.org/git/python-meh.git
 #   cd python-meh && make archive
 Source0: %{name}-%{version}.tar.gz
+Patch0: python-meh-info.patch
 
 License: GPLv2+
 Group: System Environment/Libraries
@@ -19,7 +20,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
 Requires: python, dbus-python, pygtk2, pygtk2-libglade
-Requires: openssh-clients, rpm, yum, newt-python, report-gtk report-newt
+Requires: openssh-clients, rpm, yum, newt-python, libreport-gtk libreport-newt
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
@@ -27,6 +28,7 @@ exceptions.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 make
@@ -46,6 +48,12 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Oct 06 2011 Chris Lumens <clumens@redhat.com> 0.11-2
+- Change dependency to libreport-* (mtoman)
+  Resolves: rhbz#730924
+- Add abrt-like information to bug reports (vpodzime).
+  Resolves: rhbz#728871
+
 * Tue Jan 25 2011 Chris Lumens <clumens@redhat.com> - 0.11-1
 - Update the spec file URL to something valid (#670601). (clumens)
 - Don't use _D for Debug, since that's already used by the expander (#640929). (clumens)
