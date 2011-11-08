@@ -197,6 +197,12 @@ class ExceptionHandler(object):
 
         params = dict()
         params.update(self.exn.environment_info)
+        #if rpmdb queries fail (anaconda), use self.conf.* values
+        if "component" not in params:
+            params["component"] = self.conf.programName
+        if "package" not in params:
+            params["package"] = \
+                    "{0.programName}-{0.programVersion}".format(self.conf)
         params["hashmarkername"] = self.conf.programName
         params["duphash"] = self.exn.hash
         params["reason"] = self.exn.desc
