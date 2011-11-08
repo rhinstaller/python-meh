@@ -199,8 +199,8 @@ class ExceptionDump(object):
         try:
             package, component = get_package_and_component()
         except RPMinfoError as rpmierr:
-            package = str(rpmierr)
-            component = str(rpmierr)
+            package = None
+            component = None
 
         release_ver = get_release_version()
         other_packages = ", ".join(get_other_packages(self))
@@ -210,10 +210,12 @@ class ExceptionDump(object):
         ret["cmdline"] = "{0} {1} {2}".format(sys.executable,
                     " ".join(get_python_opts()),
                     " ".join(sys.argv))
-        ret["component"] = component
+        if component:
+            ret["component"] = component
         ret["executable"] = sys.argv[0]
         ret["kernel"] = os.uname()[2]
-        ret["package"] = package
+        if package:
+            ret["package"] = package
         ret["release"] = get_release_version()
         ret["other involved packages"] = other_packages
         ret["environ"] = "\n".join(get_environment_variables())
