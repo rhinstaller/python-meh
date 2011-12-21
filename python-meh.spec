@@ -3,8 +3,8 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.11
-Release: 2%{?dist}
+Version: 0.12
+Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -12,7 +12,6 @@ Release: 2%{?dist}
 #   git clone git://git.fedoraproject.org/git/python-meh.git
 #   cd python-meh && make archive
 Source0: %{name}-%{version}.tar.gz
-Patch0: python-meh-info.patch
 
 License: GPLv2+
 Group: System Environment/Libraries
@@ -20,7 +19,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
 Requires: python, dbus-python, pygtk2, pygtk2-libglade
-Requires: openssh-clients, rpm, yum, newt-python, libreport-gtk libreport-newt
+Requires: openssh-clients, rpm, yum, newt-python, libreport-gtk >= 2.0.8-1, libreport-newt >= 2.0.8-1
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
@@ -28,7 +27,6 @@ exceptions.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 make
@@ -48,11 +46,19 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
-* Thu Oct 06 2011 Chris Lumens <clumens@redhat.com> 0.11-2
-- Change dependency to libreport-* (mtoman)
+* Tue Dec 20 2011 Vratislav Podzimek <vpodzime@redhat.com> 0.12
+- Use new libreport API to get more information to bugzilla (vpodzime).
+- Adapt to the new API of libreport (vpodzime).
+- Move "import rpm" to where it's needed to avoid nameserver problems (clumens).
+  Resolves: rhbz#749330
+- Change dependency to libreport-* (mtoman).
   Resolves: rhbz#730924
 - Add abrt-like information to bug reports (vpodzime).
   Resolves: rhbz#728871
+- Propagate the screen attr when using text mode (jmoskovc).
+
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.11-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
 * Tue Jan 25 2011 Chris Lumens <clumens@redhat.com> - 0.11-1
 - Update the spec file URL to something valid (#670601). (clumens)
