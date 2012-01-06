@@ -12,7 +12,6 @@ Release: 2%{?dist}
 #   git clone git://git.fedoraproject.org/git/python-meh.git
 #   cd python-meh && make archive
 Source0: %{name}-%{version}.tar.gz
-Patch0: python-meh-info.patch
 
 License: GPLv2+
 Group: System Environment/Libraries
@@ -28,7 +27,6 @@ exceptions.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 make
