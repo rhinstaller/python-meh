@@ -3,8 +3,8 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.11
-Release: 3%{?dist}
+Version: 0.12.1
+Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -19,7 +19,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
 Requires: python, dbus-python, pygtk2, pygtk2-libglade
-Requires: openssh-clients, rpm, yum, newt-python, libreport-gtk libreport-newt
+Requires: openssh-clients, rpm, yum, newt-python, libreport-gtk >= 2.0.9, libreport-newt >= 2.0.9
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
@@ -46,6 +46,12 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Feb 16 2012 Vratislav Podzimek <vpodzime@redhat.com> 0.12.1-1
+- Adapt to new libreport API (vpodzime).
+  Resolves: rhbz#769821
+- Add info about environment variables (vpodzime).
+  Resolves: rhbz#788577
+
 * Thu Oct 27 2011 Chris Lumens <clumens@redhat.com> 0.11-3
 - Move "import rpm" to where it's needed to avoid nameserver problems.
   Resolves: rhbz#749330
