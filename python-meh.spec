@@ -4,7 +4,7 @@ Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
 Version: 0.11
-Release: 2%{?dist}
+Release: 3%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -46,6 +46,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Oct 27 2011 Chris Lumens <clumens@redhat.com> 0.11-3
+- Move "import rpm" to where it's needed to avoid nameserver problems.
+  Resolves: rhbz#749330
+
 * Thu Oct 06 2011 Chris Lumens <clumens@redhat.com> 0.11-2
 - Change dependency to libreport-* (mtoman)
   Resolves: rhbz#730924
