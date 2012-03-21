@@ -18,6 +18,7 @@ Group: System Environment/Libraries
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
+BuildRequires: dbus-python, libreport-gtk, libreport-newt
 Requires: python, dbus-python, pygtk2, pygtk2-libglade
 Requires: openssh-clients, rpm, yum, newt-python, libreport-gtk >= 2.0.9, libreport-newt >= 2.0.9
 
