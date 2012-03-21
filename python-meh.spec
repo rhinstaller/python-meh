@@ -4,7 +4,7 @@ Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
 Version: 0.12.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -49,6 +49,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Mar 21 2012 Vratislav Podzimek <vpodzime@redhat.com> 0.12.1-2
+- Add %check section to spec file (vpodzime).
+  Resolves: rhbz#796176
+
 * Thu Feb 16 2012 Vratislav Podzimek <vpodzime@redhat.com> 0.12.1-1
 - Adapt to new libreport API (vpodzime).
   Resolves: rhbz#769821
