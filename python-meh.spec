@@ -1,5 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
+%define libreportver 2.0.11-1
+
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
@@ -18,8 +20,10 @@ Group: System Environment/Libraries
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
+BuildRequires: dbus-python, libreport-gtk >= %{libreportver}, libreport-newt >= %{libreportver}
 Requires: python, dbus-python, pygobject3, gtk3
-Requires: openssh-clients, rpm-python, yum, newt-python, libreport-gtk >= 2.0.11-1, libreport-newt >= 2.0.11-1
+Requires: openssh-clients, rpm-python, yum, newt-python
+Requires: libreport-gtk >= %{libreportver}, libreport-newt >= %{libreportver}
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
@@ -30,6 +34,9 @@ exceptions.
 
 %build
 make
+
+%check
+make test
 
 %install
 rm -rf %{buildroot}
