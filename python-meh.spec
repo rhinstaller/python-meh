@@ -31,6 +31,9 @@ exceptions.
 %build
 make
 
+%check
+make test
+
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
