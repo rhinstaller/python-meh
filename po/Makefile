@@ -29,7 +29,7 @@ GLADEFILES = $(wildcard ../ui/*.glade)
 
 all::  update-po $(MOFILES)
 
-$(POTFILE): $(PYSRC) glade-po
+potfile: $(PYSRC) glade-po
 	$(XGETTEXT) -L Python --keyword=_ --keyword=N_ $(PYSRC) tmp/*.h
 	@if cmp -s $(NLSPACKAGE).po $(POTFILE); then \
 	    rm -f $(NLSPACKAGE).po; \
@@ -43,7 +43,7 @@ glade-po: $(GLADEFILES)
 		intltool-extract --type=gettext/glade -l $$f ;\
 	done
 
-update-po: Makefile $(POTFILE) refresh-po
+update-po: Makefile potfile refresh-po
 
 refresh-po: Makefile
 	for cat in $(POFILES); do \
