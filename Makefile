@@ -11,7 +11,7 @@ PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -
 
 default: all
 
-all: po-pull
+all:
 	$(MAKE) -C po
 
 clean:
@@ -23,7 +23,7 @@ test:
 	@echo "*** Running unittests ***"
 	PYTHONPATH=. python $(TESTSUITE) -v
 
-install: all
+install:
 	python setup.py install --root=$(DESTDIR)
 	$(MAKE) -C po install
 
