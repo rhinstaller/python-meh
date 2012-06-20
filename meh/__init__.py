@@ -25,7 +25,8 @@
 # exception is hit.
 MAIN_RESPONSE_DEBUG = 0
 MAIN_RESPONSE_SAVE = 1
-MAIN_RESPONSE_OK = 2
+MAIN_RESPONSE_QUIT = 2
+MAIN_RESPONSE_NONE = 3
 
 # And these constants represent the return values of buttons on the exception
 # saving dialog.

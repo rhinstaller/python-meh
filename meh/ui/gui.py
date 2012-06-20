@@ -18,29 +18,20 @@
 #
 from meh import *
 from meh.ui import *
-import gtk
-import gtk.glade
 import os
 import report
+from gi.repository import Gtk
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
 
-def findGladeFile(file):
+def find_glade_file(file):
     path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/:/usr/share/python-meh/")
     for d in path.split(":"):
         fn = d + file
         if os.access(fn, os.R_OK):
             return fn
     raise RuntimeError, "Unable to find glade file %s" % file
-
-def findPixmap(file):
-    path = os.environ.get("PIXMAPPATH", "./:pixmaps/:/tmp/updates/:/tmp/updates/pixmaps/:/usr/share/python-meh/")
-    for d in path.split(":"):
-        fn = d + file
-        if os.access(fn, os.R_OK):
-            return fn
-    return None
 
 class GraphicalIntf(AbstractIntf):
     def __init__(self, *args, **kwargs):
@@ -83,74 +74,66 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         AbstractMainExceptionWindow.__init__(self, shortTraceback, longTracebackFile,
                                              *args, **kwargs)
 
-        xml = gtk.glade.XML(findGladeFile("detailed-dialog.glade"), domain="python-meh")
-        self.dialog = xml.get_widget("detailedDialog")
-        self.mainVBox = xml.get_widget("mainVBox")
-        self.hbox = xml.get_widget("hbox1")
-        self.info = xml.get_widget("info")
-        self.detailedExpander = xml.get_widget("detailedExpander")
-        self.detailedView = xml.get_widget("detailedView")
+        builder = Gtk.Builder()
+        glade_file = find_glade_file("exception-dialog.glade")
+        builder.add_from_file(glade_file)
+        builder.connect_signals(self)
 
-        # Set the custom icon.
-        img = gtk.Image()
-        img.set_from_file(findPixmap("exception.png"))
-        self.hbox.pack_start(img)
-        self.hbox.reorder_child(img, 0)
+        self._main_window = builder.get_object("exceptionWindow")
 
-        # Set the buttons.
-        for (button, response) in [(_("Debu_g"), MAIN_RESPONSE_DEBUG),
-                                   ("gtk-save", MAIN_RESPONSE_SAVE),
-                                   (_("_Exit"), MAIN_RESPONSE_OK)]:
-            self.dialog.add_button(button, response)
-
-        self.dialog.set_default_response(MAIN_RESPONSE_OK)
-
-        self.info.set_text(_("An unhandled exception has occurred.  This "
-                             "is most likely a bug.  Please save a copy "
-                             "of the detailed exception and file a bug "
-                             "report."))
+        self._traceback_buffer = builder.get_object("tracebackBuffer")
 
         if longTracebackFile:
-            f = open(longTracebackFile)
+            with open(longTracebackFile) as fobj:
+                long_traceback = ""
+                for line in fobj:
+                    long_traceback += line
 
-            textbuf = gtk.TextBuffer()
-            i = textbuf.get_start_iter()
-
-            while True:
-                # Wish readline would give StopIteration at the end of a file.
-                line = f.readline()
-                if line == "":
-                    break
-
-                if __builtins__.get("type")(line) != unicode:
-                    try:
-                        line = unicode(line, encoding='utf-8')
-                    except UnicodeDecodeError:
-                        pass
-
-                textbuf.insert(i, line)
-
-            f.close()
-            self.detailedView.set_buffer(textbuf)
-        else:
-            self.mainVBox.remove(self.detailedExpander)
+        self._traceback_buffer.set_text(long_traceback)
+        self._response = MAIN_RESPONSE_QUIT
 
     def destroy(self, *args, **kwargs):
-        self.dialog.destroy()
+        self._main_window.destroy()
 
     def run(self, *args, **kwargs):
-        self.dialog.show_all()
-        self.rc = self.dialog.run()
-        self.dialog.destroy()
+        self._main_window.show_all()
+        Gtk.main()
+        self.destroy()
+        return self._response
+
+    def on_report_clicked(self, button):
+        self._response = MAIN_RESPONSE_SAVE
+        Gtk.main_quit()
+
+    def on_quit_clicked(self, button):
+        self._response = MAIN_RESPONSE_QUIT
+        Gtk.main_quit()
+
+    def on_debug_clicked(self, button):
+        self._response = MAIN_RESPONSE_DEBUG
+        Gtk.main_quit()
+
+    def on_expander_activated(self, expander, *args):
+        if not expander.get_expanded():
+            self._main_window.resize(600, 400)
+        else:
+            #resize the window back to the default size when expander is
+            #minimized
+            self._main_window.resize(600, 1)
+
+    def on_main_window_deleted(self, *args):
+        self._response = MAIN_RESPONSE_NONE
+        self.destroy()
+        Gtk.main_quit()
 
 class MessageWindow(AbstractMessageWindow):
     def __init__(self, title, text, *args, **kwargs):
         AbstractMessageWindow.__init__(self, title, text, *args, **kwargs)
-        self.dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK,
-                                        type=gtk.MESSAGE_INFO,
+        self.dialog = Gtk.MessageDialog(buttons=Gtk.ButtonsType.OK,
+                                        type=Gtk.MessageType.INFO,
                                         message_format=text)
         self.dialog.set_title(title)
-        self.dialog.set_position(gtk.WIN_POS_CENTER)
+        self.dialog.set_position(Gtk.WindowPosition.CENTER)
 
     def destroy(self, *args, **kwargs):
         self.dialog.destroy()
@@ -162,9 +145,9 @@ class MessageWindow(AbstractMessageWindow):
 
 class ExitWindow(MessageWindow):
     def __init__(self, title, text, *args, **kwargs):
-        self.dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_NONE,
-                                        type=gtk.MESSAGE_INFO,
+        self.dialog = Gtk.MessageDialog(buttons=Gtk.ButtonsType.NONE,
+                                        type=Gtk.MessageType.INFO,
                                         message_format=text)
         self.dialog.set_title(title)
         self.dialog.add_button(_("_Exit"), 0)
-        self.dialog.set_position(gtk.WIN_POS_CENTER)
+        self.dialog.set_position(Gtk.WindowPosition.CENTER)

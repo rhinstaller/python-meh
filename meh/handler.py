@@ -80,7 +80,7 @@ class ExceptionHandler(object):
            a subclass.
         """
 
-        responseHash = {MAIN_RESPONSE_OK: self.runQuit,
+        responseHash = {MAIN_RESPONSE_QUIT: self.runQuit,
                         MAIN_RESPONSE_DEBUG: self.runDebug,
                         MAIN_RESPONSE_SAVE: self.runSave}
 
@@ -107,8 +107,7 @@ class ExceptionHandler(object):
             if not win:
                 self.runQuit((ty, value, tb))
 
-            win.run()
-            rc = win.getrc()
+            rc = win.run()
 
             try:
                 responseHash[rc]((ty, value, tb))

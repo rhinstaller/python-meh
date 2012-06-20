@@ -85,7 +85,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         elif response == string.lower(_("Save")):
             return MAIN_RESPONSE_SAVE
         else:
-            return MAIN_RESPONSE_OK
+            return MAIN_RESPONSE_QUIT
 
 class MessageWindow(AbstractMessageWindow):
     def __init__(self, title, text, *args, **kwargs):
