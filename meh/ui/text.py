@@ -76,17 +76,16 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         self.screen.popWindow()
         self.screen.refresh()
 
-    def getrc(self, *args, **kwargs):
-        if self.rc == string.lower(_("Debug")):
+    def run(self, *args, **kwargs):
+        response = ButtonChoiceWindow(self.screen, _("Exception Occurred"),
+                                     self.text, self.buttons)
+
+        if response == string.lower(_("Debug")):
             return MAIN_RESPONSE_DEBUG
-        elif self.rc == string.lower(_("Save")):
+        elif response == string.lower(_("Save")):
             return MAIN_RESPONSE_SAVE
         else:
             return MAIN_RESPONSE_OK
-
-    def run(self, *args, **kwargs):
-        self.rc = ButtonChoiceWindow(self.screen, _("Exception Occurred"),
-                                     self.text, self.buttons)
 
 class MessageWindow(AbstractMessageWindow):
     def __init__(self, title, text, *args, **kwargs):

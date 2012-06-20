@@ -88,19 +88,13 @@ class AbstractMainExceptionWindow(object):
            longTracebackFile -- A file containing the output of
                                 ExceptionDump.write().
         """
-        self.rc = 0
+        pass
 
     def destroy(self, *args, **kwargs):
         """Destroy the current dialog.  This method must be provided by all
            subclasses.
         """
         raise NotImplementedError
-
-    def getrc(self, *args, **kwargs):
-        """Return which button was clicked on the interface.  This method need
-           not be overridden by subclasses.
-        """
-        return self.rc
 
     def run(self, *args, **kwargs):
         """Run the window and set a return value.  This method does everything
@@ -122,7 +116,7 @@ class AbstractExitWindow(object):
            title -- The window's title.
            text  -- The window's text.
         """
-        self.rc = 0
+        pass
 
     def destroy(self, *args, **kwargs):
         """Destroy the current dialog.  This method must be provided by all
@@ -149,7 +143,7 @@ class AbstractMessageWindow(object):
            title -- The window's title.
            text  -- The window's text.
         """
-        self.rc = 0
+        pass
 
     def destroy(self, *args, **kwargs):
         """Destroy the current dialog.  This method must be provided by all
