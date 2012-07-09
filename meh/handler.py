@@ -187,7 +187,7 @@ class ExceptionHandler(object):
         """
         import pdb
         pdb.post_mortem(tb)
-        os.kill(os.getpid(), signal.SIGKILL)
+        #no need to quit here, let's just get back to the main dialog
 
     def runSave(self, (ty, value, tb)):
         """This method is called when the "Save" button is clicked.  It may
