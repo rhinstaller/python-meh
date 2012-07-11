@@ -77,7 +77,7 @@ class AbstractMainExceptionWindow(object):
        window is the initial dialog displayed by the exception handler that
        provides the debug/save/quit options.
     """
-    def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
+    def __init__(self, shortTraceback=None, longTraceback=None, *args, **kwargs):
         """Create a new MainExceptionWindow instance.  This must handle
            creating the dialog and populating it with widgets, but must not
            run the dialog.  A self.dialog attribute should be created that
@@ -85,8 +85,8 @@ class AbstractMainExceptionWindow(object):
 
            shortTraceback    -- The short traceback (usually, just the stack
                                 trace).
-           longTracebackFile -- A file containing the output of
-                                ExceptionDump.write().
+           longTraceback     -- The long traceback (full traceback and the main
+                                object dump).
         """
         pass
 

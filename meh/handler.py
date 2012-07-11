@@ -54,6 +54,7 @@ class ExceptionHandler(object):
 
         self._exitcode = 10
         self._exn = None
+        self.exnText = ""
 
     def _setExitCode(self, code):
         self._exitcode = code
@@ -96,14 +97,15 @@ class ExceptionHandler(object):
         # Save the exception to the filesystem first.
         self.exn = self.exnClass((ty, value, tb), self.conf)
         (fd, self.exnFile) = self.openFile()
-        text = self.exn.write(obj, fd)
+        self.exnText = self.exn.traceback_and_object_dump(obj)
+        fd.write(self.exnText)
         fd.close()
 
         self.postWriteHook((ty, value, tb), obj)
 
         # Run initial UI screen, asking whether to save/debug/quit.
         while True:
-            win = self.intf.mainExceptionWindow(text, self.exnFile)
+            win = self.intf.mainExceptionWindow(str(self.exn), self.exnText)
             if not win:
                 self.runQuit((ty, value, tb))
 
@@ -209,7 +211,9 @@ class ExceptionHandler(object):
         params["reason"] = self.exn.desc
         params["description"] = "The following was filed automatically by %s:\n%s" \
                                     % (self.conf.programName, str(self.exn))
-        params["exnFileName"] = self.exnFile
+
+        tb_item_name = "%s-tb" % self.conf.programName
+        params[tb_item_name] = self.exnText
 
         for fpath in self.conf.fileList:
             try:

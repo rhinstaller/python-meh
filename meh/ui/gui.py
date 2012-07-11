@@ -70,8 +70,8 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
         report.report(self.signature, self.io)
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
-    def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
-        AbstractMainExceptionWindow.__init__(self, shortTraceback, longTracebackFile,
+    def __init__(self, shortTraceback=None, longTraceback=None, *args, **kwargs):
+        AbstractMainExceptionWindow.__init__(self, shortTraceback, longTraceback,
                                              *args, **kwargs)
 
         builder = Gtk.Builder()
@@ -83,13 +83,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 
         self._traceback_buffer = builder.get_object("tracebackBuffer")
 
-        if longTracebackFile:
-            with open(longTracebackFile) as fobj:
-                long_traceback = ""
-                for line in fobj:
-                    long_traceback += line
-
-        self._traceback_buffer.set_text(long_traceback)
+        self._traceback_buffer.set_text(longTraceback)
         self._response = MAIN_RESPONSE_QUIT
 
     def destroy(self, *args, **kwargs):

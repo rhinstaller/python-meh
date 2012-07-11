@@ -249,9 +249,9 @@ class ExceptionDump(object):
 
         return traceback.format_list(frames)
 
-    # Create a string representation of a class and write it to fd.  This
-    # method will recursively handle all attributes of the base given class.
-    def _dumpClass(self, instance, fd, level=0, parentkey="", skipList=[]):
+    # Create a string representation of a class.  This method will recursively
+    # handle all attributes of the base given class.
+    def _dumpClass(self, instance, level=0, parentkey="", skipList=[]):
         # This is horribly cheesy, and bound to require maintainence in the
         # future.  The problem is that anything subclassed from object fails
         # the types.InstanceType test we used to have which means those
@@ -266,6 +266,8 @@ class ExceptionDump(object):
                                       types.StringType, types.UnicodeType] or \
                    not hasattr(instance, "__class__")
 
+        ret = ""
+
         # protect from loops
         try:
             # Store the id(), not the instance name to protect against
@@ -273,23 +275,23 @@ class ExceptionDump(object):
             if not self._dumpHash.has_key(id(instance)):
                 self._dumpHash[id(instance)] = None
             else:
-                fd.write("Already dumped (%s instance)\n" % instance.__class__.__name__)
-                return
+                ret += "Already dumped (%s instance)\n" % instance.__class__.__name__
+                return ret
         except TypeError:
-            fd.write("Cannot dump object\n")
-            return
+            ret += "Cannot dump object\n"
+            return ret
 
         if (instance.__class__.__dict__.has_key("__str__") or
             instance.__class__.__dict__.has_key("__repr__")):
             try:
-                fd.write("%s\n" % (instance,))
+                ret += "%s\n" % (instance,)
             except:
-                fd.write("\n")
+                ret += "\n"
 
-            return
+            return ret
 
-        fd.write("%s instance, containing members:\n" %
-                 (instance.__class__.__name__))
+        ret += "%s instance, containing members:\n" %\
+                (instance.__class__.__name__)
         pad = ' ' * ((level) * 2)
 
         for key, value in instance.__dict__.items():
@@ -305,58 +307,60 @@ class ExceptionDump(object):
             # None are probably okay.
             if eval("instance.%s is not None" % key) and \
                eval("id(instance.%s)" % key) in skipList:
-                fd.write("%s%s: Skipped\n" % (pad, curkey))
+                ret += "%s%s: Skipped\n" % (pad, curkey)
                 continue
 
             if type(value) == types.ListType:
-                fd.write("%s%s: [" % (pad, curkey))
+                ret += "%s%s: [" % (pad, curkey)
                 first = 1
                 for item in value:
                     if not first:
-                        fd.write(", ")
+                        ret += ", "
                     else:
                         first = 0
 
                     if __isSimpleType(item):
-                        fd.write("%s" % (item,))
+                        ret += "%s" % (item,)
                     else:
-                        self._dumpClass(item, fd, level + 1, skipList=skipList)
-                fd.write("]\n")
+                        ret += self._dumpClass(item, level + 1, skipList=skipList)
+                ret += "]\n"
             elif type(value) == types.DictType:
-                fd.write("%s%s: {" % (pad, curkey))
+                ret += "%s%s: {" % (pad, curkey)
                 first = 1
                 for k, v in value.items():
                     if not first:
-                        fd.write(", ")
+                        ret += ", "
                     else:
                         first = 0
                     if type(k) == types.StringType:
-                        fd.write("'%s': " % (k,))
+                        ret += "'%s': " % (k,)
                     else:
-                        fd.write("%s: " % (k,))
+                        ret += "%s: " % (k,)
 
                     if __isSimpleType(v):
-                        fd.write("%s" % (v,))
+                        ret += "%s" % (v,)
                     else:
-                        self._dumpClass(v, fd, level + 1, parentkey = curkey, skipList=skipList)
-                fd.write("}\n")
+                        ret += self._dumpClass(v, level + 1, parentkey = curkey, skipList=skipList)
+                ret += "}\n"
             elif __isSimpleType(value):
-                fd.write("%s%s: %s\n" % (pad, curkey, value))
+                ret += "%s%s: %s\n" % (pad, curkey, value)
             else:
-                fd.write("%s%s: " % (pad, curkey))
-                self._dumpClass(value, fd, level + 1, parentkey=curkey, skipList=skipList)
+                ret += "%s%s: " % (pad, curkey)
+                ret += self._dumpClass(value, level + 1, parentkey=curkey, skipList=skipList)
 
-    def dump(self, fd, obj):
-        """Dump the local variables and all attributes of a given object to an
-           open file descriptor.  The lists of files and attrs to ignore are
-           all taken from a Config object instance provided when the
-           ExceptionDump class was created.
+        return ret
 
-           fd  -- An open file descriptor to write everything to.
+    def dump(self, obj):
+        """Dump the local variables and all attributes of a given object.
+           The lists of files and attrs to ignore are all taken from a
+           Config object instance provided when the ExceptionDump class was
+           created.
+
            obj -- Any Python object.  This object will have all its attributes
                   written out, except for those mentioned in the attrSkipList.
         """
         idSkipList = []
+        ret = ""
 
         # We need to augment the environment eval() will run in with the
         # bindings that were local when the traceback happened so that the
@@ -376,39 +380,39 @@ class ExceptionDump(object):
         # Write local variables to the given file descriptor, ignoring any of
         # the local skips.
         frame = self.stack[-1][0]
-        fd.write ("\nLocal variables in innermost frame:\n")
+        ret += "\nLocal variables in innermost frame:\n"
         try:
             for (key, value) in frame.f_locals.items():
                 loweredKey = key.lower()
                 if len(filter(lambda s: loweredKey.find(s) != -1, self.conf.localSkipList)) > 0:
                     continue
 
-                fd.write ("%s: %s\n" % (key, value))
+                ret += "%s: %s\n" % (key, value)
         except:
             pass
 
         # And now dump the object's attributes.
         try:
-            fd.write("\n\n")
-            self._dumpClass(obj, fd, skipList=idSkipList)
+            ret += "\n\n"
+            ret += self._dumpClass(obj, skipList=idSkipList)
         except:
-            fd.write("\nException occurred during state dump:\n")
-            traceback.print_exc(None, fd)
+            ret += "\nException occurred during state dump:\n"
+            ret += traceback.format_exc(None)
 
         # And finally, write a bunch of files into the dump too.
-        for fn in self.conf.fileList:
+        for fname in self.conf.fileList:
             try:
-                f = open(fn, 'r')
-                line = "\n\n%s:\n" % (fn,)
-                while line:
-                    fd.write(line)
-                    line = f.readline()
-                f.close()
+                with open(fname, 'r') as fobj:
+                    ret += "\n\n%s:\n" % (fname,)
+                    for line in fobj:
+                        ret += line
             except IOError:
                 pass
             except:
-                fd.write("\nException occurred during %s file copy:\n" % (fn,))
-                traceback.print_exc(None, fd)
+                ret += "\nException occurred during %s file copy:\n" % (fname,)
+                ret += traceback.format_exc(None)
+
+        return ret
 
     @property
     def hash(self):
@@ -428,17 +432,18 @@ class ExceptionDump(object):
 
         return hashlib.sha256(s).hexdigest()
 
-    def write(self, obj, fd):
-        """Write the traceback and a text representation of an object to an
-           open file descriptor.
-
-           fd  -- An open file descriptor to write everything to.
-           obj -- Any Python object.  This object will have all its attributes
-                  written out, except for those mentioned in the attrSkipList.
+    def traceback_and_object_dump(self, obj):
         """
+        Return the traceback and a text representation of an object.
+
+        @param obj: Any Python object. This object will have all its attributes
+                    written out, except for those mentioned in the attrSkipList.
+
+        """
+
         ret = str(self)
-        fd.write(ret)
-        self.dump(fd, obj)
+        ret += self.dump(obj)
+
         return ret
 
 class ReverseExceptionDump(ExceptionDump):

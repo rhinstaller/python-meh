@@ -63,8 +63,8 @@ class SaveExceptionWindow(AbstractSaveExceptionWindow):
         report.report(self.signature, self.io)
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
-    def __init__(self, shortTraceback=None, longTracebackFile=None, *args, **kwargs):
-        AbstractMainExceptionWindow.__init__(self, shortTraceback, longTracebackFile,
+    def __init__(self, shortTraceback=None, longTraceback=None, *args, **kwargs):
+        AbstractMainExceptionWindow.__init__(self, shortTraceback, longTraceback,
                                              *args, **kwargs)
 
         self.text = "%s\n\n" % shortTraceback
