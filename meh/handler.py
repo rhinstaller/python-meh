@@ -185,6 +185,8 @@ class ExceptionHandler(object):
            be overridden by a subclass if specialized behavior is required to
            enter debug mode.
         """
+        print "Use 'continue' command to quit the debugger and get back to "\
+              "the main menu"
         import pdb
         pdb.post_mortem(tb)
         #no need to quit here, let's just get back to the main dialog
