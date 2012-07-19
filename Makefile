@@ -38,8 +38,9 @@ archive: tag po-pull
 	@rm -f ChangeLog
 	@make ChangeLog
 	git archive --format=tar --prefix=$(PKGNAME)-$(VERSION)/ $(TAG) > $(PKGNAME)-$(VERSION).tar
-	mkdir -p $(PKGNAME)-$(VERSION)/
+	mkdir -p $(PKGNAME)-$(VERSION)/po
 	cp ChangeLog $(PKGNAME)-$(VERSION)/
+	cp po/*.po $(PKGNAME)-$(VERSION)/po/
 	tar -rf $(PKGNAME)-$(VERSION).tar $(PKGNAME)-$(VERSION)
 	gzip -9 $(PKGNAME)-$(VERSION).tar
 	rm -rf $(PKGNAME)-$(VERSION)
