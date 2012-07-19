@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.12
+Version: 0.13
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,18 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Jul 27 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.13-1
+- Add files specified in the Config object as attachments to bugreports (vpodzime)
+- Display hint how to quit the debugger (vpodzime)
+- Do not kill the process when 'continue' is used in pdb (vpodzime)
+- Port to Gtk3 and the new design (vpodzime)
+- Remove the rc attribute and getrc methods (vpodzime)
+- Fix 'all' and 'install' Makefile targets (vpodzime)
+- Migrate l10n to Transifex (vpodzime)
+
+* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.12-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Tue Dec 20 2011 Vratislav Podzimek <vpodzime@redhat.com> 0.12
 - Use new libreport API to get more information to bugzilla (vpodzime).
 - Adapt to the new API of libreport (vpodzime).
