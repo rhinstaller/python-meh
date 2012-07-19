@@ -211,6 +211,15 @@ class ExceptionHandler(object):
                                     % (self.conf.programName, str(self.exn))
         params["exnFileName"] = self.exnFile
 
+        for fpath in self.conf.fileList:
+            try:
+                with open(fpath, "r") as fobj:
+                    filename = fpath
+                    params[filename] = fobj.read()
+            except:
+                #skip files we cannot read
+                continue
+
         accountManager = report.accountmanager.AccountManager()
 
         signature = report.createPythonUnhandledExceptionSignature(**params)
