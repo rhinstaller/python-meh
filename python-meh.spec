@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.13
+Version: 0.14
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,11 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Fri Aug 03 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.14-1
+- Use just a basename of the attached file as the item name (vpodzime)
+- Set the type hint for the mainExceptionWindow to Dialog (vpodzime)
+- Store and then write out the string representation of the traceback and object dump (vpodzime)
+
 * Wed Jul 27 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.13-1
 - Add files specified in the Config object as attachments to bugreports (vpodzime)
 - Display hint how to quit the debugger (vpodzime)
