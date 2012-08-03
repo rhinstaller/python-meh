@@ -218,7 +218,9 @@ class ExceptionHandler(object):
         for fpath in self.conf.fileList:
             try:
                 with open(fpath, "r") as fobj:
-                    filename = fpath
+                    # would be better to use the full path here, but libreport
+                    # doesn't allow '/' characters in the item name
+                    filename = os.path.basename(fpath)
                     params[filename] = fobj.read()
             except:
                 #skip files we cannot read
