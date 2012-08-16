@@ -264,7 +264,8 @@ class ExceptionDump(object):
             return type(instance) in [types.BooleanType, types.ComplexType, types.FloatType,
                                       types.IntType, types.LongType, types.NoneType,
                                       types.StringType, types.UnicodeType] or \
-                   not hasattr(instance, "__class__")
+                   not hasattr(instance, "__class__") or \
+                   not hasattr(instance, "__dict__")
 
         ret = ""
 
