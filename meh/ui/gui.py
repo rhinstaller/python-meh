@@ -86,6 +86,10 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         self._traceback_buffer.set_text(longTraceback)
         self._response = MAIN_RESPONSE_QUIT
 
+    @property
+    def main_window(self):
+        return self._main_window
+
     def destroy(self, *args, **kwargs):
         self._main_window.destroy()
 
