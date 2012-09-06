@@ -98,7 +98,7 @@ class ExceptionHandler(object):
         self.exn = self.exnClass((ty, value, tb), self.conf)
         (fd, self.exnFile) = self.openFile()
         self.exnText = self.exn.traceback_and_object_dump(obj)
-        fd.write(self.exnText)
+        fd.write(self.exnText.encode("utf-8"))
         fd.close()
 
         self.postWriteHook((ty, value, tb), obj)
