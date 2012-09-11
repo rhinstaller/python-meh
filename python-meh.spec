@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.15
+Version: 0.16
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Sep 11 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.16-1
+- Do not overwrite process information with files having the same basename (vpodzime)
+- Encode dump as utf-8 before writing to file (#854959) (vpodzime)
+
 * Mon Aug 20 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.15-1
 - Add main_window property to the MainExceptionWindow (vpodzime)
 - Don't try to dump objects without __dict__ (vpodzime)
