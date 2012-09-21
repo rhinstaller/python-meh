@@ -344,6 +344,8 @@ class ExceptionDump(object):
                         ret += self._dumpClass(v, level + 1, parentkey = curkey, skipList=skipList)
                 ret += "}\n"
             elif __isSimpleType(value):
+                if type(value) == types.UnicodeType:
+                    value = value.encode("utf-8")
                 ret += "%s%s: %s\n" % (pad, curkey, value)
             else:
                 ret += "%s%s: " % (pad, curkey)

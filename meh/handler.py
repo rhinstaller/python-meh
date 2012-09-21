@@ -96,10 +96,10 @@ class ExceptionHandler(object):
 
         # Save the exception to the filesystem first.
         self.exn = self.exnClass((ty, value, tb), self.conf)
-        (fd, self.exnFile) = self.openFile()
+        (fobj, self.exnFile) = self.openFile()
         self.exnText = self.exn.traceback_and_object_dump(obj)
-        fd.write(self.exnText.encode("utf-8"))
-        fd.close()
+        fobj.write(self.exnText)
+        fobj.close()
 
         self.postWriteHook((ty, value, tb), obj)
 
