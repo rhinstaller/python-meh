@@ -143,7 +143,17 @@ class ExceptionDump(object):
                         "{0}".format(file_))
             package = "{0}-{1}-{2}.{3}".format(header["name"], header["version"],
                                             header["release"], header["arch"])
-            component = header["sourcerpm"].split("-")[0]
+
+            # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
+            name_end = len(header["sourcerpm"])
+            try:
+                name_end = header["sourcerpm"].rindex('-')
+                name_end = header["sourcerpm"][:name_end].rindex('-')
+            except ValueError as e:
+                # expected exception
+                pass
+
+            component = header["sourcerpm"][:name_end]
 
             return (package, component)
 
