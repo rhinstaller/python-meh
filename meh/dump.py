@@ -174,6 +174,9 @@ class ExceptionDump(object):
 
             """
             packages = set()
+            if not self.stack:
+                return packages
+
             for (frame, fn, lineno, func, ctx, idx) in self.stack:
                 try:
                     packages.add(get_package_and_component(fn)[0])
@@ -248,6 +251,9 @@ class ExceptionDump(object):
         return joinfields(lst, "")
 
     def _format_stack(self):
+        if not self.stack:
+            return []
+
         frames = []
         for (frame, fn, lineno, func, ctx, idx) in self.stack:
             if type(ctx) == type([]):
@@ -380,7 +386,8 @@ class ExceptionDump(object):
         # idSkipList can be populated.  However since we're not allowed to
         # modify the results of locals(), we'll have to make a copy first.
         localVars = copy.copy(locals())
-        localVars.update(self.stack[-1][0].f_locals)
+        if self.stack:
+            localVars.update(self.stack[-1][0].f_locals)
 
         # Catch attributes that do not exist at the time we do the exception dump
         # and ignore them.
@@ -392,17 +399,19 @@ class ExceptionDump(object):
 
         # Write local variables to the given file descriptor, ignoring any of
         # the local skips.
-        frame = self.stack[-1][0]
-        ret += "\nLocal variables in innermost frame:\n"
-        try:
-            for (key, value) in frame.f_locals.items():
-                loweredKey = key.lower()
-                if len(filter(lambda s: loweredKey.find(s) != -1, self.conf.localSkipList)) > 0:
-                    continue
+        if self.stack:
+            frame = self.stack[-1][0]
+            ret += "\nLocal variables in innermost frame:\n"
+            try:
+                for (key, value) in frame.f_locals.items():
+                    loweredKey = key.lower()
+                    if len(filter(lambda s: loweredKey.find(s) != -1,
+                                  self.conf.localSkipList)) > 0:
+                        continue
 
-                ret += "%s: %s\n" % (key, value)
-        except:
-            pass
+                    ret += "%s: %s\n" % (key, value)
+            except:
+                pass
 
         # And now dump the object's attributes.
         try:
@@ -438,10 +447,13 @@ class ExceptionDump(object):
         import hashlib
         s = ""
 
-        for (file, lineno, func, text) in [f[1:5] for f in self.stack]:
-            if type(text) == type([]):
-                text = "".join(text)
-            s += "%s %s %s\n" % (os.path.basename(file), func, text)
+        if self.stack:
+            for (file, lineno, func, text) in [f[1:5] for f in self.stack]:
+                if type(text) == type([]):
+                    text = "".join(text)
+                s += "%s %s %s\n" % (os.path.basename(file), func, text)
+        else:
+            s = "%s %s" % (self.type, self.value)
 
         return hashlib.sha256(s).hexdigest()
 
