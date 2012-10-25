@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-09 17:55+0200\n"
+"POT-Creation-Date: 2012-10-25 11:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,13 +42,13 @@ msgid "_Exit"
 msgstr ""
 
 #: tmp/exception-dialog.glade.h:1
-msgid "An unknown error has occured"
+msgid "An unknown error has occurred"
 msgstr ""
 
 #: tmp/exception-dialog.glade.h:2
 msgid ""
 "This program has encountered an unknown error. You may\n"
-"report the bug bellow or quit the program."
+"report the bug below or quit the program."
 msgstr ""
 
 #: tmp/exception-dialog.glade.h:4

@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.17
+Version: 0.18
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -46,6 +46,11 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Oct 25 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.18-1
+- Handle tracebacks with no stack (#866441) (vpodzime)
+- Parse component name correctly (#866526) (vpodzime)
+- Spelling corrections (#865993) (vpodzime)
+
 * Tue Oct 09 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.17-1
 - Handle unicode strings correctly (#854959) (vpodzime)
 
