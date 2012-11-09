@@ -28,6 +28,7 @@ import os
 import traceback
 import types
 import sys
+import codecs
 
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
@@ -424,10 +425,10 @@ class ExceptionDump(object):
         # And finally, write a bunch of files into the dump too.
         for fname in self.conf.fileList:
             try:
-                with open(fname, 'r') as fobj:
+                with codecs.open(fname, "r", "utf-8", "ignore") as fobj:
                     ret += "\n\n%s:\n" % (fname,)
                     for line in fobj:
-                        ret += line
+                        ret += line.encode("utf-8")
             except IOError:
                 pass
             except:
