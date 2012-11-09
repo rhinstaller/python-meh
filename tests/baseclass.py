@@ -9,12 +9,12 @@ from meh.handler import *
 from meh.dump import *
 
 class BaseTestCase(unittest.TestCase):
-    def dump(self, fd, conf, obj):
+    def dump(self, conf, obj):
         from inspect import stack as _stack
         stack = _stack()[1:]
 
         dump = ExceptionDump((None, None, stack), conf)
-        dump.dump(fd, obj)
+        return dump.dump(obj)
 
     def openFile(self):
         (fd, path) = tempfile.mkstemp()

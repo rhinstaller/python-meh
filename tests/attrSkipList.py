@@ -18,12 +18,10 @@ class AttrSkipList_TestCase(BaseTestCase):
                       programVersion="47",
                       attrSkipList=[ "rootPassword" ])
 
-        (fd, path) = self.openFile()
-        self.dump(fd, conf, example)
-        fd.close()
+        dump = self.dump(conf, example)
 
-        self.assertTrue(self.tracebackContains(path, "rootPassword: Skipped"))
-        self.assertFalse(self.tracebackContains(path, "dontSkipMe: Skipped"))
+        self.assertIn("rootPassword: Skipped", dump)
+        self.assertNotIn("dontSkipMe: Skipped", dump)
 
 if __name__ == "__main__":
     unittest.main()
