@@ -352,10 +352,14 @@ class ExceptionDump(object):
                         first = 0
                     if type(k) == types.StringType:
                         ret += "'%s': " % (k,)
+                    elif type(k) == types.UnicodeType:
+                        ret += "'%s': " % k.encode("utf-8")
                     else:
                         ret += "%s: " % (k,)
 
                     if __isSimpleType(v):
+                        if type(v) == types.UnicodeType:
+                            v = v.encode("utf-8")
                         ret += "%s" % (v,)
                     else:
                         ret += self._dumpClass(v, level + 1, parentkey = curkey, skipList=skipList)

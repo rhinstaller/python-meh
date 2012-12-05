@@ -14,6 +14,7 @@ class UnicodeExample(object):
         self.ascii_str = ASCII_STR
         self.unicode_str = UNICODE_STR
         self.encoded_str = self.unicode_str.encode("utf-8")
+        self.unicode_dict = { u"úú" : u"áá" }
 
 class HandleUnicode_TestCase(BaseTestCase):
     def setUp(self):
