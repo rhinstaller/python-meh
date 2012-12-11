@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.19
+Version: 0.20
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -53,6 +53,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Dec 11 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.20-1
+- Handle non-ascii dict keys and values correctly (#883641) (vpodzime)
+
 * Wed Nov 14 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.19-1
 - Add test for handling unicode strings and files (vpodzime)
 - Read files as UTF-8 and ignore errors (#874250) (vpodzime)
