@@ -30,6 +30,7 @@ import types
 import sys
 import codecs
 from meh import PackageInfo
+from meh.safe_string import SafeStr
 
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
@@ -292,7 +293,7 @@ class ExceptionDump(object):
                    not hasattr(instance, "__class__") or \
                    not hasattr(instance, "__dict__")
 
-        ret = ""
+        ret = SafeStr()
 
         # protect from loops
         try:
@@ -360,21 +361,15 @@ class ExceptionDump(object):
                         first = 0
                     if type(k) == types.StringType:
                         ret += "'%s': " % (k,)
-                    elif type(k) == types.UnicodeType:
-                        ret += "'%s': " % k.encode("utf-8")
                     else:
                         ret += "%s: " % (k,)
 
                     if __isSimpleType(v):
-                        if type(v) == types.UnicodeType:
-                            v = v.encode("utf-8")
                         ret += "%s" % (v,)
                     else:
                         ret += self._dumpClass(v, level + 1, parentkey = curkey, skipList=skipList)
                 ret += "}\n"
             elif __isSimpleType(value):
-                if type(value) == types.UnicodeType:
-                    value = value.encode("utf-8")
                 ret += "%s%s: %s\n" % (pad, curkey, value)
             else:
                 ret += "%s%s: " % (pad, curkey)
@@ -392,7 +387,7 @@ class ExceptionDump(object):
                   written out, except for those mentioned in the attrSkipList.
         """
         idSkipList = []
-        ret = ""
+        ret = SafeStr()
 
         # We need to augment the environment eval() will run in with the
         # bindings that were local when the traceback happened so that the
@@ -493,7 +488,7 @@ class ExceptionDump(object):
 
         """
 
-        ret = str(self)
+        ret = SafeStr(str(self))
         ret += self.dump(obj)
 
         return ret
