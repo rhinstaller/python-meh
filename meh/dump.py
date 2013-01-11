@@ -426,6 +426,14 @@ class ExceptionDump(object):
             ret += "\nException occurred during state dump:\n"
             ret += traceback.format_exc(None)
 
+        # And now add data returned by the registered callbacks
+        ret += "Registered callbacks:\n"
+        for (item_name, callback) in self.conf.callbackDict.iteritems():
+            try:
+                ret += "%s:\n%s\n" % (item_name, callback())
+            except Exception as exc:
+                ret += "%s: Caused error: %s\n" % (item_name, exc)
+
         # And finally, write a bunch of files into the dump too.
         for fname in self.conf.fileList:
             try:

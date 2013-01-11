@@ -33,6 +33,11 @@ MAIN_RESPONSE_NONE = 3
 SAVE_RESPONSE_OK = 0
 SAVE_RESPONSE_CANCEL = 1
 
+class ConfigError(Exception):
+    """Exception class for the configuration related errors."""
+
+    pass
+
 class Config(object):
     """Hold configuration info useful throughout the exception handling
        classes.  This prevents having to pass a bunch of arguments to a
@@ -62,6 +67,12 @@ class Config(object):
                              an element of this list will not be written to
                              the dump.  This is subtely different from
                              attrSkipList.
+           callbackDict   -- A dictionary having item names as keys and functions
+                             as values. These functions get no arguments and must
+                             return strings. These strings will appear in the
+                             resulting data collected for the crash as values of
+                             the matching item names.
+                             @see register_callback
            programName    -- The name of the erroring program.
            programVersion -- The version number of the erroring program.
                              Both programName and programVersion are used
@@ -71,6 +82,7 @@ class Config(object):
         self.attrSkipList = []
         self.fileList = []
         self.localSkipList = []
+        self.callbackDict = dict()
         self.programName = None
         self.programVersion = None
 
@@ -86,3 +98,26 @@ class Config(object):
 
         if not self.programVersion:
             raise ValueError("programVersion must be set.")
+
+    def register_callback(self, item_name, callback):
+        """
+        Register new callback that will be called when data about the
+        crash is collected. The returned value will be included as the
+        'item_name' item.
+
+        @param item_name: name of the item storing the value returned by the
+                          'callback' function
+        @type item_name: string
+        @param callback: a function to be called
+        @type callback: a function of type: () -> string
+        @raise ConfigError: if callback with the 'item_name' has already been
+                            registered
+        @return: None
+
+        """
+
+        if item_name not in self.callbackDict:
+            self.callbackDict[item_name] = callback
+        else:
+            msg = "Callback with name '%s' already registered" % item_name
+            raise ConfigError(msg)
