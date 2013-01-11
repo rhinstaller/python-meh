@@ -426,9 +426,15 @@ class ExceptionDump(object):
             ret += "\nException occurred during state dump:\n"
             ret += traceback.format_exc(None)
 
+        # Filter out item names and callbacks that should appear
+        # only as attachments
+        items_callbacks = ((name, cb) for (name, (cb, attchmnt_only))
+                               in self.conf.callbackDict.iteritems()
+                               if not attchmnt_only)
+
         # And now add data returned by the registered callbacks
         ret += "Registered callbacks:\n"
-        for (item_name, callback) in self.conf.callbackDict.iteritems():
+        for (item_name, callback) in items_callbacks:
             try:
                 ret += "%s:\n%s\n" % (item_name, callback())
             except Exception as exc:

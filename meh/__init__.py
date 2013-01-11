@@ -67,11 +67,8 @@ class Config(object):
                              an element of this list will not be written to
                              the dump.  This is subtely different from
                              attrSkipList.
-           callbackDict   -- A dictionary having item names as keys and functions
-                             as values. These functions get no arguments and must
-                             return strings. These strings will appear in the
-                             resulting data collected for the crash as values of
-                             the matching item names.
+           callbackDict   -- A dictionary having item names as keys and pairs
+                             (function, attchmnt_only) as values.
                              @see register_callback
            programName    -- The name of the erroring program.
            programVersion -- The version number of the erroring program.
@@ -99,7 +96,7 @@ class Config(object):
         if not self.programVersion:
             raise ValueError("programVersion must be set.")
 
-    def register_callback(self, item_name, callback):
+    def register_callback(self, item_name, callback, attchmnt_only=False):
         """
         Register new callback that will be called when data about the
         crash is collected. The returned value will be included as the
@@ -110,6 +107,11 @@ class Config(object):
         @type item_name: string
         @param callback: a function to be called
         @type callback: a function of type: () -> string
+        @param attchmnt_only: whether the returned valued should be included only
+                             as an attachment or also in the main '*-tb' file
+                             (defaults to False)
+        @type attchmnt_only: bool
+
         @raise ConfigError: if callback with the 'item_name' has already been
                             registered
         @return: None
@@ -117,7 +119,7 @@ class Config(object):
         """
 
         if item_name not in self.callbackDict:
-            self.callbackDict[item_name] = callback
+            self.callbackDict[item_name] = (callback, attchmnt_only)
         else:
             msg = "Callback with name '%s' already registered" % item_name
             raise ConfigError(msg)
