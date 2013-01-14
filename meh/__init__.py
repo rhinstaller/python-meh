@@ -96,7 +96,8 @@ class Config(object):
         if not self.programVersion:
             raise ValueError("programVersion must be set.")
 
-    def register_callback(self, item_name, callback, attchmnt_only=False):
+    def register_callback(self, item_name, callback, attchmnt_only=False,
+                          override=False):
         """
         Register new callback that will be called when data about the
         crash is collected. The returned value will be included as the
@@ -111,14 +112,17 @@ class Config(object):
                              as an attachment or also in the main '*-tb' file
                              (defaults to False)
         @type attchmnt_only: bool
+        @param override: whether to override the previously registered callback
+                         with the same item name or not (may raise exception)
+        @type override: bool
 
         @raise ConfigError: if callback with the 'item_name' has already been
-                            registered
+                            registered and 'override' is not set to True
         @return: None
 
         """
 
-        if item_name not in self.callbackDict:
+        if item_name not in self.callbackDict or override:
             self.callbackDict[item_name] = (callback, attchmnt_only)
         else:
             msg = "Callback with name '%s' already registered" % item_name

@@ -23,11 +23,14 @@ class Callbacks_TestCase(BaseTestCase):
                                     "callback2": (callback2, False)})
 
         # another way to register callback
-        conf.register_callback("callback3", callback3)
+        conf.register_callback("callback3", callback2)
 
         # callback with given item name already registered
         with self.assertRaises(ConfigError):
-            conf.register_callback("callback3", callback2)
+            conf.register_callback("callback3", callback3)
+
+        # should not raise exception
+        conf.register_callback("callback3", callback3, override=True)
 
         conf.register_callback("callback4", callback4, attchmnt_only=True)
 
