@@ -110,6 +110,7 @@ class ExceptionHandler(object):
                 self.runQuit((ty, value, tb))
 
             rc = win.run()
+            win.destroy()
 
             try:
                 responseHash[rc]((ty, value, tb))
@@ -187,6 +188,8 @@ class ExceptionHandler(object):
            be overridden by a subclass if specialized behavior is required to
            enter debug mode.
         """
+
+        print
         print "Use 'continue' command to quit the debugger and get back to "\
               "the main menu"
         import pdb
