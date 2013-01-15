@@ -22,7 +22,7 @@ import os
 from network import hasActiveNetDev
 import signal
 import sys
-import report.accountmanager
+import report
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -236,10 +236,8 @@ class ExceptionHandler(object):
                 #skip files we cannot read
                 continue
 
-        accountManager = report.accountmanager.AccountManager()
-
         signature = report.createPythonUnhandledExceptionSignature(**params)
 
         # We don't want to automatically quit here since the user may wish to
         # save somewhere else, debug, etc.
-        self.intf.saveExceptionWindow(accountManager, signature)
+        self.intf.saveExceptionWindow(signature)

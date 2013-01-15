@@ -1,6 +1,6 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
-%define libreportver 2.0.11-1
+%define libreportver 2.0.18-1
 
 Summary:  A python library for handling exceptions
 Name: python-meh

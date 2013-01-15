@@ -51,23 +51,18 @@ class GraphicalIntf(AbstractIntf):
         win.run()
         win.destroy()
 
-    def saveExceptionWindow(self, accountManager, signature, *args, **kwargs):
-        win = SaveExceptionWindow(accountManager, signature)
+    def saveExceptionWindow(self, signature, *args, **kwargs):
+        win = SaveExceptionWindow(signature)
         win.run()
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
-    def __init__(self, accountManager, signature, *args, **kwargs):
-        import report.io.GTKIO
-
-        self.accountManager = accountManager
+    def __init__(self, signature, *args, **kwargs):
         self.signature = signature
-
-        self.io = report.io.GTKIO.GTKIO(self.accountManager)
 
     def run(self, *args, **kwargs):
         # Don't need to check the return value of report since it will
         # handle all the UI reporting for us.
-        report.report(self.signature, self.io)
+        report.report_problem_in_memory(self.signature, report.LIBREPORT_WAIT)
 
 class MainExceptionWindow(AbstractMainExceptionWindow):
     def __init__(self, shortTraceback=None, longTraceback=None, *args, **kwargs):
