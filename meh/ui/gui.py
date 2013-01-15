@@ -37,6 +37,11 @@ class GraphicalIntf(AbstractIntf):
     def __init__(self, *args, **kwargs):
         AbstractIntf.__init__(self, *args, **kwargs)
 
+    def enableNetwork(self, *args, **kwargs):
+        """Should be provided by the inheriting class."""
+
+        return False
+
     def exitWindow(self, title, message, *args, **kwargs):
         win = ExitWindow(title, message, *args, **kwargs)
         win.run()

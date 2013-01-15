@@ -158,7 +158,7 @@ class AbstractMessageWindow(object):
         """
         raise NotImplementedError
 
-class AbstractSaveExceptionWindow:
+class AbstractSaveExceptionWindow(object):
     """This abstract class describes the basic level of support required of
        any interface that supplies an exception saving window.  The exception
        saving window is the dialog displayed if the user clicks "save" on the
