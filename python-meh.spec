@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.20
+Version: 0.21
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -53,6 +53,12 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Mon Jan 21 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.21-1
+- New purely textual text interface (vpodzime)
+- Add dumb enableNetwork implementation to GraphicalIntf (vpodzime)
+- Destroy main window after running it (vpodzime)
+- Get rid of the accountManager and use new libreport API (vpodzime)
+
 * Tue Dec 11 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.20-1
 - Handle non-ascii dict keys and values correctly (#883641) (vpodzime)
 

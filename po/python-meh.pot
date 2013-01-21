@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-11 12:45+0100\n"
+"POT-Creation-Date: 2013-01-21 12:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,55 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../meh/ui/text.py:73 ../meh/ui/text.py:99
-msgid "OK"
+#. XXX: I know this must be really hard for translators, but there is no
+#. usable way to include context to the POT file in Python
+#: ../meh/ui/text.py:39
+msgid "y"
 msgstr ""
 
-#: ../meh/ui/text.py:73 ../meh/ui/text.py:85
-msgid "Save"
+#: ../meh/ui/text.py:40
+msgid "n"
 msgstr ""
 
-#: ../meh/ui/text.py:73 ../meh/ui/text.py:83
+#: ../meh/ui/text.py:93
+msgid "Save exception"
+msgstr ""
+
+#: ../meh/ui/text.py:106 tmp/exception-dialog.glade.h:1
+msgid "An unknown error has occurred"
+msgstr ""
+
+#: ../meh/ui/text.py:109
+msgid "Report Bug"
+msgstr ""
+
+#: ../meh/ui/text.py:110
 msgid "Debug"
 msgstr ""
 
-#: ../meh/ui/text.py:80
-msgid "Exception Occurred"
+#: ../meh/ui/text.py:111
+msgid "Quit"
 msgstr ""
 
-#: ../meh/ui/text.py:113
-msgid "Exit"
+#: ../meh/ui/text.py:116
+msgid "What do you want to do now?"
+msgstr ""
+
+#: ../meh/ui/text.py:124
+msgid "Please make your choice from above: "
+msgstr ""
+
+#: ../meh/ui/text.py:142
+msgid "Hit ENTER to continue"
+msgstr ""
+
+#: ../meh/ui/text.py:155
+#, python-format
+msgid "Are you sure you want to exit? [%(yes)s/%(no)s]"
 msgstr ""
 
 #: ../meh/ui/gui.py:150
 msgid "_Exit"
-msgstr ""
-
-#: tmp/exception-dialog.glade.h:1
-msgid "An unknown error has occurred"
 msgstr ""
 
 #: tmp/exception-dialog.glade.h:2
