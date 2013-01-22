@@ -58,6 +58,9 @@ rm -rf %{buildroot}
 - Add dumb enableNetwork implementation to GraphicalIntf (vpodzime)
 - Destroy main window after running it (vpodzime)
 - Get rid of the accountManager and use new libreport API (vpodzime)
+- Add a way to override previously registered callback (vpodzime)
+- Allow callbacks marked as attachment only (vpodzime)
+- Add support for callbacks providing additional data (vpodzime)
 
 * Tue Dec 11 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.20-1
 - Handle non-ascii dict keys and values correctly (#883641) (vpodzime)
