@@ -35,23 +35,23 @@ class ExceptionDump(object):
        for manipulating a traceback.  In general, clients should not have to
        use this class.  It is mainly for internal use.
     """
-    def __init__(self, (ty, value, stack), configObj):
+    def __init__(self, exc_info, config_obj):
         """Create a new ExceptionDump instance.  Instance attributes:
 
-           (type, value, stack) -- These are the values provided by python
-                                   when an exception is generated, and are
-                                   what ExceptionDump wraps to make more
-                                   useful.
-           conf                 -- An instance of the Config object.
+           @param exc_info: info about the exception provided by Python
+           @type exc_info: an instance of the meh.ExceptionInfo class
+           @param config_obj: configuration for python-meh
+           @type config_obj: an instance of the meh.Config class
         """
 
-        if inspect.istraceback(stack):
-            stack = inspect.getinnerframes(stack)
+        if inspect.istraceback(exc_info.stack):
+            self.stack = inspect.getinnerframes(exc_info.stack)
+        else:
+            self.stack = exc_info.stack
 
-        self.conf = configObj
-        self.stack = stack
-        self.type = ty
-        self.value = value
+        self.conf = config_obj
+        self.type = exc_info.type
+        self.value = exc_info.value
 
         self._dumpHash = {}
 

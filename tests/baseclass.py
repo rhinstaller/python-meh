@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 
+from meh import ExceptionInfo
 from meh.handler import *
 from meh.dump import *
 
@@ -13,7 +14,7 @@ class BaseTestCase(unittest.TestCase):
         from inspect import stack as _stack
         stack = _stack()[1:]
 
-        dump = ExceptionDump((None, None, stack), conf)
+        dump = ExceptionDump(ExceptionInfo(None, None, stack), conf)
         return dump.dump(obj)
 
     def openFile(self):

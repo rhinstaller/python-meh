@@ -68,7 +68,7 @@ class ExceptionHandler(object):
     exn = property(lambda s: s._exn,
                    lambda s, v: s._setExn(v))
 
-    def handleException(self, (ty, value, tb), obj):
+    def handleException(self, dump_info):
         """This is the main exception handling entry point.  When Python
            gets an exception it doesn't know how to handle, this method will
            be called.  It then saves the traceback and displays the main
@@ -79,6 +79,9 @@ class ExceptionHandler(object):
            All arguments are passed in from the handler created by calling
            self.install().  This method should not usually be overridden by
            a subclass.
+
+           @type dump_info: an instance of the meh.DumpInfo class
+
         """
 
         responseHash = {MAIN_RESPONSE_QUIT: self.runQuit,
@@ -86,34 +89,34 @@ class ExceptionHandler(object):
                         MAIN_RESPONSE_SAVE: self.runSave}
 
         # Quit if we got an exception when running pdb.
-        if isinstance(value, bdb.BdbQuit):
+        if isinstance(dump_info.exc_info.value, bdb.BdbQuit):
             sys.exit(self.exitcode)
 
         # Restore original exception handler.
         sys.excepthook = sys.__excepthook__
 
-        self.preWriteHook((ty, value, tb), obj)
+        self.preWriteHook(dump_info)
 
         # Save the exception to the filesystem first.
-        self.exn = self.exnClass((ty, value, tb), self.conf)
+        self.exn = self.exnClass(dump_info.exc_info, self.conf)
         (fobj, self.exnFile) = self.openFile()
-        self.exnText = self.exn.traceback_and_object_dump(obj)
+        self.exnText = self.exn.traceback_and_object_dump(dump_info.object)
         fobj.write(self.exnText)
         fobj.close()
 
-        self.postWriteHook((ty, value, tb), obj)
+        self.postWriteHook(dump_info)
 
         # Run initial UI screen, asking whether to save/debug/quit.
         while True:
             win = self.intf.mainExceptionWindow(str(self.exn), self.exnText)
             if not win:
-                self.runQuit((ty, value, tb))
+                self.runQuit(dump_info.exc_info)
 
             rc = win.run()
             win.destroy()
 
             try:
-                responseHash[rc]((ty, value, tb))
+                responseHash[rc](dump_info.exc_info)
             except KeyError:
                 # This happens if (for example) the user hits Escape instead
                 # of pressing a button.
@@ -121,33 +124,23 @@ class ExceptionHandler(object):
 
         win.destroy()
 
-    def preWriteHook(self, (ty, value, tb), obj):
+    def preWriteHook(self, dump_info):
         """Subclasses may supply a function with this name that will be
            called immediately before the traceback is written to disk in
            order to have any sort of special pre-write processing that needs
            to be done.
 
-           (ty, value, tb) -- The Python objects created when a traceback
-                              occurs.  These are passed in directly from
-                              handleException.
-           obj -- A Python object that may be dumped to a file when the
-                  exception is saved.  This should be something like the top
-                  level object in a program.
+           @type dump_info: an instance of the meh.DumpInfo class
         """
         pass
 
-    def postWriteHook(self, (ty, value, tb), obj):
+    def postWriteHook(self, dump_info):
         """Subclasses may supply a function with this name that will be
            called immediately after the traceback is written to disk, but
            immediately before the UI is run.  This is to provide a place for
            any special handling to happen once there is a file on disk.
 
-           (ty, value, tb) -- The Python objects created when a traceback
-                              occurs.  These are passed in directly from
-                              handleException.
-           obj -- A Python object that may be dumped to a file when the
-                  exception is saved.  This should be something like the top
-                  level object in a program.
+           @type dump_info: an instance of the meh.DumpInfo class
         """
         pass
 
@@ -160,7 +153,8 @@ class ExceptionHandler(object):
                   exception is saved.  This should be something like the top
                   level object in a program.
         """
-        sys.excepthook = lambda ty, value, tb: self.handleException((ty, value, tb), obj)
+        sys.excepthook = lambda ty, value, tb: \
+            self.handleException(DumpInfo(ExceptionInfo(ty, value, tb), obj))
 
     def openFile(self):
         """Create a randomly named output file to write the exception dump to.
@@ -176,29 +170,35 @@ class ExceptionHandler(object):
 
     ### Methods called by the primary exception handling dialog.
 
-    def runQuit(self, (ty, value, tb)):
+    def runQuit(self, exc_info):
         """This method is called when the "Exit" button is clicked.  It may
            be overridden by a subclass, but the basic behavior of eventually
            quitting should be preserved.
+
+           @type exc_info: an instance of the meh.ExceptionInfo class
         """
         sys.exit(self.exitcode)
 
-    def runDebug(self, (ty, value, tb)):
+    def runDebug(self, exc_info):
         """This method is called when the "Debug" button is clicked.  It may
            be overridden by a subclass if specialized behavior is required to
            enter debug mode.
+
+           @type exc_info: an instance of the meh.ExceptionInfo class
         """
 
         print
         print "Use 'continue' command to quit the debugger and get back to "\
               "the main menu"
         import pdb
-        pdb.post_mortem(tb)
+        pdb.post_mortem(exc_info.stack)
         #no need to quit here, let's just get back to the main dialog
 
-    def runSave(self, (ty, value, tb)):
+    def runSave(self, exc_info):
         """This method is called when the "Save" button is clicked.  It may
            be overridden by a subclass, but that's going to be a lot of work.
+
+           @type exc_info: an instance of the meh.ExceptionInfo class
         """
 
         params = dict()

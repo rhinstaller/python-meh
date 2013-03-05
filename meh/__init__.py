@@ -20,6 +20,8 @@
 # Author(s): Chris Lumens <clumens@redhat.com>
 #
 
+from collections import namedtuple
+
 # These constants represent the return values of buttons on the initial
 # exception handling dialog - the dialog that first pops up when an
 # exception is hit.
@@ -127,3 +129,9 @@ class Config(object):
         else:
             msg = "Callback with name '%s' already registered" % item_name
             raise ConfigError(msg)
+
+# type, value and stack are items provided by Python for the exception handler
+ExceptionInfo = namedtuple("ExceptionInfo", ["type", "value", "stack"])
+
+# ExceptionInfo instance plus the object that should be dumped
+DumpInfo = namedtuple("DumpInfo", ["exc_info", "object"])
