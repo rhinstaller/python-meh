@@ -87,11 +87,9 @@ report the bug below or quit the program.</property>
             <child>
               <object class="GtkButton" id="reportButton">
                 <property name="label" translatable="yes">_Report Bug</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_underline">True</property>
                 <signal name="clicked" handler="on_report_clicked" swapped="no"/>
               </object>
@@ -104,11 +102,9 @@ report the bug below or quit the program.</property>
             <child>
               <object class="GtkButton" id="quitButton">
                 <property name="label" translatable="yes">_Quit</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_underline">True</property>
                 <signal name="clicked" handler="on_quit_clicked" swapped="no"/>
               </object>
@@ -186,13 +182,13 @@ report the bug below or quit the program.</property>
                   <object class="GtkBox" id="bottomBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">4</property>
+                    <property name="spacing">6</property>
                     <child>
                       <object class="GtkLabel" id="warningLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0.89999997615814209</property>
-                        <property name="label" translatable="yes">'Debug' will take you to tty1. Press Ctrl + Alt + F6 to return.</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">'Debug' may take you to tty1.</property>
                         <attributes>
                           <attribute name="style" value="italic"/>
                           <attribute name="scale" value="0.80000000000000004"/>
@@ -207,11 +203,9 @@ report the bug below or quit the program.</property>
                     <child>
                       <object class="GtkButton" id="debugButton">
                         <property name="label" translatable="yes">_Debug</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <signal name="clicked" handler="on_debug_clicked" swapped="no"/>
                       </object>
