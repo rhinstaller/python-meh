@@ -239,6 +239,9 @@ class ExceptionHandler(object):
                 #skip files we cannot read
                 continue
 
+        # tell ABRT this is a Python exception report
+        params["analyzer"] = "Python"
+
         signature = report.createPythonUnhandledExceptionSignature(**params)
 
         # We don't want to automatically quit here since the user may wish to
