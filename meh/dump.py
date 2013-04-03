@@ -29,6 +29,7 @@ import traceback
 import types
 import sys
 import codecs
+from meh import PackageInfo
 
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
@@ -128,8 +129,8 @@ class ExceptionDump(object):
 
             @param file_: filename
             @type file_: string
-            @return: tuple containing package name and component name for the file
-            @rtype: tuple with 2 items
+            @return: tuple containing package info and component name for the file
+            @rtype: (PackageInfo, str)
             @throws RPMinfoError: if package and component for the file cannot be found
 
             """
@@ -142,8 +143,9 @@ class ExceptionDump(object):
             except StopIteration:
                 raise RPMinfoError("Cannot get package and component for file "+
                         "{0}".format(file_))
-            package = "{0}-{1}-{2}.{3}".format(header["name"], header["version"],
-                                            header["release"], header["arch"])
+            pkg_info = PackageInfo(header["name"], header["version"],
+                                   header["release"], header["epoch"],
+                                   header["arch"])
 
             # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
             name_end = len(header["sourcerpm"])
@@ -156,7 +158,7 @@ class ExceptionDump(object):
 
             component = header["sourcerpm"][:name_end]
 
-            return (package, component)
+            return (pkg_info, component)
 
         def get_release_version():
             """Returns release version (according to RELEASE_NAME_FILE)"""
@@ -180,12 +182,18 @@ class ExceptionDump(object):
 
             for (frame, fn, lineno, func, ctx, idx) in self.stack:
                 try:
-                    packages.add(get_package_and_component(fn)[0])
+                    pkg_info = get_package_and_component(fn)[0]
+                    package = "{0.name}-{0.version}-{0.release}.{0.arch}".format(
+                                                        pkg_info)
+                    packages.add(package)
                 except RPMinfoError:
                     continue
 
             try:
-                packages.discard(get_package_and_component()[0])
+                pkg_info = get_package_and_component()[0]
+                package = "{0.name}-{0.version}-{0.release}.{0.arch}".format(
+                    pkg_info)
+                packages.discard(package)
             except RPMinfoError:
                 pass
             return packages
@@ -209,11 +217,10 @@ class ExceptionDump(object):
 
 
         #--begining of the method _get_environment_info--
-        package, component = None, None
         try:
-            package, component = get_package_and_component()
+            pkg_info, component = get_package_and_component()
         except RPMinfoError as rpmierr:
-            package = None
+            pkg_info = None
             component = None
 
         release_ver = get_release_version()
@@ -228,10 +235,11 @@ class ExceptionDump(object):
             ret["component"] = component
         ret["executable"] = sys.argv[0]
         ret["kernel"] = os.uname()[2]
-        if package:
-            ret["package"] = package
+        if pkg_info:
+            ret["pkg_info"] = pkg_info
         ret["release"] = get_release_version()
-        ret["other involved packages"] = other_packages
+        if other_packages:
+            ret["other involved packages"] = other_packages
         ret["environ"] = "\n".join(get_environment_variables())
 
         return ret

@@ -77,6 +77,7 @@ class Config(object):
                              Both programName and programVersion are used
                              throughout the exception handler, so must be
                              set.
+           programArch    -- The architecture of the erroring program.
         """
         self.attrSkipList = []
         self.fileList = []
@@ -84,6 +85,7 @@ class Config(object):
         self.callbackDict = dict()
         self.programName = None
         self.programVersion = None
+        self.programArch = None
 
         # Override the defaults set above with whatever's passed in as an
         # argument.  Unknown arguments get thrown away.
@@ -135,3 +137,7 @@ ExceptionInfo = namedtuple("ExceptionInfo", ["type", "value", "stack"])
 
 # ExceptionInfo instance plus the object that should be dumped
 DumpInfo = namedtuple("DumpInfo", ["exc_info", "object"])
+
+# information about a package (as provided e.g. by rpm)
+PackageInfo = namedtuple("PackageInfo", ["name", "version", "release", "epoch",
+                                         "arch"])

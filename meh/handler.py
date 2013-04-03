@@ -23,6 +23,7 @@ from network import hasActiveNetDev
 import signal
 import sys
 import report
+import traceback
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -203,12 +204,39 @@ class ExceptionHandler(object):
 
         params = dict()
         params.update(self.exn.environment_info)
+        pkg_info = params.pop("pkg_info", None)
+
         #if rpmdb queries fail (anaconda), use self.conf.* values
         if "component" not in params:
             params["component"] = self.conf.programName
-        if "package" not in params:
-            params["package"] = \
-                    "{0.programName}-{0.programVersion}".format(self.conf)
+
+        if pkg_info:
+            params["pkg_name"] = pkg_info.name
+            params["pkg_version"] = pkg_info.version
+            params["pkg_release"] = pkg_info.release
+            params["pkg_epoch"] = pkg_info.epoch
+            params["pkg_arch"] = pkg_info.arch
+            params["package"] = "%s-%s-%s.%s" % (pkg_info.name, pkg_info.version,
+                                                 pkg_info.release, pkg_info.arch)
+        else:
+            params["pkg_name"] = self.conf.programName
+            parts = self.conf.programVersion.rsplit("-", 1)
+            if len(parts) == 2:
+                version, release = parts
+            else:
+                version = parts[0]
+                # not given, make something up
+                release = "1"
+            params["pkg_version"] = version
+            params["pkg_release"] = release
+            # we don't support specifying epoch in the config object and only
+            # the anaconda which is not using epochs doesn't have the RPMdb to
+            # query
+            params["pkg_epoch"] = "0"
+            params["pkg_arch"] = self.conf.programArch
+            params["package"] = "{0.programName}-{0.programVersion}".format(
+                                                                      self.conf)
+
         params["hashmarkername"] = self.conf.programName
         params["duphash"] = self.exn.hash
         params["reason"] = self.exn.desc
@@ -239,8 +267,11 @@ class ExceptionHandler(object):
                 #skip files we cannot read
                 continue
 
-        # tell ABRT this is a Python exception report
+        # tell ABRT some more things it requires
         params["analyzer"] = "Python"
+        params["backtrace"] = "".join(traceback.format_exception(exc_info.type,
+                                                                 exc_info.value,
+                                                                 exc_info.stack))
 
         signature = report.createPythonUnhandledExceptionSignature(**params)
 
