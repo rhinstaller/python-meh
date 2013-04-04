@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.21
+Version: 0.22
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -53,6 +53,14 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Apr 04 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.22-1
+- Some more stuff for ABRT/libreport (#929181) (vpodzime)
+- Tell ABRT we are reporting a Python excetion (vpodzime)
+- Use named tuples instead of our magic tuples (vpodzime)
+
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.21-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Mon Jan 21 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.21-1
 - New purely textual text interface (vpodzime)
 - Add dumb enableNetwork implementation to GraphicalIntf (vpodzime)
