@@ -81,7 +81,7 @@ class ExceptionHandler(object):
            self.install().  This method should not usually be overridden by
            a subclass.
 
-           @type dump_info: an instance of the meh.DumpInfo class
+           :type dump_info: an instance of the meh.DumpInfo class
 
         """
 
@@ -131,7 +131,7 @@ class ExceptionHandler(object):
            order to have any sort of special pre-write processing that needs
            to be done.
 
-           @type dump_info: an instance of the meh.DumpInfo class
+           :type dump_info: an instance of the meh.DumpInfo class
         """
         pass
 
@@ -141,7 +141,7 @@ class ExceptionHandler(object):
            immediately before the UI is run.  This is to provide a place for
            any special handling to happen once there is a file on disk.
 
-           @type dump_info: an instance of the meh.DumpInfo class
+           :type dump_info: an instance of the meh.DumpInfo class
         """
         pass
 
@@ -176,7 +176,7 @@ class ExceptionHandler(object):
            be overridden by a subclass, but the basic behavior of eventually
            quitting should be preserved.
 
-           @type exc_info: an instance of the meh.ExceptionInfo class
+           :type exc_info: an instance of the meh.ExceptionInfo class
         """
         sys.exit(self.exitcode)
 
@@ -185,7 +185,7 @@ class ExceptionHandler(object):
            be overridden by a subclass if specialized behavior is required to
            enter debug mode.
 
-           @type exc_info: an instance of the meh.ExceptionInfo class
+           :type exc_info: an instance of the meh.ExceptionInfo class
         """
 
         print
@@ -199,7 +199,7 @@ class ExceptionHandler(object):
         """This method is called when the "Save" button is clicked.  It may
            be overridden by a subclass, but that's going to be a lot of work.
 
-           @type exc_info: an instance of the meh.ExceptionInfo class
+           :type exc_info: an instance of the meh.ExceptionInfo class
         """
 
         params = dict()

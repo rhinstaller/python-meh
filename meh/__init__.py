@@ -107,22 +107,22 @@ class Config(object):
         crash is collected. The returned value will be included as the
         'item_name' item.
 
-        @param item_name: name of the item storing the value returned by the
+        :param item_name: name of the item storing the value returned by the
                           'callback' function
-        @type item_name: string
-        @param callback: a function to be called
-        @type callback: a function of type: () -> string
-        @param attchmnt_only: whether the returned valued should be included only
+        :type item_name: string
+        :param callback: a function to be called
+        :type callback: a function of type: () -> string
+        :param attchmnt_only: whether the returned valued should be included only
                              as an attachment or also in the main '*-tb' file
                              (defaults to False)
-        @type attchmnt_only: bool
-        @param override: whether to override the previously registered callback
+        :type attchmnt_only: bool
+        :param override: whether to override the previously registered callback
                          with the same item name or not (may raise exception)
-        @type override: bool
+        :type override: bool
 
-        @raise ConfigError: if callback with the 'item_name' has already been
+        :raise ConfigError: if callback with the 'item_name' has already been
                             registered and 'override' is not set to True
-        @return: None
+        :return: None
 
         """
 

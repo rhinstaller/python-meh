@@ -39,10 +39,10 @@ class ExceptionDump(object):
     def __init__(self, exc_info, config_obj):
         """Create a new ExceptionDump instance.  Instance attributes:
 
-           @param exc_info: info about the exception provided by Python
-           @type exc_info: an instance of the meh.ExceptionInfo class
-           @param config_obj: configuration for python-meh
-           @type config_obj: an instance of the meh.Config class
+           :param exc_info: info about the exception provided by Python
+           :type exc_info: an instance of the meh.ExceptionInfo class
+           :param config_obj: configuration for python-meh
+           :type config_obj: an instance of the meh.Config class
         """
 
         if inspect.istraceback(exc_info.stack):
@@ -80,7 +80,7 @@ class ExceptionDump(object):
         release
         other involved packages
 
-        @rtype: dict (string -> string)
+        :rtype: dict (string -> string)
         """
 
         RELEASE_NAME_FILE = "/etc/system-release"
@@ -93,8 +93,8 @@ class ExceptionDump(object):
             """
             Returns python's command line options
 
-            @return: list of python's command line options
-            @rtype: list
+            :return: list of python's command line options
+            :rtype: list
 
             """
 
@@ -127,11 +127,11 @@ class ExceptionDump(object):
             """
             Returns package and component names for file (by default for script itself).
 
-            @param file_: filename
-            @type file_: string
-            @return: tuple containing package info and component name for the file
-            @rtype: (PackageInfo, str)
-            @throws RPMinfoError: if package and component for the file cannot be found
+            :param file_: filename
+            :type file_: string
+            :return: tuple containing package info and component name for the file
+            :rtype: (PackageInfo, str)
+            :raise RPMinfoError: if package and component for the file cannot be found
 
             """
 
@@ -173,7 +173,7 @@ class ExceptionDump(object):
             Returns a set of additional packages whose files appear in
             traceback.
 
-            @rtype: set
+            :rtype: set
 
             """
             packages = set()
@@ -205,7 +205,7 @@ class ExceptionDump(object):
 
             VARIABLE=VALUE
 
-            @rtype: list
+            :rtype: list
 
             """
 
@@ -488,7 +488,7 @@ class ExceptionDump(object):
         """
         Return the traceback and a text representation of an object.
 
-        @param obj: Any Python object. This object will have all its attributes
+        :param obj: Any Python object. This object will have all its attributes
                     written out, except for those mentioned in the attrSkipList.
 
         """

@@ -43,10 +43,10 @@ class IOHandler(object):
         Constructor for the IOhandler class. Arguments can be used to override
         default I/O functions with the custom ones.
 
-        @param in_func: input function similar to standard raw_input
-        @type in_func: str -> str
-        @param out_func: output function similar to standard print
-        @type out_func: str -> None
+        :param in_func: input function similar to standard raw_input
+        :type in_func: str -> str
+        :param out_func: output function similar to standard print
+        :type out_func: str -> None
 
         """
 
@@ -99,7 +99,7 @@ class TextIntf(AbstractIntf):
         """
         Set different IO handler.
 
-        @type handler: an instance of the IOHandler class
+        :type handler: an instance of the IOHandler class
 
         """
         self._io = handler
