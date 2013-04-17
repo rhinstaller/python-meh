@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.22
+Version: 0.23
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -53,6 +53,11 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Apr 17 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.23-1
+- Use Sphinx syntax for docstrings (vpodzime)
+- Allow a change of the I/O functions (vpodzime)
+- Reword the 'Debug' button warning (#948256) (vpodzime)
+
 * Thu Apr 04 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.22-1
 - Some more stuff for ABRT/libreport (#929181) (vpodzime)
 - Tell ABRT we are reporting a Python excetion (vpodzime)

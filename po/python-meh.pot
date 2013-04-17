@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-04 11:04+0200\n"
+"POT-Creation-Date: 2013-04-17 12:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,47 +19,47 @@ msgstr ""
 
 #. XXX: I know this must be really hard for translators, but there is no
 #. usable way to include context to the POT file in Python
-#: ../meh/ui/text.py:39
+#: ../meh/ui/text.py:71
 msgid "y"
 msgstr ""
 
-#: ../meh/ui/text.py:40
+#: ../meh/ui/text.py:72
 msgid "n"
 msgstr ""
 
-#: ../meh/ui/text.py:93
+#: ../meh/ui/text.py:139
 msgid "Save exception"
 msgstr ""
 
-#: ../meh/ui/text.py:106 tmp/exception-dialog.glade.h:1
+#: ../meh/ui/text.py:152 tmp/exception-dialog.glade.h:1
 msgid "An unknown error has occurred"
 msgstr ""
 
-#: ../meh/ui/text.py:109
+#: ../meh/ui/text.py:155
 msgid "Report Bug"
 msgstr ""
 
-#: ../meh/ui/text.py:110
+#: ../meh/ui/text.py:156
 msgid "Debug"
 msgstr ""
 
-#: ../meh/ui/text.py:111
+#: ../meh/ui/text.py:157
 msgid "Quit"
 msgstr ""
 
-#: ../meh/ui/text.py:116
+#: ../meh/ui/text.py:162
 msgid "What do you want to do now?"
 msgstr ""
 
-#: ../meh/ui/text.py:124
+#: ../meh/ui/text.py:170
 msgid "Please make your choice from above: "
 msgstr ""
 
-#: ../meh/ui/text.py:142
+#: ../meh/ui/text.py:188
 msgid "Hit ENTER to continue"
 msgstr ""
 
-#: ../meh/ui/text.py:155
+#: ../meh/ui/text.py:202
 #, python-format
 msgid "Are you sure you want to exit? [%(yes)s/%(no)s]"
 msgstr ""
@@ -87,7 +87,7 @@ msgid "The output below may help determine the cause of the error:"
 msgstr ""
 
 #: tmp/exception-dialog.glade.h:7
-msgid "'Debug' will take you to tty1. Press Ctrl + Alt + F6 to return."
+msgid "'Debug' may take you to tty1."
 msgstr ""
 
 #: tmp/exception-dialog.glade.h:8
