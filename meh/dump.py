@@ -144,7 +144,7 @@ class ExceptionDump(object):
                 raise RPMinfoError("Cannot get package and component for file "+
                         "{0}".format(file_))
             pkg_info = PackageInfo(header["name"], header["version"],
-                                   header["release"], header["epoch"],
+                                   header["release"], header["epoch"] or "0",
                                    header["arch"])
 
             # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
