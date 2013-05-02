@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.23
+Version: 0.24
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -53,6 +53,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu May 02 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.24-1
+- Epoch of the package from RPM db can be None (#957789) (vpodzime)
+
 * Wed Apr 17 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.23-1
 - Use Sphinx syntax for docstrings (vpodzime)
 - Allow a change of the I/O functions (vpodzime)
