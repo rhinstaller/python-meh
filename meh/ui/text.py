@@ -66,9 +66,10 @@ class TextWindow(object):
         self._io = kwargs.get("io_handler", IOHandler())
         self._title = title
 
-        # XXX: I know this must be really hard for translators, but there is no
-        #      usable way to include context to the POT file in Python
+        # short (one-char) answer meaning "yes"
         self._yes_answer = _("y")
+
+        # short (one-char) answer meaning "no"
         self._no_answer = _("n")
 
     @property
