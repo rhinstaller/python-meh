@@ -1,5 +1,5 @@
 [main]
-host = https://www.transifex.net
+host = https://www.transifex.com
 
 [python-meh.master]
 file_filter = po/<lang>.po
