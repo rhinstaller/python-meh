@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 13:00+0200\n"
+"POT-Creation-Date: 2013-06-18 12:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,49 +17,49 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. XXX: I know this must be really hard for translators, but there is no
-#. usable way to include context to the POT file in Python
-#: ../meh/ui/text.py:71
+#. short (one-char) answer meaning "yes"
+#: ../meh/ui/text.py:70
 msgid "y"
 msgstr ""
 
-#: ../meh/ui/text.py:72
+#. short (one-char) answer meaning "no"
+#: ../meh/ui/text.py:73
 msgid "n"
 msgstr ""
 
-#: ../meh/ui/text.py:139
+#: ../meh/ui/text.py:140
 msgid "Save exception"
 msgstr ""
 
-#: ../meh/ui/text.py:152 tmp/exception-dialog.glade.h:1
+#: ../meh/ui/text.py:153 tmp/exception-dialog.glade.h:1
 msgid "An unknown error has occurred"
 msgstr ""
 
-#: ../meh/ui/text.py:155
+#: ../meh/ui/text.py:156
 msgid "Report Bug"
 msgstr ""
 
-#: ../meh/ui/text.py:156
+#: ../meh/ui/text.py:157
 msgid "Debug"
 msgstr ""
 
-#: ../meh/ui/text.py:157
+#: ../meh/ui/text.py:158
 msgid "Quit"
 msgstr ""
 
-#: ../meh/ui/text.py:162
+#: ../meh/ui/text.py:163
 msgid "What do you want to do now?"
 msgstr ""
 
-#: ../meh/ui/text.py:170
+#: ../meh/ui/text.py:171
 msgid "Please make your choice from above: "
 msgstr ""
 
-#: ../meh/ui/text.py:188
+#: ../meh/ui/text.py:189
 msgid "Hit ENTER to continue"
 msgstr ""
 
-#: ../meh/ui/text.py:202
+#: ../meh/ui/text.py:203
 #, python-format
 msgid "Are you sure you want to exit? [%(yes)s/%(no)s]"
 msgstr ""
