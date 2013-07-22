@@ -436,7 +436,7 @@ class ExceptionDump(object):
                                if not attchmnt_only)
 
         # And now add data returned by the registered callbacks
-        ret += "Registered callbacks:\n"
+        ret += "\nRegistered callbacks:\n"
         for (item_name, callback) in items_callbacks:
             try:
                 ret += "%s:\n%s\n" % (item_name, callback())
