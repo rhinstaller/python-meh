@@ -50,7 +50,15 @@ class SafeStr(str):
                 other.decode("utf-8")
                 ret = SafeStr(str.__add__(self, other))
             except UnicodeDecodeError:
-                # binary data
-                ret = SafeStr(str.__add__(self, "OMITTED BINARY DATA"))
+                # binary data, get the representation used by Python for
+                # non-ascii bytes
+
+                # hex(255) returns "0xff", we want "\xff"
+                other_hexa = (hex(ord(char)) for char in other)
+                other_backslashed = (hex_num.replace("0x", "\\x")
+                                     for hex_num in other_hexa)
+                other_repr = "".join(other_backslashed)
+
+                ret = SafeStr(str.__add__(self, other_repr))
 
         return ret

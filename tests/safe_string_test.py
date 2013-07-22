@@ -32,7 +32,8 @@ class SafeStr_TestCase(BaseTestCase):
 
         # should be included twice -- appended enc_unistr and unistr
         self.assertIn(2*self.enc_unistr, self.safestr)
-        self.assertIn("OMITTED BINARY DATA", self.safestr)
+
+        self.assertIn("\\xff\\xff\\xfe", self.safestr)
         self.assertIn(str(self.test_object), self.safestr)
         self.assertIn("OMITTED OBJECT WITHOUT __str__ METHOD", self.safestr)
 

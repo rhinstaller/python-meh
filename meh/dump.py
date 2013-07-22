@@ -352,7 +352,11 @@ class ExceptionDump(object):
                         ret += self._dumpClass(item, level + 1, skipList=skipList)
                 ret += "]\n"
             elif type(value) == types.DictType:
-                ret += "%s%s: {" % (pad, curkey)
+                # append things one after another so that e.g. binary data is
+                # replaced by hexa values separately
+                ret += pad
+                ret += curkey
+                ret += ": {"
                 first = 1
                 for k, v in value.items():
                     if not first:
@@ -360,7 +364,9 @@ class ExceptionDump(object):
                     else:
                         first = 0
                     if type(k) == types.StringType:
-                        ret += "'%s': " % (k,)
+                        ret += "'"
+                        ret += k
+                        ret += "': "
                     else:
                         ret += "%s: " % (k,)
 
@@ -370,7 +376,9 @@ class ExceptionDump(object):
                         ret += self._dumpClass(v, level + 1, parentkey = curkey, skipList=skipList)
                 ret += "}\n"
             elif __isSimpleType(value):
-                ret += "%s%s: %s\n" % (pad, curkey, value)
+                ret += "%s%s: " % (pad, curkey)
+                ret += value
+                ret += "\n"
             else:
                 ret += "%s%s: " % (pad, curkey)
                 ret += self._dumpClass(value, level + 1, parentkey=curkey, skipList=skipList)
