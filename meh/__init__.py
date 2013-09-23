@@ -65,7 +65,7 @@ class Config(object):
            fileList       -- A list of files to find on the system and add
                              to the traceback dump.
            localSkipList  -- A list of strings.  When handling a traceback,
-                             any local variables found with the same name as
+                             any local variables found with their name containing
                              an element of this list will not be written to
                              the dump.  This is subtely different from
                              attrSkipList.

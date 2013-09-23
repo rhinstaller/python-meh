@@ -420,9 +420,9 @@ class ExceptionDump(object):
             ret += "\nLocal variables in innermost frame:\n"
             try:
                 for (key, value) in frame.f_locals.items():
-                    loweredKey = key.lower()
-                    if len(filter(lambda s: loweredKey.find(s) != -1,
-                                  self.conf.localSkipList)) > 0:
+                    lowered_key = key.lower()
+                    if any(item.lower() in lowered_key
+                           for item in self.conf.localSkipList):
                         continue
 
                     ret += "%s: %s\n" % (key, value)
