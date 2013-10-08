@@ -30,11 +30,6 @@ MAIN_RESPONSE_SAVE = 1
 MAIN_RESPONSE_QUIT = 2
 MAIN_RESPONSE_NONE = 3
 
-# And these constants represent the return values of buttons on the exception
-# saving dialog.
-SAVE_RESPONSE_OK = 0
-SAVE_RESPONSE_CANCEL = 1
-
 class ConfigError(Exception):
     """Exception class for the configuration related errors."""
 
