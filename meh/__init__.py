@@ -28,7 +28,8 @@ from collections import namedtuple
 MAIN_RESPONSE_DEBUG = 0
 MAIN_RESPONSE_SAVE = 1
 MAIN_RESPONSE_QUIT = 2
-MAIN_RESPONSE_NONE = 3
+MAIN_RESPONSE_SHELL = 3
+MAIN_RESPONSE_NONE = 4
 
 class ConfigError(Exception):
     """Exception class for the configuration related errors."""

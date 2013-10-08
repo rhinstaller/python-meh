@@ -24,6 +24,7 @@ import signal
 import sys
 import report
 import traceback
+import subprocess
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -85,9 +86,11 @@ class ExceptionHandler(object):
 
         """
 
-        responseHash = {MAIN_RESPONSE_QUIT: self.runQuit,
-                        MAIN_RESPONSE_DEBUG: self.runDebug,
-                        MAIN_RESPONSE_SAVE: self.runSave}
+        responseHash = { MAIN_RESPONSE_QUIT: self.runQuit,
+                         MAIN_RESPONSE_DEBUG: self.runDebug,
+                         MAIN_RESPONSE_SAVE: self.runSave,
+                         MAIN_RESPONSE_SHELL: self.runShell,
+                         }
 
         # Quit if we got an exception when running pdb.
         if isinstance(dump_info.exc_info.value, bdb.BdbQuit):
@@ -194,6 +197,20 @@ class ExceptionHandler(object):
         import pdb
         pdb.post_mortem(exc_info.stack)
         #no need to quit here, let's just get back to the main dialog
+
+    def runShell(self, exc_info):
+        """This method is called when user requests to run a shell. It may
+           be overridden by a subclass if specialized behavior is required to
+           run shell (e.g. TTY switching).
+
+           :type exc_info: an instance of the meh.ExceptionInfo class
+
+        """
+
+        print
+        print "Exit the shell to get back to the main menu"
+        proc = subprocess.Popen(["bash", "--login"], shell=True, cwd="/")
+        proc.wait()
 
     def runSave(self, exc_info):
         """This method is called when the "Save" button is clicked.  It may

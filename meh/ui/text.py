@@ -155,6 +155,7 @@ class MainExceptionWindow(TextWindow, AbstractMainExceptionWindow):
         self._short_traceback = shortTraceback
         self._menu_items = [(_("Report Bug"), MAIN_RESPONSE_SAVE),
                             (_("Debug"), MAIN_RESPONSE_DEBUG),
+                            (_("Run shell"), MAIN_RESPONSE_SHELL),
                             (_("Quit"), MAIN_RESPONSE_QUIT)]
 
     def run(self, *args, **kwargs):
