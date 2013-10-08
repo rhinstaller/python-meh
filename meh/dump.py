@@ -23,7 +23,6 @@
 #
 import copy
 import inspect
-from string import joinfields
 import os
 import traceback
 import types
@@ -258,7 +257,7 @@ class ExceptionDump(object):
         if self.type is not None and self.value is not None:
             lst.extend(traceback.format_exception_only(self.type, self.value))
 
-        return joinfields(lst, "")
+        return "".join(lst)
 
     def _format_stack(self):
         if not self.stack:
@@ -517,4 +516,4 @@ class ReverseExceptionDump(ExceptionDump):
         if self.type is not None and self.value is not None:
             lst.extend(traceback.format_exception_only(self.type, self.value))
 
-        return joinfields(lst, "")
+        return "".join(lst)
