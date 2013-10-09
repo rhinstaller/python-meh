@@ -60,6 +60,9 @@ rm -rf %{buildroot}
 - Get rid of constants that are no longer used anywhere
 - Filter local variables in a nicer way and fix docstring
 
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.26-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Tue Jul 23 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.26-1
 - Output binary data correctly as hexa strings (#986515) (vpodzime)
 - Add newline before dumping callbacks' outputs (vpodzime)
