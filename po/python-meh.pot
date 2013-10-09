@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 12:45+0200\n"
+"POT-Creation-Date: 2013-10-09 13:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../meh/handler.py:195
+msgid ""
+"Use 'continue' command to quit the debugger and get back to the main menu"
+msgstr ""
+
+#: ../meh/handler.py:211
+msgid "Exit the shell to get back to the main menu"
+msgstr ""
 
 #. short (one-char) answer meaning "yes"
 #: ../meh/ui/text.py:70
@@ -44,22 +53,26 @@ msgid "Debug"
 msgstr ""
 
 #: ../meh/ui/text.py:158
+msgid "Run shell"
+msgstr ""
+
+#: ../meh/ui/text.py:159
 msgid "Quit"
 msgstr ""
 
-#: ../meh/ui/text.py:163
+#: ../meh/ui/text.py:164
 msgid "What do you want to do now?"
 msgstr ""
 
-#: ../meh/ui/text.py:171
+#: ../meh/ui/text.py:172
 msgid "Please make your choice from above: "
 msgstr ""
 
-#: ../meh/ui/text.py:189
+#: ../meh/ui/text.py:190
 msgid "Hit ENTER to continue"
 msgstr ""
 
-#: ../meh/ui/text.py:203
+#: ../meh/ui/text.py:204
 #, python-format
 msgid "Are you sure you want to exit? [%(yes)s/%(no)s]"
 msgstr ""
