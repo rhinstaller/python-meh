@@ -3,9 +3,9 @@
 from tests.baseclass import BaseTestCase
 from meh import Config
 
-BINARY_DATA = "\xff\x61\xfe\xdd"
-BINARY_DATA2 = "\xfe\x61\xff\xdd"
-BINARY_DATA3 = "\xfe\x62\xff\xdd"
+BINARY_DATA = b"\xff\x61\xfe\xdd"
+BINARY_DATA2 = b"\xfe\x61\xff\xdd"
+BINARY_DATA3 = b"\xfe\x62\xff\xdd"
 
 class BinaryExample(object):
     def __init__(self):
@@ -29,10 +29,13 @@ class HandleBinary_TestCase(BaseTestCase):
 
         # should contain the attribute name and hexa representation of binary
         # data ('\x61' == 'a' which shouldn't be translated)
-        self.assertIn("bin_data: \\xff\\x61\\xfe\\xdd\n", dump)
+        self.assertTrue("bin_data: \\xff\\x61\\xfe\\xdd\n" in dump or
+                        "bin_data: b'\\xffa\\xfe\\xdd'\n" in dump)
 
         # should contain the binary-keyed dict
-        self.assertIn("dict: {'\\xfe\\x61\\xff\\xdd': \\xfe\\x61\\xff\\xdd", dump)
+        self.assertTrue("dict: {'\\xfe\\x61\\xff\\xdd': \\xfe\\x61\\xff\\xdd" in dump or
+                        "dict: {b'\\xfea\\xff\\xdd': b'\\xfea\\xff\\xdd'" in dump)
 
         # should contain the list with binary item(s)
-        self.assertIn("list: [\\xfe\\x62\\xff\\xdd]", dump)
+        self.assertTrue("list: [\\xfe\\x62\\xff\\xdd]" in dump or
+                        "list: [b'\\xfeb\\xff\\xdd']" in dump)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from tests.baseclass import BaseTestCase
-from meh.safe_string import SafeStr
+from meh.safe_string import SafeStr, PY
 
 class TestClass(object):
     def __str__(self):
@@ -16,7 +16,7 @@ class SafeStr_TestCase(BaseTestCase):
         self.unistr = u"ááááá"
         self.enc_unistr = self.unistr.encode("utf-8")
         self.asciistr = "aaaa"
-        self.bindata = '\xff\xff\xfe'
+        self.bindata = b'\xff\xff\xfe'
         self.test_object = TestClass()
         self.test_object2 = TestClass2()
 
@@ -30,10 +30,15 @@ class SafeStr_TestCase(BaseTestCase):
 
         self.assertIn(self.asciistr, self.safestr)
 
-        # should be included twice -- appended enc_unistr and unistr
-        self.assertIn(2*self.enc_unistr, self.safestr)
+        if PY == 2:
+            self.assertIn("OMITTED OBJECT WITHOUT __str__ METHOD", self.safestr)
+            # should be included twice -- appended enc_unistr and unistr
+            self.assertIn(str(self.enc_unistr), self.safestr)
+        else:
+            self.assertIn("<safe_string_test.TestClass2 object at ", self.safestr)
+            self.assertIn(str(self.enc_unistr), self.safestr)
+            self.assertIn(self.unistr, self.safestr)
 
         self.assertIn("\\xff\\xff\\xfe", self.safestr)
         self.assertIn(str(self.test_object), self.safestr)
-        self.assertIn("OMITTED OBJECT WITHOUT __str__ METHOD", self.safestr)
 

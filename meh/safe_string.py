@@ -19,6 +19,9 @@
 #
 #
 
+import sys
+PY = int(sys.version.split('.')[0])
+
 """
 This module provides a SafeStr class.
 
@@ -35,6 +38,10 @@ class SafeStr(str):
     """
 
     def __add__(self, other):
+
+        if PY > 2:
+            return SafeStr(str.__add__(self, str(other)))
+
         if not (isinstance(other, str) or isinstance(other, unicode)):
             if hasattr(other, "__str__"):
                 other = other.__str__()

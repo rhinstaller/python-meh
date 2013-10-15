@@ -23,6 +23,10 @@ test:
 	@echo "*** Running unittests ***"
 	PYTHONPATH=. python $(TESTSUITE) -v
 
+test3:
+	@echo "*** Running unittests ***"
+	PYTHONPATH=. python3 $(TESTSUITE) -v
+
 install:
 	python setup.py install --root=$(DESTDIR)
 	$(MAKE) -C po install

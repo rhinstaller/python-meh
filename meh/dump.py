@@ -31,6 +31,17 @@ import codecs
 from meh import PackageInfo
 from meh.safe_string import SafeStr
 
+# Python 2/3 compatibilty
+try:
+    longtype = long
+except NameError:
+    longtype = int
+
+try:
+    unitype = unicode
+except NameError:
+    unitype = str
+
 class ExceptionDump(object):
     """This class represents a traceback and contains several useful methods
        for manipulating a traceback.  In general, clients should not have to
@@ -210,7 +221,7 @@ class ExceptionDump(object):
             """
 
             ret = list()
-            for (key, value) in os.environ.iteritems():
+            for (key, value) in os.environ.items():
                 ret.append("{0}={1}".format(key, value))
 
             return ret
@@ -286,9 +297,15 @@ class ExceptionDump(object):
         # out, and everything else will be assumed to be something that
         # needs to be recursed on.
         def __isSimpleType(instance):
-            return type(instance) in [types.BooleanType, types.ComplexType, types.FloatType,
-                                      types.IntType, types.LongType, types.NoneType,
-                                      types.StringType, types.UnicodeType] or \
+            return isinstance(instance, bool) or \
+                   isinstance(instance, complex) or \
+                   isinstance(instance, float) or \
+                   isinstance(instance, int) or \
+                   isinstance(instance, longtype) or \
+                   isinstance(instance, type(None)) or \
+                   isinstance(instance, bytes) or \
+                   isinstance(instance, str) or \
+                   isinstance(instance, unitype) or \
                    not hasattr(instance, "__class__") or \
                    not hasattr(instance, "__dict__")
 
@@ -298,7 +315,7 @@ class ExceptionDump(object):
         try:
             # Store the id(), not the instance name to protect against
             # instances that cannot be hashed.
-            if not self._dumpHash.has_key(id(instance)):
+            if not id(instance) in self._dumpHash:
                 self._dumpHash[id(instance)] = None
             else:
                 ret += "Already dumped (%s instance)\n" % instance.__class__.__name__
@@ -307,8 +324,8 @@ class ExceptionDump(object):
             ret += "Cannot dump object\n"
             return ret
 
-        if (instance.__class__.__dict__.has_key("__str__") or
-            instance.__class__.__dict__.has_key("__repr__")):
+        if ("__str__" in instance.__class__.__dict__ or
+            "__repr__" in instance.__class__.__dict__):
             try:
                 ret += "%s\n" % (instance,)
             except:
@@ -336,7 +353,7 @@ class ExceptionDump(object):
                 ret += "%s%s: Skipped\n" % (pad, curkey)
                 continue
 
-            if type(value) == types.ListType:
+            if isinstance(value, list):
                 ret += "%s%s: [" % (pad, curkey)
                 first = 1
                 for item in value:
@@ -350,7 +367,7 @@ class ExceptionDump(object):
                     else:
                         ret += self._dumpClass(item, level + 1, skipList=skipList)
                 ret += "]\n"
-            elif type(value) == types.DictType:
+            elif isinstance(value, dict):
                 # append things one after another so that e.g. binary data is
                 # replaced by hexa values separately
                 ret += pad
@@ -362,7 +379,7 @@ class ExceptionDump(object):
                         ret += ", "
                     else:
                         first = 0
-                    if type(k) == types.StringType:
+                    if isinstance(k, str) or isinstance(k, unitype):
                         ret += "'"
                         ret += k
                         ret += "': "
@@ -439,7 +456,7 @@ class ExceptionDump(object):
         # Filter out item names and callbacks that should appear
         # only as attachments
         items_callbacks = ((name, cb) for (name, (cb, attchmnt_only))
-                               in self.conf.callbackDict.iteritems()
+                               in self.conf.callbackDict.items()
                                if not attchmnt_only)
 
         # And now add data returned by the registered callbacks

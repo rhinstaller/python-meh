@@ -85,8 +85,8 @@ class Config(object):
 
         # Override the defaults set above with whatever's passed in as an
         # argument.  Unknown arguments get thrown away.
-        for (key, val) in kwargs.iteritems():
-            if self.__dict__.has_key(key):
+        for (key, val) in kwargs.items():
+            if key in self.__dict__:
                 self.__dict__[key] = val
 
         # Make sure required things are set.

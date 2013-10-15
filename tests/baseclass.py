@@ -1,5 +1,5 @@
 import glob
-import imputil
+import importlib
 import os
 import sys
 import tempfile
@@ -62,9 +62,8 @@ def loadModules(moduleDir, cls_pattern="_TestCase", skip_list=["__init__", "base
 
         # Attempt to load the found module.
         try:
-            found = imputil.imp.find_module(module)
-            loaded = imputil.imp.load_module(module, found[0], found[1], found[2])
-        except ImportError, e:
+            loaded = importlib.import_module(module)
+        except ImportError as e:
             print("Error loading module %s." % module)
             continue
 

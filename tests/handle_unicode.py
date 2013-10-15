@@ -20,7 +20,10 @@ class HandleUnicode_TestCase(BaseTestCase):
     def setUp(self):
         # write UTF-8 and ASCII files for testing
         (fobj, self.uni_file_path) = self.openFile()
-        fobj.write(UNICODE_LINE.encode("utf-8"))
+        try:
+            fobj.write(UNICODE_LINE)
+        except UnicodeEncodeError:
+            fobj.write(UNICODE_LINE.encode("utf-8"))
         fobj.close()
 
         (fobj, self.ascii_file_path) = self.openFile()
@@ -37,10 +40,10 @@ class HandleUnicode_TestCase(BaseTestCase):
         # should not raise exception
         dump = self.dump(conf, unicode_example)
 
-        self.assertIn("unicode_str: " + UNICODE_STR.encode("utf-8"), dump)
-        self.assertIn("encoded_str: " + UNICODE_STR.encode("utf-8"), dump)
-        self.assertIn(UNICODE_LINE.encode("utf-8"), dump)
+        self.assertIn("_str: " + str(UNICODE_STR.encode("utf-8")), dump)
+        self.assertIn("encoded_str: " + str(UNICODE_STR.encode("utf-8")), dump)
+        self.assertIn(str(UNICODE_LINE.encode("utf-8")), dump)
 
         self.assertIn("ascii_str: " + ASCII_STR, dump)
-        self.assertIn(ASCII_LINE, dump)
+        self.assertIn(ASCII_LINE.rstrip(), dump)
 

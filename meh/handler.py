@@ -19,7 +19,7 @@
 from meh import *
 import bdb
 import os
-from network import hasActiveNetDev
+from .network import hasActiveNetDev
 import signal
 import sys
 import report
@@ -191,9 +191,9 @@ class ExceptionHandler(object):
            :type exc_info: an instance of the meh.ExceptionInfo class
         """
 
-        print
-        print _("Use 'continue' command to quit the debugger and get back to "
-                "the main menu")
+        print("")
+        print(_("Use 'continue' command to quit the debugger and get back to "
+                "the main menu"))
         import pdb
         pdb.post_mortem(exc_info.stack)
         #no need to quit here, let's just get back to the main dialog
@@ -207,8 +207,8 @@ class ExceptionHandler(object):
 
         """
 
-        print
-        print _("Exit the shell to get back to the main menu")
+        print("")
+        print(_("Exit the shell to get back to the main menu"))
         proc = subprocess.Popen(["bash", "--login"], shell=True, cwd="/")
         proc.wait()
 
