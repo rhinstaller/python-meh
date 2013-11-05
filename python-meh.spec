@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.27
+Version: 0.28
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -53,6 +53,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Nov 05 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.28-1
+- Introduce support for Python 3 while keeping Python 2 working (miro)
+- Sync spec with downstream (vpodzime)
+
 * Wed Oct 09 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.27-1
 - Use join method instead of the joinfields function
 - Translate the hints on how to quit debugger and shell
