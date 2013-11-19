@@ -21,13 +21,22 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
 BuildRequires: dbus-python, libreport-gtk >= %{libreportver}, libreport-cli >= %{libreportver}
-Requires: python, dbus-python, pygobject3, gtk3
+Requires: python, dbus-python
 Requires: openssh-clients, rpm-python, yum
-Requires: libreport-gtk >= %{libreportver}, libreport-cli >= %{libreportver}
+Requires: libreport-cli >= %{libreportver}
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
 exceptions.
+
+%package gui
+Summary: Graphical user interface for the python-meh library
+Requires: python-meh = %{version}-%{release}
+Requires: pygobject3, gtk3
+Requires: libreport-gtk >= %{libreportver}
+
+%description gui
+The python-meh-gui package provides a GUI for the python-meh library.
 
 %prep
 %setup -q
@@ -50,6 +59,10 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc ChangeLog COPYING
 %{python_sitelib}/*
+%exclude %{python_sitelib}/meh/ui/gui.py
+
+%files gui
+%{python_sitelib}/meh/ui/gui.py
 %{_datadir}/python-meh
 
 %changelog
