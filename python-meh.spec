@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.28
+Version: 0.29
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -66,6 +66,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Nov 20 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.29-1
+- Split GUI out into a separate package (vpodzime)
+- Create archives in one Makefile target and reuse it (vpodzime)
+
 * Tue Nov 05 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.28-1
 - Introduce support for Python 3 while keeping Python 2 working (miro)
 - Sync spec with downstream (vpodzime)
