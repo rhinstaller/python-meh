@@ -463,7 +463,9 @@ class ExceptionDump(object):
         ret += "\nRegistered callbacks:\n"
         for (item_name, callback) in items_callbacks:
             try:
-                ret += "%s:\n%s\n" % (item_name, callback())
+                callback_ret = callback()
+                if callback_ret:
+                    ret += "%s:\n%s\n" % (item_name, callback_ret)
             except Exception as exc:
                 ret += "%s: Caused error: %s\n" % (item_name, exc)
 
