@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.29
+Version: 0.30
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -66,6 +66,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Dec 18 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.30-1
+- Exclude compiled versions of gui.py from the non-gui package (dshea)
+- Skip callbacks providing no information (vpodzime)
+
 * Wed Nov 20 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.29-1
 - Split GUI out into a separate package (vpodzime)
 - Create archives in one Makefile target and reuse it (vpodzime)
@@ -148,7 +152,7 @@ rm -rf %{buildroot}
 - Set the type hint for the mainExceptionWindow to Dialog (vpodzime)
 - Store and then write out the string representation of the traceback and object dump (vpodzime)
 
-* Wed Jul 27 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.13-1
+* Fri Jul 27 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.13-1
 - Add files specified in the Config object as attachments to bugreports (vpodzime)
 - Display hint how to quit the debugger (vpodzime)
 - Do not kill the process when 'continue' is used in pdb (vpodzime)
