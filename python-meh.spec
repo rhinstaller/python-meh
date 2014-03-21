@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.30
+Version: 0.31
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -66,6 +66,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Fri Mar 21 2014 Martin Kolman <mkolman@redhat.com> - 0.31-1
+- Translation update
+
 * Wed Dec 18 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.30-1
 - Exclude compiled versions of gui.py from the non-gui package (dshea)
 - Skip callbacks providing no information (vpodzime)
