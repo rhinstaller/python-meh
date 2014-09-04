@@ -68,6 +68,10 @@ rm -rf %{buildroot}
 %changelog
 * Thu Sep 04 2014 Martin Kolman <mkolman@redhat.com> - 0.25.1-1
 - Split GUI out into a separate package (#1136795) (vpodzime)
+  Resolves: rhbz#1136795
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.25-2
+- Mass rebuild 2013-12-27
 
 * Tue Jun 18 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.25-1
 - Add and use the safe_string module and the SafeStr class (vpodzime)
