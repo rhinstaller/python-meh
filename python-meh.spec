@@ -5,7 +5,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.25
+Version: 0.25.1
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -66,6 +66,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Thu Sep 04 2014 Martin Kolman <mkolman@redhat.com> - 0.25.1-1
+- Split GUI out into a separate package (#1136795) (vpodzime)
+
 * Tue Jun 18 2013 Vratislav Podzimek <vpodzime@redhat.com> - 0.25-1
 - Add and use the safe_string module and the SafeStr class (vpodzime)
 - Give translators hint about the cryptic strings (vpodzime)
