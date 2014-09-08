@@ -60,7 +60,7 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	tx pull -a --disable-overwrite
+	tx pull -a
 
 bumpver: potfile
 	tx push -s
