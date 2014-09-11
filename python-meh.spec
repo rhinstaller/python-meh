@@ -59,10 +59,10 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc ChangeLog COPYING
 %{python_sitelib}/*
-%exclude %{python_sitelib}/meh/ui/gui.py
+%exclude %{python_sitelib}/meh/ui/gui.py*
 
 %files gui
-%{python_sitelib}/meh/ui/gui.py
+%{python_sitelib}/meh/ui/gui.py*
 %{_datadir}/python-meh
 
 %changelog
