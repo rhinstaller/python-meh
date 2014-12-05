@@ -150,7 +150,7 @@ class ExceptionDump(object):
             ts = rpm.TransactionSet()
             mi = ts.dbMatch("basenames", file_)
             try:
-                header = mi.next()
+                header = next(mi)
             except StopIteration:
                 raise RPMinfoError("Cannot get package and component for file "+
                         "{0}".format(file_))
