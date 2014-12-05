@@ -31,7 +31,7 @@ def find_glade_file(file):
         fn = d + file
         if os.access(fn, os.R_OK):
             return fn
-    raise RuntimeError, "Unable to find glade file %s" % file
+    raise RuntimeError("Unable to find glade file %s" % file)
 
 class GraphicalIntf(AbstractIntf):
     def __init__(self, *args, **kwargs):
