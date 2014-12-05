@@ -58,7 +58,7 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	tx pull -a
+	tx pull -a -f
 
 bumpver: potfile
 	tx push -s
