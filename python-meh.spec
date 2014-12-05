@@ -19,10 +19,10 @@ License: GPLv2+
 Group: System Environment/Libraries
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: python-devel, gettext, python-setuptools-devel, intltool
+BuildRequires: python-devel, gettext, python-setuptools, intltool
 BuildRequires: dbus-python, libreport-gtk >= %{libreportver}, libreport-cli >= %{libreportver}
 Requires: python, dbus-python
-Requires: openssh-clients, rpm-python, yum
+Requires: openssh-clients, rpm-python
 Requires: libreport-cli >= %{libreportver}
 
 %description
