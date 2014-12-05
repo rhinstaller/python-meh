@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.32
+Version: 0.33
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -132,6 +132,16 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Fri Dec 05 2014 Vratislav Podzimek <vpodzime@redhat.com> - 0.33-1
+- Make sure fresh translations are always fetched (vpodzime)
+- Add pieces needed to build the python3- subpackage (#985294) (mhroncok)
+- Remove yum from requires and fix setuptools requires (mhroncok)
+- raw_input is replaced by input in Python3 (vpodzime)
+- Raise exception in a Python3 compatible way (mhroncok)
+- Remove the --disable-overwrite parameter for the Transifex client (mkolman)
+- Use /usr/bin/python2 in scripts (mkolman)
+- Add example code using python-meh (vpodzime)
+
 * Mon Apr 28 2014 Martin Kolman <mkolman@redhat.com> - 0.32-1
 - Translation update
 

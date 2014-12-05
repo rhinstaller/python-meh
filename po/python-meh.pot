@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-28 17:39+0200\n"
+"POT-Creation-Date: 2014-12-05 14:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,52 +27,52 @@ msgid "Exit the shell to get back to the main menu"
 msgstr ""
 
 #. short (one-char) answer meaning "yes"
-#: ../meh/ui/text.py:70
+#: ../meh/ui/text.py:75
 msgid "y"
 msgstr ""
 
 #. short (one-char) answer meaning "no"
-#: ../meh/ui/text.py:73
+#: ../meh/ui/text.py:78
 msgid "n"
 msgstr ""
 
-#: ../meh/ui/text.py:140
+#: ../meh/ui/text.py:145
 msgid "Save exception"
 msgstr ""
 
-#: ../meh/ui/text.py:153 tmp/exception-dialog.glade.h:1
+#: ../meh/ui/text.py:158 tmp/exception-dialog.glade.h:1
 msgid "An unknown error has occurred"
 msgstr ""
 
-#: ../meh/ui/text.py:156
+#: ../meh/ui/text.py:161
 msgid "Report Bug"
 msgstr ""
 
-#: ../meh/ui/text.py:157
+#: ../meh/ui/text.py:162
 msgid "Debug"
 msgstr ""
 
-#: ../meh/ui/text.py:158
+#: ../meh/ui/text.py:163
 msgid "Run shell"
 msgstr ""
 
-#: ../meh/ui/text.py:159
+#: ../meh/ui/text.py:164
 msgid "Quit"
 msgstr ""
 
-#: ../meh/ui/text.py:164
+#: ../meh/ui/text.py:169
 msgid "What do you want to do now?"
 msgstr ""
 
-#: ../meh/ui/text.py:172
+#: ../meh/ui/text.py:177
 msgid "Please make your choice from above: "
 msgstr ""
 
-#: ../meh/ui/text.py:190
+#: ../meh/ui/text.py:195
 msgid "Hit ENTER to continue"
 msgstr ""
 
-#: ../meh/ui/text.py:204
+#: ../meh/ui/text.py:209
 #, python-format
 msgid "Are you sure you want to exit? [%(yes)s/%(no)s]"
 msgstr ""
