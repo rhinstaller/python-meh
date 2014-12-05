@@ -5,6 +5,8 @@ TAG=r$(VERSION)-$(RELEASE)
 
 PREFIX=/usr
 
+PYTHON=python
+
 TESTSUITE:=tests/baseclass.py
 
 PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -Q
@@ -17,18 +19,14 @@ all:
 clean:
 	-rm *.tar.gz meh/*.pyc meh/ui/*.pyc tests/*.pyc ChangeLog
 	$(MAKE) -C po clean
-	python setup.py -q clean --all
+	$(PYTHON) setup.py -q clean --all
 
 test:
 	@echo "*** Running unittests ***"
-	PYTHONPATH=. python $(TESTSUITE) -v
-
-test3:
-	@echo "*** Running unittests ***"
-	PYTHONPATH=. python3 $(TESTSUITE) -v
+	PYTHONPATH=. $(PYTHON) $(TESTSUITE) -v
 
 install:
-	python setup.py install --root=$(DESTDIR)
+	$(PYTHON) setup.py install --root=$(DESTDIR)
 	$(MAKE) -C po install
 
 ChangeLog:

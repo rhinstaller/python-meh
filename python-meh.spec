@@ -1,4 +1,5 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%global with_python3 1
 
 %define libreportver 2.0.18-1
 
@@ -20,10 +21,18 @@ Group: System Environment/Libraries
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel, gettext, python-setuptools, intltool
-BuildRequires: dbus-python, libreport-gtk >= %{libreportver}, libreport-cli >= %{libreportver}
+BuildRequires: dbus-python, libreport-gtk >= %{libreportver}, libreport-cli >= %{libreportver}, libreport-python >= %{libreportver}
+
+%if 0%{with_python3}
+BuildRequires: python3-devel python3-setuptools
+BuildRequires: python3-dbus
+BuildRequires: libreport-python3 >= %{libreportver}
+%endif
+
 Requires: python, dbus-python
 Requires: openssh-clients, rpm-python
 Requires: libreport-cli >= %{libreportver}
+Requires: libreport-python >= %{libreportver}
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
@@ -38,18 +47,66 @@ Requires: libreport-gtk >= %{libreportver}
 %description gui
 The python-meh-gui package provides a GUI for the python-meh library.
 
+%if 0%{with_python3}
+%package -n python3-meh
+Summary:  A python 3 library for handling exceptions
+Requires: python3, python3-dbus
+Requires: openssh-clients, rpm-python3
+Requires: libreport-cli >= %{libreportver}
+Requires: libreport-python3 >= %{libreportver}
+
+%description -n python3-meh
+The python3-meh package is a python 3 library for handling, saving, and reporting
+exceptions.
+
+%package -n python3-meh-gui
+Summary: Graphical user interface for the python3-meh library
+Requires: python3-meh = %{version}-%{release}
+Requires: python3-gobject, gtk3
+Requires: libreport-gtk >= %{libreportver}
+
+%description -n python3-meh-gui
+The python3-meh-gui package provides a GUI for the python3-meh library.
+
+%endif
+
 %prep
 %setup -q
+
+%if 0%{?with_python3}
+rm -rf %{py3dir}
+cp -a . %{py3dir}
+%endif # with_python3
 
 %build
 make
 
+%if 0%{?with_python3}
+pushd %{py3dir}
+make PYTHON=%{__python3}
+popd
+%endif
+
 %check
 make test
+
+%if 0%{?with_python3}
+pushd %{py3dir}
+# Needs UTF-8 locale
+LANG=en_US.UTF-8 make PYTHON=%{__python3} test
+popd
+%endif
 
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
+
+%if 0%{?with_python3}
+pushd %{py3dir}
+make PYTHON=%{__python3} DESTDIR=%{buildroot} install
+popd
+%endif
+
 %find_lang %{name}
 
 %clean
@@ -63,6 +120,15 @@ rm -rf %{buildroot}
 
 %files gui
 %{python_sitelib}/meh/ui/gui.py*
+%{_datadir}/python-meh
+
+%files -n python3-meh
+%doc ChangeLog COPYING
+%{python3_sitelib}/*
+%exclude %{python3_sitelib}/meh/ui/gui.py*
+
+%files -n python3-meh-gui
+%{python3_sitelib}/meh/ui/gui.py*
 %{_datadir}/python-meh
 
 %changelog
