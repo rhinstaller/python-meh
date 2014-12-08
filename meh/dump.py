@@ -506,7 +506,7 @@ class ExceptionDump(object):
         else:
             s = "%s %s" % (self.type, self.value)
 
-        return hashlib.sha256(s).hexdigest()
+        return hashlib.sha256(s.encode("utf-8")).hexdigest()
 
     def traceback_and_object_dump(self, obj):
         """
