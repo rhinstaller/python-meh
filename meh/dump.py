@@ -154,20 +154,22 @@ class ExceptionDump(object):
             except StopIteration:
                 raise RPMinfoError("Cannot get package and component for file "+
                         "{0}".format(file_))
-            pkg_info = PackageInfo(header["name"], header["version"],
-                                   header["release"], header["epoch"] or "0",
-                                   header["arch"])
+            pkg_info = PackageInfo(header["name"].decode("utf-8"), header["version"].decode("utf-8"),
+                                   header["release"].decode("utf-8"),
+                                   header["epoch"].decode("utf-8") if header["epoch"] else "0",
+                                   header["arch"].decode("utf-8"))
 
             # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
-            name_end = len(header["sourcerpm"])
+            srpm_name = header["sourcerpm"].decode("utf-8")
+            name_end = len(srpm_name)
             try:
-                name_end = header["sourcerpm"].rindex('-')
-                name_end = header["sourcerpm"][:name_end].rindex('-')
+                name_end = srpm_name.rindex('-')
+                name_end = srpm_name[:name_end].rindex('-')
             except ValueError as e:
                 # expected exception
                 pass
 
-            component = header["sourcerpm"][:name_end]
+            component = srpm_name[:name_end]
 
             return (pkg_info, component)
 
