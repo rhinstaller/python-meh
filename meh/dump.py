@@ -125,11 +125,12 @@ class ExceptionDump(object):
                     "verbose": "-v",
                     "unicode": "-u",
                     "bytes_warning": "-b",
+                    "quiet": "-q",
                     }
 
             ret = set()
             for flag in flags_to_opts.keys():
-                if getattr(sys.flags, flag):
+                if getattr(sys.flags, flag, None):
                     ret.add(flags_to_opts[flag])
             ret = list(ret)
             return ret
