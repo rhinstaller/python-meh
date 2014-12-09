@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.33
+Version: 0.34
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -132,6 +132,12 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Dec 09 2014 Vratislav Podzimek <vpodzime@redhat.com> - 0.34-1
+- Encode str/unicode object before hashing it (vpodzime)
+- Use dict.items() instead of dict.iteritems() (vpodzime)
+- Add one more flag to test (for Python3) (vpodzime)
+- Make sure we work with strings when we think we do (vpodzime)
+
 * Fri Dec 05 2014 Vratislav Podzimek <vpodzime@redhat.com> - 0.33-1
 - Make sure fresh translations are always fetched (vpodzime)
 - Add pieces needed to build the python3- subpackage (#985294) (mhroncok)
