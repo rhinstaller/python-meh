@@ -19,6 +19,7 @@
 from meh import *
 from meh.ui import *
 import os
+import sys
 import report
 from gi.repository import Gtk
 
@@ -85,6 +86,13 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 
         self._traceback_buffer.set_text(longTraceback)
         self._response = MAIN_RESPONSE_QUIT
+
+        self._debug_button = builder.get_object("debugButton")
+
+        allowDebug = kwargs.get("allowDebug", sys.stdout.isatty)
+
+        if allowDebug and not allowDebug():
+            self._debug_button.set_sensitive(False)
 
     @property
     def main_window(self):

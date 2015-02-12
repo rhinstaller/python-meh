@@ -159,9 +159,13 @@ class MainExceptionWindow(TextWindow, AbstractMainExceptionWindow):
                             *args, **kwargs)
         self._short_traceback = shortTraceback
         self._menu_items = [(_("Report Bug"), MAIN_RESPONSE_SAVE),
-                            (_("Debug"), MAIN_RESPONSE_DEBUG),
                             (_("Run shell"), MAIN_RESPONSE_SHELL),
                             (_("Quit"), MAIN_RESPONSE_QUIT)]
+
+        allowDebug = kwargs.get("allowDebug", sys.stdout.isatty)
+
+        if allowDebug and allowDebug():
+            self._menu_items.insert(1, (_("Debug"), MAIN_RESPONSE_DEBUG))
 
     def run(self, *args, **kwargs):
         self.print_header()
