@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-09 08:55+0100\n"
+"POT-Creation-Date: 2015-02-17 14:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,35 +49,35 @@ msgid "Report Bug"
 msgstr ""
 
 #: ../meh/ui/text.py:162
-msgid "Debug"
-msgstr ""
-
-#: ../meh/ui/text.py:163
 msgid "Run shell"
 msgstr ""
 
-#: ../meh/ui/text.py:164
+#: ../meh/ui/text.py:163
 msgid "Quit"
 msgstr ""
 
-#: ../meh/ui/text.py:169
+#: ../meh/ui/text.py:168
+msgid "Debug"
+msgstr ""
+
+#: ../meh/ui/text.py:173
 msgid "What do you want to do now?"
 msgstr ""
 
-#: ../meh/ui/text.py:177
+#: ../meh/ui/text.py:181
 msgid "Please make your choice from above: "
 msgstr ""
 
-#: ../meh/ui/text.py:195
+#: ../meh/ui/text.py:199
 msgid "Hit ENTER to continue"
 msgstr ""
 
-#: ../meh/ui/text.py:209
+#: ../meh/ui/text.py:213
 #, python-format
 msgid "Are you sure you want to exit? [%(yes)s/%(no)s]"
 msgstr ""
 
-#: ../meh/ui/gui.py:150
+#: ../meh/ui/gui.py:158
 msgid "_Exit"
 msgstr ""
 

@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.34
+Version: 0.35
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -132,6 +132,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Feb 17 2015 Martin Kolman <mkolman@redhat.com> - 0.35-1
+- Add option to remove the 'Debug' option/button for mainExceptionWindow (vtrefny)
+
 * Tue Dec 09 2014 Vratislav Podzimek <vpodzime@redhat.com> - 0.34-1
 - Encode str/unicode object before hashing it (vpodzime)
 - Use dict.items() instead of dict.iteritems() (vpodzime)
