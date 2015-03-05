@@ -157,7 +157,7 @@ class ExceptionDump(object):
                         "{0}".format(file_))
             pkg_info = PackageInfo(header["name"].decode("utf-8"), header["version"].decode("utf-8"),
                                    header["release"].decode("utf-8"),
-                                   header["epoch"].decode("utf-8") if header["epoch"] else "0",
+                                   u"%d" % header["epoch"] if header["epoch"] else u"0",
                                    header["arch"].decode("utf-8"))
 
             # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
