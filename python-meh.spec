@@ -30,7 +30,7 @@ BuildRequires: libreport-python3 >= %{libreportver}
 %endif
 
 Requires: python, dbus-python
-Requires: openssh-clients, rpm-python
+Requires: rpm-python
 Requires: libreport-cli >= %{libreportver}
 Requires: libreport-python >= %{libreportver}
 
@@ -51,7 +51,7 @@ The python-meh-gui package provides a GUI for the python-meh library.
 %package -n python3-meh
 Summary:  A python 3 library for handling exceptions
 Requires: python3, python3-dbus
-Requires: openssh-clients, rpm-python3
+Requires: rpm-python3
 Requires: libreport-cli >= %{libreportver}
 Requires: libreport-python3 >= %{libreportver}
 
