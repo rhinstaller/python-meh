@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.36
+Version: 0.37
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -132,6 +132,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Pá bře 27 2015 Martin Kolman <mkolman@redhat.com> - 0.37-1
+- Fix dumping file attachments in Python 3 (vtrefny)
+- meh has not required openssh-clients since 2009 (awilliam)
+
 * Thu Mar 05 2015 Martin Kolman <mkolman@redhat.com> - 0.36-1
 - Package's epoch returned by RPM is an integer (#1199263) (vpodzime)
 
