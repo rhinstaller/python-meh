@@ -132,7 +132,7 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
-* Pá bře 27 2015 Martin Kolman <mkolman@redhat.com> - 0.37-1
+* Fri Mar 27 2015 Martin Kolman <mkolman@redhat.com> - 0.37-1
 - Fix dumping file attachments in Python 3 (vtrefny)
 - meh has not required openssh-clients since 2009 (awilliam)
 
