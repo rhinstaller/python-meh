@@ -5,7 +5,9 @@ TAG=r$(VERSION)-$(RELEASE)
 
 PREFIX=/usr
 
-PYTHON=python
+PYTHON2=python2
+PYTHON3=python3
+PYTHON=$(PYTHON2)
 
 TESTSUITE:=tests/baseclass.py
 
@@ -22,8 +24,11 @@ clean:
 	$(PYTHON) setup.py -q clean --all
 
 test:
-	@echo "*** Running unittests ***"
-	PYTHONPATH=. $(PYTHON) $(TESTSUITE) -v
+	@echo "*** Running unittests with Python 2 ***"
+	PYTHONPATH=. $(PYTHON2) $(TESTSUITE) -v
+
+	@echo "*** Running unittests with Python 3 ***"
+	PYTHONPATH=. $(PYTHON3) $(TESTSUITE) -v
 
 install:
 	$(PYTHON) setup.py install --root=$(DESTDIR)
