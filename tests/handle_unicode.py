@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import tempfile
+import six
 
 from tests.baseclass import BaseTestCase
 from meh import Config
@@ -19,7 +20,10 @@ class UnicodeExample(object):
 class HandleUnicode_TestCase(BaseTestCase):
     def setUp(self):
         # write UTF-8 and ASCII files for testing
-        (fobj, self.uni_file_path) = self.openFile()
+        if six.PY2:
+            (fobj, self.uni_file_path) = self.openFile()
+        else:
+            (fobj, self.uni_file_path) = self.openFile(mode="wt")
         try:
             fobj.write(UNICODE_LINE)
         except UnicodeEncodeError:
@@ -42,7 +46,10 @@ class HandleUnicode_TestCase(BaseTestCase):
 
         self.assertIn("_str: " + str(UNICODE_STR.encode("utf-8")), dump)
         self.assertIn("encoded_str: " + str(UNICODE_STR.encode("utf-8")), dump)
-        self.assertIn(str(UNICODE_LINE.encode("utf-8")), dump)
+        if six.PY2:
+            self.assertIn(str(UNICODE_LINE.encode("utf-8")), dump)
+        else:
+            self.assertIn(UNICODE_LINE, dump)
 
         self.assertIn("ascii_str: " + ASCII_STR, dump)
         self.assertIn(ASCII_LINE.rstrip(), dump)
