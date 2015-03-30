@@ -20,19 +20,30 @@ License: GPLv2+
 Group: System Environment/Libraries
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: python-devel, gettext, python-setuptools, intltool
-BuildRequires: dbus-python, libreport-gtk >= %{libreportver}, libreport-cli >= %{libreportver}, libreport-python >= %{libreportver}
+BuildRequires: python-devel
+BuildRequires: gettext
+BuildRequires: python-setuptools
+BuildRequires: intltool
+BuildRequires: dbus-python
+BuildRequires: libreport-gtk >= %{libreportver}
+BuildRequires: libreport-cli >= %{libreportver}
+BuildRequires: libreport-python >= %{libreportver}
+BuildRequires: python-six
 
 %if 0%{with_python3}
-BuildRequires: python3-devel python3-setuptools
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
 BuildRequires: python3-dbus
 BuildRequires: libreport-python3 >= %{libreportver}
+BuildRequires: python3-six
 %endif
 
-Requires: python, dbus-python
+Requires: python
+Requires: dbus-python
 Requires: rpm-python
 Requires: libreport-cli >= %{libreportver}
 Requires: libreport-python >= %{libreportver}
+Requires: python-six
 
 %description
 The python-meh package is a python library for handling, saving, and reporting
@@ -41,7 +52,8 @@ exceptions.
 %package gui
 Summary: Graphical user interface for the python-meh library
 Requires: python-meh = %{version}-%{release}
-Requires: pygobject3, gtk3
+Requires: pygobject3
+Requires: gtk3
 Requires: libreport-gtk >= %{libreportver}
 
 %description gui
@@ -50,10 +62,12 @@ The python-meh-gui package provides a GUI for the python-meh library.
 %if 0%{with_python3}
 %package -n python3-meh
 Summary:  A python 3 library for handling exceptions
-Requires: python3, python3-dbus
+Requires: python3
+Requires: python3-dbus
 Requires: rpm-python3
 Requires: libreport-cli >= %{libreportver}
 Requires: libreport-python3 >= %{libreportver}
+Requires: python3-six
 
 %description -n python3-meh
 The python3-meh package is a python 3 library for handling, saving, and reporting
