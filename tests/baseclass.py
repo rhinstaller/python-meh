@@ -17,9 +17,9 @@ class BaseTestCase(unittest.TestCase):
         dump = ExceptionDump(ExceptionInfo(None, None, stack), conf)
         return dump.dump(obj)
 
-    def openFile(self):
+    def openFile(self, mode="w"):
         (fd, path) = tempfile.mkstemp()
-        fo = os.fdopen(fd, "w")
+        fo = os.fdopen(fd, mode)
         return (fo, path)
 
     def tracebackContains(self, path, str):
