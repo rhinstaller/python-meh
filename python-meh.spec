@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: http://git.fedorahosted.org/git/?p=python-meh.git
-Version: 0.38
+Version: 0.39
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -146,6 +146,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Apr 01 2015 Martin Kolman <mkolman@redhat.com> - 0.39-1
+- Handle LANG=C (mkolman)
+
 * Tue Mar 31 2015 Martin Kolman <mkolman@redhat.com> - 0.38-1
 - Switch to Zanata for translations (mkolman)
 - Run both Python 2 and Python 3 tests for "make test" (mkolman)
