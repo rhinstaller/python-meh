@@ -4,6 +4,7 @@ import os
 import sys
 import tempfile
 import unittest
+import six
 
 from meh import ExceptionInfo
 from meh.handler import *
@@ -19,7 +20,12 @@ class BaseTestCase(unittest.TestCase):
 
     def openFile(self, mode="w"):
         (fd, path) = tempfile.mkstemp()
-        fo = os.fdopen(fd, mode)
+        # only Python 3 has supports the "encoding" keyword argument
+        if six.PY2:
+            fo = os.fdopen(fd, mode)
+        else:
+            fo = os.fdopen(fd, mode, encoding="utf-8")
+
         return (fo, path)
 
     def tracebackContains(self, path, str):
