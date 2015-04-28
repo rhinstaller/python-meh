@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.39
+Version: 0.40
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -146,6 +146,10 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Apr 28 2015 Martin Kolman <mkolman@redhat.com> - 0.40-1
+- Make sure the date in RPM changelog is always in English (mkolman)
+- Update upstream URL (mkolman)
+
 * Wed Apr 01 2015 Martin Kolman <mkolman@redhat.com> - 0.39-1
 - Handle LANG=C (mkolman)
 
