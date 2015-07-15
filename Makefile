@@ -33,6 +33,9 @@ test:
 	@echo "*** Running unittests with Python 3 ***"
 	PYTHONPATH=. $(PYTHON3) $(TESTSUITE) -v
 
+check:
+	PYTHONPATH=. tests/pylint/runpylint.py
+
 install:
 	$(PYTHON) setup.py install --root=$(DESTDIR)
 	$(MAKE) -C po install
