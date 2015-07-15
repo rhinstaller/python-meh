@@ -7,8 +7,7 @@ import unittest
 import six
 
 from meh import ExceptionInfo
-from meh.handler import *
-from meh.dump import *
+from meh.dump import ExceptionDump
 
 class BaseTestCase(unittest.TestCase):
     def dump(self, conf, obj):

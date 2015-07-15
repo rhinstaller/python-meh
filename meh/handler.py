@@ -16,11 +16,9 @@
 #
 # Author(s): Chris Lumens <clumens@redhat.com>
 #
-from meh import *
+from meh import MAIN_RESPONSE_DEBUG, MAIN_RESPONSE_SAVE, MAIN_RESPONSE_SHELL, MAIN_RESPONSE_QUIT, DumpInfo, ExceptionInfo
 import bdb
 import os
-from .network import hasActiveNetDev
-import signal
 import sys
 import report
 import traceback
