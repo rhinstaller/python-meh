@@ -36,6 +36,7 @@ BuildRequires: python3-setuptools
 BuildRequires: python3-dbus
 BuildRequires: libreport-python3 >= %{libreportver}
 BuildRequires: python3-six
+BuildRequires: python3-pocketlint
 %endif
 
 Requires: python
