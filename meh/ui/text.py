@@ -19,8 +19,8 @@
 #
 from __future__ import print_function
 
-from meh import *
-from meh.ui import *
+from meh import MAIN_RESPONSE_DEBUG, MAIN_RESPONSE_SAVE, MAIN_RESPONSE_SHELL, MAIN_RESPONSE_QUIT
+from meh.ui import AbstractIntf, AbstractSaveExceptionWindow, AbstractMainExceptionWindow, AbstractMessageWindow
 import report
 import report.io.TextIO
 from report import LIBREPORT_WAIT, LIBREPORT_RUN_CLI

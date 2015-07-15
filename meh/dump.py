@@ -25,7 +25,6 @@ import copy
 import inspect
 import os
 import traceback
-import types
 import sys
 import codecs
 import six

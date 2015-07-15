@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import tempfile
 import six
 
 from tests.baseclass import BaseTestCase

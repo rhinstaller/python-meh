@@ -16,8 +16,8 @@
 #
 # Author(s): Chris Lumens <clumens@redhat.com>
 #
-from meh import *
-from meh.ui import *
+from meh import MAIN_RESPONSE_DEBUG, MAIN_RESPONSE_NONE, MAIN_RESPONSE_QUIT, MAIN_RESPONSE_SAVE
+from meh.ui import AbstractIntf, AbstractSaveExceptionWindow, AbstractMainExceptionWindow, AbstractMessageWindow
 import os
 import sys
 import report

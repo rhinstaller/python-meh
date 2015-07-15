@@ -1,9 +1,7 @@
-import os
 import unittest
-from tests.baseclass import *
+from tests.baseclass import BaseTestCase
 
-from meh.handler import *
-from meh.dump import *
+from meh import Config
 
 class Example:
     def __init__(self):
