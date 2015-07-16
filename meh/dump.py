@@ -21,6 +21,8 @@
 #            Erik Troan <ewt@redhat.com>
 #            Chris Lumens <clumens@redhat.com>
 #
+# pylint: disable=bare-except,broad-except
+
 import copy
 import inspect
 import os
