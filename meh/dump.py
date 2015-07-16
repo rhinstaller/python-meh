@@ -280,7 +280,7 @@ class ExceptionDump(object):
 
         frames = []
         for (_frame, fn, lineno, func, ctx, _idx) in self.stack:
-            if type(ctx) == type([]):
+            if isinstance(ctx, list):
                 code = "".join(ctx)
             else:
                 code = ctx
@@ -510,7 +510,7 @@ class ExceptionDump(object):
 
         if self.stack:
             for (file, _lineno, func, text) in [f[1:5] for f in self.stack]:
-                if type(text) == type([]):
+                if isinstance(text, list):
                     text = "".join(text)
                 s += "%s %s %s\n" % (os.path.basename(file), func, text)
         else:
