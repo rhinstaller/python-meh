@@ -55,6 +55,7 @@ class ExceptionHandler(object):
 
         self._exitcode = 10
         self._exn = None
+        self.exnFile = None
         self.exnText = ""
 
     def _setExitCode(self, code):

@@ -17,7 +17,7 @@ class MyObject(object):
         self.binary_data = '\xff\xff\xfe'
 
 if __name__ == "__main__":
-    print "***Running python-meh test***"
+    print("***Running python-meh test***")
 
     config = meh.Config(programName="myMehTest", programVersion="1.0-1",
                         programArch="noarch",

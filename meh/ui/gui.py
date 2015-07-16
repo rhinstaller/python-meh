@@ -67,6 +67,7 @@ class GraphicalIntf(AbstractIntf):
 
 class SaveExceptionWindow(AbstractSaveExceptionWindow):
     def __init__(self, signature, *args, **kwargs):
+        AbstractSaveExceptionWindow.__init__(self, signature, *args, **kwargs)
         self.signature = signature
 
     def run(self, *args, **kwargs):
@@ -139,6 +140,8 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 class MessageWindow(AbstractMessageWindow):
     def __init__(self, title, text, *args, **kwargs):
         AbstractMessageWindow.__init__(self, title, text, *args, **kwargs)
+        self.rc = 0
+
         self.dialog = Gtk.MessageDialog(buttons=Gtk.ButtonsType.OK,
                                         type=Gtk.MessageType.INFO,
                                         message_format=text)
@@ -154,7 +157,7 @@ class MessageWindow(AbstractMessageWindow):
         self.dialog.destroy()
 
 class ExitWindow(MessageWindow):
-    def __init__(self, title, text, *args, **kwargs):
+    def __init__(self, title, text, *args, **kwargs):    # pylint: disable=super-init-not-called
         self.dialog = Gtk.MessageDialog(buttons=Gtk.ButtonsType.NONE,
                                         type=Gtk.MessageType.INFO,
                                         message_format=text)

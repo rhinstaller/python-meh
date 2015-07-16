@@ -42,13 +42,13 @@ class SafeStr(str):
         if PY > 2:
             return SafeStr(str.__add__(self, str(other)))
 
-        if not (isinstance(other, str) or isinstance(other, unicode)):
+        if not (isinstance(other, str) or isinstance(other, unicode)):    # pylint: disable=undefined-variable
             if hasattr(other, "__str__"):
                 other = other.__str__()
             else:
                 other = "OMITTED OBJECT WITHOUT __str__ METHOD"
 
-        if isinstance(other, unicode):
+        if isinstance(other, unicode):    # pylint: disable=undefined-variable
             ret = SafeStr(str.__add__(self, other.encode("utf-8")))
         else:
             try:
