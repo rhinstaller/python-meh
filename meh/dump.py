@@ -166,7 +166,7 @@ class ExceptionDump(object):
             try:
                 name_end = srpm_name.rindex('-')
                 name_end = srpm_name[:name_end].rindex('-')
-            except ValueError as e:
+            except ValueError:
                 # expected exception
                 pass
 
@@ -194,7 +194,7 @@ class ExceptionDump(object):
             if not self.stack:
                 return packages
 
-            for (frame, fn, lineno, func, ctx, idx) in self.stack:
+            for (_frame, fn, _lineno, _func, _ctx, _idx) in self.stack:
                 try:
                     pkg_info = get_package_and_component(fn)[0]
                     package = "{0.name}-{0.version}-{0.release}.{0.arch}".format(
@@ -233,11 +233,10 @@ class ExceptionDump(object):
         #--begining of the method _get_environment_info--
         try:
             pkg_info, component = get_package_and_component()
-        except RPMinfoError as rpmierr:
+        except RPMinfoError:
             pkg_info = None
             component = None
 
-        release_ver = get_release_version()
         other_packages = ", ".join(get_other_packages(self))
 
         ret = dict()
@@ -278,7 +277,7 @@ class ExceptionDump(object):
             return []
 
         frames = []
-        for (frame, fn, lineno, func, ctx, idx) in self.stack:
+        for (_frame, fn, lineno, func, ctx, _idx) in self.stack:
             if type(ctx) == type([]):
                 code = "".join(ctx)
             else:
@@ -505,7 +504,7 @@ class ExceptionDump(object):
         s = ""
 
         if self.stack:
-            for (file, lineno, func, text) in [f[1:5] for f in self.stack]:
+            for (file, _lineno, func, text) in [f[1:5] for f in self.stack]:
                 if type(text) == type([]):
                     text = "".join(text)
                 s += "%s %s %s\n" % (os.path.basename(file), func, text)

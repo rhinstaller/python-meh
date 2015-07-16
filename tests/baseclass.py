@@ -56,7 +56,6 @@ def loadModules(moduleDir, cls_pattern="_TestCase", skip_list=["__init__", "base
         sys.path.insert(0, moduleDir)
 
     # Get a list of all *.py files in moduleDir
-    moduleList = []
     lst = map(lambda x: os.path.splitext(os.path.basename(x))[0],
               glob.glob(moduleDir + "/*.py"))
 
@@ -68,7 +67,7 @@ def loadModules(moduleDir, cls_pattern="_TestCase", skip_list=["__init__", "base
         # Attempt to load the found module.
         try:
             loaded = importlib.import_module(module)
-        except ImportError as e:
+        except ImportError:
             print("Error loading module %s." % module)
             continue
 
