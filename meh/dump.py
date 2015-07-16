@@ -291,7 +291,7 @@ class ExceptionDump(object):
 
     # Create a string representation of a class.  This method will recursively
     # handle all attributes of the base given class.
-    def _dumpClass(self, instance, level=0, parentkey="", skipList=[]):
+    def _dumpClass(self, instance, level=0, parentkey="", skipList=None):
         # This is horribly cheesy, and bound to require maintainence in the
         # future.  The problem is that anything subclassed from object fails
         # the types.InstanceType test we used to have which means those
@@ -314,6 +314,9 @@ class ExceptionDump(object):
                    not hasattr(instance, "__dict__")
 
         ret = SafeStr()
+
+        if not skipList:
+            skipList = []
 
         # protect from loops
         try:
