@@ -35,12 +35,12 @@ from meh.safe_string import SafeStr
 
 # Python 2/3 compatibilty
 try:
-    longtype = long
+    longtype = long    # pylint: disable=undefined-variable
 except NameError:
     longtype = int
 
 try:
-    unitype = unicode
+    unitype = unicode  # pylint: disable=undefined-variable
 except NameError:
     unitype = str
 

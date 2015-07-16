@@ -30,7 +30,7 @@ import sys
 if sys.version_info.major == 3:
     raw_input_fn = input
 else:
-    raw_input_fn = raw_input
+    raw_input_fn = raw_input    # pylint: disable=undefined-variable
 
 import gettext
 _ = lambda x: gettext.ldgettext("python-meh", x)
@@ -43,7 +43,7 @@ class IOHandler(object):
 
     """
 
-    def __init__(self, in_func=raw_input_fn, out_func=print):
+    def __init__(self, in_func=raw_input_fn, out_func=print):    # pylint: disable=used-before-assignment
         """
         Constructor for the IOhandler class. Arguments can be used to override
         default I/O functions with the custom ones.
