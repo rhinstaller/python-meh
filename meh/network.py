@@ -41,5 +41,5 @@ def hasActiveNetDev():
             return True
         else:
             return False
-    except:
+    except dbus.DBusException:
         return False

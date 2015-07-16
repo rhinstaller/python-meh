@@ -29,6 +29,7 @@ _ = lambda x: gettext.ldgettext("python-meh", x)
 
 class NoNetwork(Exception):
     def __init__(self, msg=""):
+        Exception.__init__(self)
         self.msg = msg
 
     def __str__(self):
@@ -267,7 +268,7 @@ class ExceptionHandler(object):
                 ret = callback()
                 if ret:
                     params[item_name] = ret
-            except Exception as exc:
+            except Exception as exc:    # pylint: disable=broad-except
                 params[item_name] = "Caused error: %s" % exc
 
         for fpath in self.conf.fileList:
@@ -280,7 +281,7 @@ class ExceptionHandler(object):
                         params[filename] = fobj.read()
                     else:
                         params[filename+"_file"] = fobj.read()
-            except:
+            except:    # pylint: disable=bare-except
                 #skip files we cannot read
                 continue
 
