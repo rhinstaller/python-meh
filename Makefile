@@ -84,6 +84,6 @@ bumpver: potfile
 	sed -i "s/Version: $(VERSION)/Version: $$NEWVERSION/" python-meh.spec ; \
 	sed -i "s/version='$(VERSION)'/version='$$NEWVERSION'/" setup.py
 
-ci: test
+ci: check test
 
 .PHONY: clean install tag archive local
