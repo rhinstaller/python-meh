@@ -87,6 +87,11 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 
         self._main_window = builder.get_object("exceptionWindow")
 
+        # this makes sure the Meh window remains active
+        # even if the exception has been triggered in a dialog
+        window_group = Gtk.WindowGroup()
+        window_group.add_window(self._main_window)
+
         self._traceback_buffer = builder.get_object("tracebackBuffer")
 
         self._traceback_buffer.set_text(longTraceback)
