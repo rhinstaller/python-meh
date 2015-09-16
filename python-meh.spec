@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.40
+Version: 0.41
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -147,6 +147,20 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Wed Sep 16 2015 Martin Kolman <mkolman@redhat.com> - 0.41-1
+- Make sure the Meh window has focus even if a dialog is displayed (mkolman)
+- Run pylint as part of "make ci". (clumens)
+- Add a new makefile target that does everything needed for jenkins. (clumens)
+- Fix the other pylint-discovered errors. (clumens)
+- Use isinstance instead of type. (clumens)
+- Fix all the places we're redefining something. (clumens)
+- Don't use [] as the default argument in a method. (clumens)
+- Take care of exception-related pylint messages. (clumens)
+- Get rid of all the unused variable warnings. (clumens)
+- Get rid of all unused and wildcard imports. (clumens)
+- Add pocketlint support to python-meh. (clumens)
+- Use gi.require_version for Gtk import (vtrefny)
+
 * Tue Apr 28 2015 Martin Kolman <mkolman@redhat.com> - 0.40-1
 - Make sure the date in RPM changelog is always in English (mkolman)
 - Update upstream URL (mkolman)
