@@ -1,0 +1,14 @@
+*.pyc
+.*.swp
+
+python-meh*.tar.gz
+
+ChangeLog
+
+po/*.gmo
+po/*.po
+po/POTFILES
+
+build/
+
+.directory
