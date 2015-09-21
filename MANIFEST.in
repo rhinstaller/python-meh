@@ -1,3 +1,4 @@
+include COPYING Makefile
 recursive-include meh *.py
 recursive-include ui *.glade
 recursive-include pixmaps *.png
