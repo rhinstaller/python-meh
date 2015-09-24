@@ -113,11 +113,16 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
 
     def run(self, *args, **kwargs):
         self._main_window.show_all()
+        # keep our window above dialogs
+        self._main_window.set_modal(True)
+        self._main_window.set_keep_above(True)
         Gtk.main()
         self.destroy()
         return self._response
 
     def on_report_clicked(self, button):
+        # hide our window to not interfere with libreport window
+        self._main_window.hide()
         self._response = MAIN_RESPONSE_SAVE
         Gtk.main_quit()
 
