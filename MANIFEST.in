@@ -1,5 +1,6 @@
-include COPYING Makefile
+include COPYING Makefile ChangeLog
 recursive-include meh *.py
 recursive-include ui *.glade
 recursive-include pixmaps *.png
 recursive-include po *.po *.pot Makefile
+recursive-include tests *.py
