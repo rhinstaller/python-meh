@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.41
+Version: 0.42
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -147,6 +147,13 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue Sep 29 2015 Martin Kolman <mkolman@redhat.com> - 0.42-1
+- Add tests and ChangeLog to MANIFEST.in (vtrefny)
+- Fix clicking on buttons on error pop-up doesn't work (#1250942) (vtrefny)
+- Add Makefile to MANIFEST.in (vtrefny)
+- Add archive target to Makefile (vtrefny)
+- Add .gitignore (vtrefny)
+
 * Wed Sep 16 2015 Martin Kolman <mkolman@redhat.com> - 0.41-1
 - Make sure the Meh window has focus even if a dialog is displayed (mkolman)
 - Run pylint as part of "make ci". (clumens)
