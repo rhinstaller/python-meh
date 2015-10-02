@@ -81,6 +81,7 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
                                              *args, **kwargs)
 
         builder = Gtk.Builder()
+        builder.set_translation_domain("python-meh")
         glade_file = find_glade_file("exception-dialog.glade")
         builder.add_from_file(glade_file)
         builder.connect_signals(self)
