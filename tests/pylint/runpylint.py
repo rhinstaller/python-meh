@@ -8,7 +8,6 @@ class MehLintConfig(PocketLintConfig):
     @property
     def pylintPlugins(self):
         retval = super(MehLintConfig, self).pylintPlugins
-        retval.remove("pocketlint.checkers.eintr")
         retval.remove("pocketlint.checkers.markup")
         return retval
 
