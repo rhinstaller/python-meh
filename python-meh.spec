@@ -279,7 +279,7 @@ rm -rf %{buildroot}
 * Wed Nov 14 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.19-1
 - Add test for handling unicode strings and files (vpodzime)
 - Read files as UTF-8 and ignore errors (#874250) (vpodzime)
-- Add %check section to the spec file (vpodzime)
+- Add check section to the spec file (vpodzime)
 - Fix tests (vpodzime)
 
 * Thu Oct 25 2012 Vratislav Podzimek <vpodzime@redhat.com> - 0.18-1
