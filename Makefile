@@ -35,6 +35,7 @@ test:
 
 check:
 	PYTHONPATH=. tests/pylint/runpylint.py
+	PYTHONPATH=translation-canary python3 -m translation_canary.translatable po/$(PKGNAME).pot
 
 install:
 	$(PYTHON) setup.py install --root=$(DESTDIR)
@@ -54,6 +55,7 @@ archive: po-pull
 	git archive --format=tar --prefix=$(PKGNAME)-$(VERSION)/ $(TAG) | tar xf -
 	cp -r po $(PKGNAME)-$(VERSION)
 	cp ChangeLog $(PKGNAME)-$(VERSION)/
+	PYTHONPATH=translation-canary python3 -m translation_canary.translated --release $(PKGNAME)-$(VERSION)
 	( cd $(PKGNAME)-$(VERSION) && $(PYTHON) setup.py -q sdist --dist-dir .. )
 	rm -rf $(PKGNAME)-$(VERSION)
 	git checkout -- po/$(PKGNAME).pot

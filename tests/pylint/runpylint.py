@@ -11,6 +11,10 @@ class MehLintConfig(PocketLintConfig):
         retval.remove("pocketlint.checkers.markup")
         return retval
 
+    @property
+    def ignoreNames(self):
+        return {"translation-canary"}
+
 if __name__ == "__main__":
     conf = MehLintConfig()
     linter = PocketLinter(conf)
