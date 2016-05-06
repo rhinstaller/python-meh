@@ -23,7 +23,6 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: python-devel
 BuildRequires: gettext
 BuildRequires: python-setuptools
-BuildRequires: intltool
 BuildRequires: dbus-python
 BuildRequires: libreport-gtk >= %{libreportver}
 BuildRequires: libreport-cli >= %{libreportver}
