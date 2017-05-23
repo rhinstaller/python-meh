@@ -6,7 +6,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.44
+Version: 0.45
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -147,6 +147,9 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
+* Tue May 23 2017 Martin Kolman <mkolman@redhat.com> - 0.45-1
+- update translations (mkolman)
+
 * Fri Feb 19 2016 Martin Kolman <mkolman@redhat.com> - 0.44-1
 - Some rpmlint fixes (mkolman)
 - Remove the removal of the eintr checker, which has been removed (dshea)
