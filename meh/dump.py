@@ -28,8 +28,6 @@ import inspect
 import os
 import traceback
 import sys
-import codecs
-import six
 from meh import PackageInfo
 from meh.safe_string import SafeStr
 
@@ -479,16 +477,10 @@ class ExceptionDump(object):
         # And finally, write a bunch of files into the dump too.
         for fname in self.conf.fileList:
             try:
-                if six.PY2:
-                    with codecs.open(fname, "r", "utf-8", "ignore") as fobj:
-                        ret += "\n\n%s:\n" % (fname,)
-                        for line in fobj:
-                            ret += line.encode("utf-8")
-                else:
-                    with open(fname, "rt", encoding="utf-8") as fobj:
-                        ret += "\n\n%s:\n" % (fname,)
-                        for line in fobj:
-                            ret += line
+                with open(fname, "rt", encoding="utf-8") as fobj:
+                    ret += "\n\n%s:\n" % (fname,)
+                    for line in fobj:
+                        ret += line
             except IOError:
                 pass
             except:

@@ -1,7 +1,4 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%global with_python3 1
-
-%define libreportver 2.0.18-1
+%global libreportver 2.0.18-1
 
 Summary:  A python library for handling exceptions
 Name: python-meh
@@ -17,58 +14,33 @@ Release: 1%{?dist}
 Source0: https://github.com/rhinstaller/python-meh/archive/%{name}-%{version}.tar.gz
 
 License: GPLv2+
-Group: System Environment/Libraries
 BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: python-devel
 BuildRequires: gettext
-BuildRequires: python-setuptools
 BuildRequires: intltool
-BuildRequires: dbus-python
 BuildRequires: libreport-gtk >= %{libreportver}
 BuildRequires: libreport-cli >= %{libreportver}
-BuildRequires: libreport-python >= %{libreportver}
-BuildRequires: python-six
 
-%if 0%{with_python3}
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: python3-dbus
-BuildRequires: libreport-python3 >= %{libreportver}
-BuildRequires: python3-six
-BuildRequires: python3-pocketlint
-%endif
+BuildRequires: python3-libreport >= %{libreportver}
 
-Requires: python
-Requires: dbus-python
-Requires: rpm-python
-Requires: libreport-cli >= %{libreportver}
-Requires: libreport-python >= %{libreportver}
-Requires: python-six
-
-%description
-The python-meh package is a python library for handling, saving, and reporting
+%global _description\
+The python-meh package is a python library for handling, saving, and reporting \
 exceptions.
 
-%package gui
-Summary: Graphical user interface for the python-meh library
-Requires: python-meh = %{version}-%{release}
-Requires: pygobject3
-Requires: gtk3
-Requires: libreport-gtk >= %{libreportver}
+%description %_description
 
-%description gui
-The python-meh-gui package provides a GUI for the python-meh library.
-
-%if 0%{with_python3}
 %package -n python3-meh
 Summary:  A python 3 library for handling exceptions
+%{?python_provide:%python_provide python3-meh}
+Obsoletes: python-meh < 0.46-1
+Obsoletes: python2-meh < 0.46-1
 Requires: python3
 Requires: python3-dbus
-Requires: rpm-python3
+Requires: python3-rpm
 Requires: libreport-cli >= %{libreportver}
-Requires: libreport-python3 >= %{libreportver}
-Requires: python3-six
+Requires: python3-libreport >= %{libreportver}
 
 %description -n python3-meh
 The python3-meh package is a python 3 library for handling, saving, and reporting
@@ -76,6 +48,9 @@ exceptions.
 
 %package -n python3-meh-gui
 Summary: Graphical user interface for the python3-meh library
+%{?python_provide:%python_provide python3-meh-gui}
+Obsoletes: python-meh-gui < 0.46-1
+Obsoletes: python2-meh-gui < 0.46-1
 Requires: python3-meh = %{version}-%{release}
 Requires: python3-gobject, gtk3
 Requires: libreport-gtk >= %{libreportver}
@@ -83,67 +58,27 @@ Requires: libreport-gtk >= %{libreportver}
 %description -n python3-meh-gui
 The python3-meh-gui package provides a GUI for the python3-meh library.
 
-%endif
-
 %prep
 %setup -q
-
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-%endif # with_python3
 
 %build
 make
 
-%if 0%{?with_python3}
-pushd %{py3dir}
-make PYTHON=%{__python3}
-popd
-%endif
-
 %check
 make test
 
-%if 0%{?with_python3}
-pushd %{py3dir}
-# Needs UTF-8 locale
-LANG=en_US.UTF-8 make PYTHON=%{__python3} test
-popd
-%endif
-
 %install
-rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
-
-%if 0%{?with_python3}
-pushd %{py3dir}
-make PYTHON=%{__python3} DESTDIR=%{buildroot} install
-popd
-%endif
 
 %find_lang %{name}
 
-%clean
-rm -rf %{buildroot}
-
-%files -f %{name}.lang
-%defattr(-,root,root,-)
-%doc ChangeLog COPYING
-%{python_sitelib}/*
-%exclude %{python_sitelib}/meh/ui/gui.py*
-
-%files gui
-%{python_sitelib}/meh/ui/gui.py*
-%{_datadir}/python-meh
-
-%files -n python3-meh
+%files -n python3-meh -f %{name}.lang
 %doc ChangeLog COPYING
 %{python3_sitelib}/*
-%exclude %{python3_sitelib}/meh/ui/gui.py*
+%exclude %{python3_sitelib}/meh/ui/
 
 %files -n python3-meh-gui
-%{python3_sitelib}/meh/ui/gui.py*
+%{python3_sitelib}/meh/ui/
 %{_datadir}/python-meh
 
 %changelog

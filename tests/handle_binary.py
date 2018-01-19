@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from tests.baseclass import BaseTestCase
 from meh import Config
 
