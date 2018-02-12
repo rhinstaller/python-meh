@@ -65,7 +65,7 @@ class AbstractIntf(object):
         """
         raise NotImplementedError
 
-    def saveExceptionWindow(self, exnFile, *args, **kwargs):
+    def saveExceptionWindow(self, signature, *args, **kwargs):
         """Create and return an instance of the exception saving dialog.  This
            method must be provided by all subclasses.
         """
