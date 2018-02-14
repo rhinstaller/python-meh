@@ -4,7 +4,7 @@ Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
 Version: 0.46
-Release: 1%{?dist}
+Release: 2%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -75,13 +75,18 @@ make DESTDIR=%{buildroot} install
 %files -n python3-meh -f %{name}.lang
 %doc ChangeLog COPYING
 %{python3_sitelib}/*
-%exclude %{python3_sitelib}/meh/ui/
+%exclude %{python3_sitelib}/meh/ui/gui.py*
+%exclude %{python3_sitelib}/meh/ui/__pycache__/gui.*
 
 %files -n python3-meh-gui
-%{python3_sitelib}/meh/ui/
+%{python3_sitelib}/meh/ui/gui.py*
+%{python3_sitelib}/meh/ui/__pycache__/gui.*
 %{_datadir}/python-meh
 
 %changelog
+* Wed Feb 14 2018 Adam Williamson <awilliam@redhat.com> - 0.46-2
+- Move TUI back to main package (inadvertently moved to -gui in 0.46-1)
+
 * Mon Feb 12 2018 Martin Kolman <mkolman@redhat.com> - 0.46-1
 - Drop Python 2 support (mkolman)
 
