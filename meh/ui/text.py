@@ -33,7 +33,7 @@ else:
     raw_input_fn = raw_input    # pylint: disable=undefined-variable
 
 import gettext
-_ = lambda x: gettext.ldgettext("python-meh", x)
+_ = lambda x: gettext.translation("python-meh", fallback=True).gettext(x) if x != "" else ""
 
 
 class IOHandler(object):

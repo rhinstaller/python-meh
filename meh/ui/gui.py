@@ -28,7 +28,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
 import gettext
-_ = lambda x: gettext.ldgettext("python-meh", x)
+_ = lambda x: gettext.translation("python-meh", fallback=True).gettext(x) if x != "" else ""
 
 def find_glade_file(file):
     path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/:/usr/share/python-meh/")
