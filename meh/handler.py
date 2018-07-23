@@ -25,7 +25,7 @@ import traceback
 import subprocess
 
 import gettext
-_ = lambda x: gettext.ldgettext("python-meh", x)
+_ = lambda x: gettext.translation("python-meh", fallback=True).gettext(x) if x != "" else ""
 
 class NoNetwork(Exception):
     def __init__(self, msg=""):
