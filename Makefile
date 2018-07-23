@@ -76,7 +76,7 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	rpm -q zanata-python-client &>/dev/null || ( echo "need to run: dnf install zanata-python-client"; exit 1 )
+	rpm -q python2-zanata-client &>/dev/null || ( echo "need to run: dnf install zanata-python-client"; exit 1 )
 	zanata pull $(ZANATA_PULL_ARGS)
 
 bumpver: potfile

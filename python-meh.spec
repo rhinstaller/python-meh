@@ -3,8 +3,8 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.46
-Release: 2%{?dist}
+Version: 0.47
+Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -84,6 +84,10 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/python-meh
 
 %changelog
+* Mon Jul 23 2018 Martin Kolman <mkolman@redhat.com> - 0.47-1
+- Make sure gettext returns strings not bytes (mkolman)
+- Spec: Move TUI back to main package (awilliam)
+
 * Wed Feb 14 2018 Adam Williamson <awilliam@redhat.com> - 0.46-2
 - Move TUI back to main package (inadvertently moved to -gui in 0.46-1)
 
