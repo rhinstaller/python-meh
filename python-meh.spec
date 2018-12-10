@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.47.1
+Version: 0.47.2
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -36,7 +36,7 @@ Summary:  A python 3 library for handling exceptions
 %{?python_provide:%python_provide python3-meh}
 Obsoletes: python-meh < 0.46-1
 Obsoletes: python2-meh < 0.46-1
-Requires: python3
+Requires: %{__python3}
 Requires: python3-dbus
 Requires: python3-rpm
 Requires: libreport-cli >= %{libreportver}
@@ -84,8 +84,13 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/python-meh
 
 %changelog
+* Mon Dec 10 2018 Martin Kolman <mkolman@redhat.com> - 0.47.2-1
+- Require the Python interpreter directly instead of using the package name (torsava)
+  Related: rhbz#1619153
+
 * Mon Dec 10 2018 Martin Kolman <mkolman@redhat.com> - 0.47.1-1
-- update translations (mkolman) (#1608346)
+- update translations (mkolman)
+  Resolves: rhbz#1608346
 
 * Mon Jul 23 2018 Martin Kolman <mkolman@redhat.com> - 0.47-1
 - Make sure gettext returns strings not bytes (mkolman)
