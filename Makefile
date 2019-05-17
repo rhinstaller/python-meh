@@ -9,6 +9,9 @@ TESTSUITE:=tests/baseclass.py
 
 PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -Q
 
+ZANATA_PULL_ARGS = --transdir po/
+ZANATA_PUSH_ARGS = --srcdir po/ --push-type source --force
+
 default: all
 
 all:
@@ -65,10 +68,10 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	tx pull -a --disable-overwrite
+	zanata pull $(ZANATA_PULL_ARGS)
 
 bumpver: potfile
-	tx push -s
+	zanata push $(ZANATA_PUSH_ARGS) || ( echo "zanata push failed"; exit 1 )
 	@NEWSUBVER=$$((`echo $(VERSION) |cut -d . -f 2` + 1)) ; \
 	NEWVERSION=`echo $(VERSION).$$NEWSUBVER |cut -d . -f 1,3` ; \
 	DATELINE="* `date "+%a %b %d %Y"` `git config user.name` <`git config user.email`> - $$NEWVERSION-1"  ; \
