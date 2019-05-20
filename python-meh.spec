@@ -66,7 +66,7 @@ rm -rf %{buildroot}
 %{_datadir}/python-meh
 
 %changelog
-* Thu May 20 2019 Martin Kolman <mkolman@redhat.com> - 0.25.3-1
+* Mon May 20 2019 Martin Kolman <mkolman@redhat.com> - 0.25.3-1
 - Update translations
   Resolves: rhbz#1688260
 - Switch from Transifex to Zanata for pulling translations (mkolman)
