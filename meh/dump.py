@@ -155,13 +155,17 @@ class ExceptionDump(object):
             except StopIteration:
                 raise RPMinfoError("Cannot get package and component for file "+
                         "{0}".format(file_))
-            pkg_info = PackageInfo(header["name"].decode("utf-8"), header["version"].decode("utf-8"),
-                                   header["release"].decode("utf-8"),
-                                   u"%d" % header["epoch"] if header["epoch"] else u"0",
-                                   header["arch"].decode("utf-8"))
+
+            pkg_info = PackageInfo(
+                decode_bytes(header["name"]),
+                decode_bytes(header["version"]),
+                decode_bytes(header["release"]),
+                decode_bytes(header["epoch"]) if header["epoch"] else "0",
+                decode_bytes(header["arch"])
+            )
 
             # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
-            srpm_name = header["sourcerpm"].decode("utf-8")
+            srpm_name = decode_bytes(header["sourcerpm"])
             name_end = len(srpm_name)
             try:
                 name_end = srpm_name.rindex('-')
@@ -173,6 +177,22 @@ class ExceptionDump(object):
             component = srpm_name[:name_end]
 
             return (pkg_info, component)
+
+        def decode_bytes(data):
+            """Decode the given bytes.
+
+            Return the given string or a string decoded from the given bytes.
+
+            :param data: bytes or a string
+            :return: a string
+            """
+            if isinstance(data, str):
+                return data
+
+            if isinstance(data, bytes):
+                return data.decode('utf-8')
+
+            raise ValueError("Unsupported type '{}'.".format(type(data).__name__))
 
         def get_release_version():
             """Returns release version (according to RELEASE_NAME_FILE)"""
