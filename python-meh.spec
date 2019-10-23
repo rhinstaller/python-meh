@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.47
+Version: 0.48
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -84,6 +84,10 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/python-meh
 
 %changelog
+* Wed Oct 23 2019 Martin Kolman <mkolman@redhat.com> - 0.48-1
+- Merge pull request #23 from poncovka/master-decode_bytes (mkolman)
+- Handle bytes and strings from RPM (#1764642) (vponcova)
+
 * Mon Jul 23 2018 Martin Kolman <mkolman@redhat.com> - 0.47-1
 - Make sure gettext returns strings not bytes (mkolman)
 - Spec: Move TUI back to main package (awilliam)
