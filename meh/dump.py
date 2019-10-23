@@ -135,6 +135,20 @@ class ExceptionDump(object):
             ret = list(ret)
             return ret
 
+        def _to_string(something):
+            """
+            In Python 2, the RPM bindings always give us 'strings' for
+            header values. In Python 3, prior to RPM 4.15 they give us
+            bytestrings but from 4.15 onwards they give us strings.
+            See RPM commit 84920f89 for more. We want to always be
+            dealing with strings.
+            """
+            try:
+                return something.decode("utf-8")
+            except AttributeError:
+                # this is the "Python 3 with RPM 4.15+" case
+                return something
+
         def get_package_and_component(file_=sys.argv[0]):
             """
             Returns package and component names for file (by default for script itself).
@@ -155,13 +169,13 @@ class ExceptionDump(object):
             except StopIteration:
                 raise RPMinfoError("Cannot get package and component for file "+
                         "{0}".format(file_))
-            pkg_info = PackageInfo(header["name"].decode("utf-8"), header["version"].decode("utf-8"),
-                                   header["release"].decode("utf-8"),
+            pkg_info = PackageInfo(_to_string(header["name"]), _to_string(header["version"]),
+                                   _to_string(header["release"]),
                                    u"%d" % header["epoch"] if header["epoch"] else u"0",
-                                   header["arch"].decode("utf-8"))
+                                   _to_string(header["arch"]))
 
             # cuts the name from the NVR format: foo-blah-2.8.8-2.fc17.src.rpm
-            srpm_name = header["sourcerpm"].decode("utf-8")
+            srpm_name = _to_string(header["sourcerpm"])
             name_end = len(srpm_name)
             try:
                 name_end = srpm_name.rindex('-')
