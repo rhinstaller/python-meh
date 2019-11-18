@@ -13,6 +13,7 @@ PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -
 
 ZANATA_PULL_ARGS = --transdir po/
 ZANATA_PUSH_ARGS = --srcdir po/ --push-type source --force
+ZANATA_CLIENT_BIN=zanata
 
 default: all
 
@@ -76,11 +77,11 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	rpm -q python2-zanata-client &>/dev/null || ( echo "need to run: dnf install zanata-python-client"; exit 1 )
-	zanata pull $(ZANATA_PULL_ARGS)
+	which $(ZANATA_CLIENT_BIN) &>/dev/null || ( echo "need to install zanata python client package"; exit 1 )
+	$(ZANATA_CLIENT_BIN) pull $(ZANATA_PULL_ARGS)
 
 bumpver: potfile
-	zanata push $(ZANATA_PUSH_ARGS) || ( echo "zanata push failed"; exit 1 )
+	$(ZANATA_CLIENT_BIN) push $(ZANATA_PUSH_ARGS) || ( echo "zanata push failed"; exit 1 )
 	@NEWSUBVER=$$((`echo $(VERSION) |cut -d . -f 2` + 1)) ; \
 	NEWVERSION=`echo $(VERSION).$$NEWSUBVER |cut -d . -f 1,3` ; \
 	DATELINE="* `LANG=c date "+%a %b %d %Y"` `git config user.name` <`git config user.email`> - $$NEWVERSION-1"  ; \
