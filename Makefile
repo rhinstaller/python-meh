@@ -11,6 +11,15 @@ TESTSUITE:=tests/baseclass.py
 
 PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -Q
 
+# LOCALIZATION SETTINGS
+L10N_REPOSITORY ?= https://github.com/rhinstaller/python-meh-l10n.git
+
+# Branch used in localization repository. This should be master all the time.
+GIT_L10N_BRANCH ?= master
+
+# Directory in localization repository specific for this branch.
+L10N_DIR ?= master
+
 ZANATA_PULL_ARGS = --transdir po/
 ZANATA_PUSH_ARGS = --srcdir po/ --push-type source --force
 
@@ -76,8 +85,10 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	rpm -q python2-zanata-client &>/dev/null || ( echo "need to run: dnf install zanata-python-client"; exit 1 )
-	zanata pull $(ZANATA_PULL_ARGS)
+	TEMP_DIR=$$(mktemp --tmpdir -d $(PKGNAME)-localization-XXXXXXXXXX) && \
+	git clone --depth 1 -b $(GIT_L10N_BRANCH) -- $(L10N_REPOSITORY) $$TEMP_DIR && \
+	cp $$TEMP_DIR/$(L10N_DIR)/*.po ./po/ && \
+	rm -rf $$TEMP_DIR
 
 bumpver: potfile
 	zanata push $(ZANATA_PUSH_ARGS) || ( echo "zanata push failed"; exit 1 )
