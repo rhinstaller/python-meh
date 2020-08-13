@@ -13,6 +13,7 @@ PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -
 
 # LOCALIZATION SETTINGS
 L10N_REPOSITORY ?= https://github.com/rhinstaller/python-meh-l10n.git
+L10N_REPOSITORY_RW ?= git@github.com:rhinstaller/python-meh-l10n.git
 
 # Branch used in localization repository. This should be master all the time.
 GIT_L10N_BRANCH ?= master
@@ -90,8 +91,36 @@ po-pull:
 	cp $$TEMP_DIR/$(L10N_DIR)/*.po ./po/ && \
 	rm -rf $$TEMP_DIR
 
-bumpver: potfile
-	zanata push $(ZANATA_PUSH_ARGS) || ( echo "zanata push failed"; exit 1 )
+po-push: potfile
+# This algorithm will make these steps:
+# - clone localization repository
+# - copy pot file to this repository
+# - check if pot file is changed (ignore the POT-Creation-Date otherwise it's always changed)
+# - if not changed:
+#   - remove cloned repository
+# - if changed:
+#   - add pot file
+#   - commit pot file
+#   - tell user to verify this file and push to the remote from the temp dir
+	TEMP_DIR=$$(mktemp --tmpdir -d $(PKGNAME)-localization-XXXXXXXXXX) || exit 1 ; \
+	git clone --depth 1 -b $(GIT_L10N_BRANCH) -- $(L10N_REPOSITORY_RW) $$TEMP_DIR || exit 2 ; \
+	cp ./po/$(PKGNAME).pot $$TEMP_DIR/$(L10N_DIR)/ || exit 3 ; \
+	pushd $$TEMP_DIR/$(L10N_DIR) ; \
+	git difftool --trust-exit-code -y -x "diff -u -I '^\"POT-Creation-Date: .*$$'" HEAD ./$(PKGNAME).pot &>/dev/null ; \
+	if [ $$? -eq 0  ] ; then \
+		popd ; \
+		echo "Pot file is up to date" ; \
+		rm -rf $$TEMP_DIR ; \
+	else \
+		git add ./$(PKGNAME).pot && \
+		git commit -m "Update $(PKGNAME).pot" && \
+		popd && \
+		echo "Pot file updated for the localization repository $(L10N_REPOSITORY)" && \
+		echo "Please confirm changes and push:" && \
+		echo "$$TEMP_DIR" ; \
+	fi ;
+
+bumpver: po-push
 	@NEWSUBVER=$$((`echo $(VERSION) |cut -d . -f 2` + 1)) ; \
 	NEWVERSION=`echo $(VERSION).$$NEWSUBVER |cut -d . -f 1,3` ; \
 	DATELINE="* `LANG=c date "+%a %b %d %Y"` `git config user.name` <`git config user.email`> - $$NEWVERSION-1"  ; \
