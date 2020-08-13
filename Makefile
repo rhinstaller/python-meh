@@ -3,8 +3,6 @@ VERSION=$(shell awk '/Version:/ { print $$2 }' $(PKGNAME).spec)
 RELEASE=$(shell awk '/Release:/ { print $$2 }' $(PKGNAME).spec | sed -e 's|%.*$$||g')
 TAG=$(PKGNAME)-$(VERSION)
 
-PREFIX=/usr
-
 PYTHON=python3
 
 TESTSUITE:=tests/baseclass.py
