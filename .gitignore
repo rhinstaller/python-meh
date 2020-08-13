@@ -8,6 +8,7 @@ ChangeLog
 po/*.gmo
 po/*.po
 po/POTFILES
+po/python-meh.pot
 
 build/
 
