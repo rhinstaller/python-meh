@@ -3,17 +3,21 @@ VERSION=$(shell awk '/Version:/ { print $$2 }' $(PKGNAME).spec)
 RELEASE=$(shell awk '/Release:/ { print $$2 }' $(PKGNAME).spec | sed -e 's|%.*$$||g')
 TAG=$(PKGNAME)-$(VERSION)
 
-PREFIX=/usr
-
 PYTHON=python3
 
 TESTSUITE:=tests/baseclass.py
 
 PYCHECKEROPTS=--no-argsused --no-miximport --maxargs 0 --no-local -\# 0 --only -Q
 
-ZANATA_PULL_ARGS = --transdir po/
-ZANATA_PUSH_ARGS = --srcdir po/ --push-type source --force
-ZANATA_CLIENT_BIN=zanata
+# LOCALIZATION SETTINGS
+L10N_REPOSITORY ?= https://github.com/rhinstaller/python-meh-l10n.git
+L10N_REPOSITORY_RW ?= git@github.com:rhinstaller/python-meh-l10n.git
+
+# Branch used in localization repository. This should be master all the time.
+GIT_L10N_BRANCH ?= master
+
+# Directory in localization repository specific for this branch.
+L10N_DIR ?= master
 
 default: all
 
@@ -77,11 +81,43 @@ potfile:
 	$(MAKE) -C po potfile
 
 po-pull:
-	which $(ZANATA_CLIENT_BIN) &>/dev/null || ( echo "need to install zanata python client package"; exit 1 )
-	$(ZANATA_CLIENT_BIN) pull $(ZANATA_PULL_ARGS)
+	TEMP_DIR=$$(mktemp --tmpdir -d $(PKGNAME)-localization-XXXXXXXXXX) && \
+	git clone --depth 1 -b $(GIT_L10N_BRANCH) -- $(L10N_REPOSITORY) $$TEMP_DIR && \
+	cp $$TEMP_DIR/$(L10N_DIR)/*.po ./po/ && \
+	rm -rf $$TEMP_DIR
 
-bumpver: potfile
-	$(ZANATA_CLIENT_BIN) push $(ZANATA_PUSH_ARGS) || ( echo "zanata push failed"; exit 1 )
+po-push: potfile
+# This algorithm will make these steps:
+# - clone localization repository
+# - copy pot file to this repository
+# - check if pot file is changed (ignore the POT-Creation-Date otherwise it's always changed)
+# - if not changed:
+#   - remove cloned repository
+# - if changed:
+#   - add pot file
+#   - commit pot file
+#   - tell user to verify this file and push to the remote from the temp dir
+	TEMP_DIR=$$(mktemp --tmpdir -d $(PKGNAME)-localization-XXXXXXXXXX) || exit 1 ; \
+	git clone --depth 1 -b $(GIT_L10N_BRANCH) -- $(L10N_REPOSITORY_RW) $$TEMP_DIR || exit 2 ; \
+	cp ./po/$(PKGNAME).pot $$TEMP_DIR/$(L10N_DIR)/ || exit 3 ; \
+	pushd $$TEMP_DIR/$(L10N_DIR) ; \
+	git difftool --trust-exit-code -y -x "diff -u -I '^\"POT-Creation-Date: .*$$'" HEAD ./$(PKGNAME).pot &>/dev/null ; \
+	if [ $$? -eq 0  ] ; then \
+		popd ; \
+		echo "Pot file is up to date" ; \
+		rm -rf $$TEMP_DIR ; \
+	else \
+		git add ./$(PKGNAME).pot && \
+		git commit -m "Update $(PKGNAME).pot" && \
+		popd && \
+		echo "Pot file updated for the localization repository $(L10N_REPOSITORY)" && \
+		echo "Please confirm changes and push:" && \
+		echo "$$TEMP_DIR" ; \
+	fi ;
+
+bumpver: po-push
+	read -p "Please see the above message. Verify and push localization commit. Press anything to continue." -n 1 -r
+
 	@NEWSUBVER=$$((`echo $(VERSION) |cut -d . -f 2` + 1)) ; \
 	NEWVERSION=`echo $(VERSION).$$NEWSUBVER |cut -d . -f 1,3` ; \
 	DATELINE="* `LANG=c date "+%a %b %d %Y"` `git config user.name` <`git config user.email`> - $$NEWVERSION-1"  ; \
