@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.48
+Version: 0.49
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -84,6 +84,21 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/python-meh
 
 %changelog
+* Tue Aug 25 2020 Martin Kolman <mkolman@redhat.com> - 0.49-1
+- Merge pull request #31 from jkonecny12/master-fix-make-archive (mkolman)
+- Fix make archive command after pot file removal (jkonecny)
+- Merge pull request #29 from jkonecny12/master-weblate-support (jkonecny)
+- Add Readme with description and translation badge (jkonecny)
+- Add pot file to the git ignore (jkonecny)
+- Pause release when making bumpver to check and solve translations (jkonecny)
+- Remove unused PREFIX from Makefile (jkonecny)
+- Remove Zanata (jkonecny)
+- Push translations to our translation repository (jkonecny)
+- Download translations from Weblate (jkonecny)
+- Remove pot file (jkonecny)
+- Merge pull request #24 from M4rtinK/master-fix_zanata_client_detection_in_makefile (mkolman)
+- Fix Zanata client detection in Makefile (mkolman)
+
 * Wed Oct 23 2019 Martin Kolman <mkolman@redhat.com> - 0.48-1
 - Merge pull request #23 from poncovka/master-decode_bytes (mkolman)
 - Handle bytes and strings from RPM (#1764642) (vponcova)
