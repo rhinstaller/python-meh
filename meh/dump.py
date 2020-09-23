@@ -494,8 +494,7 @@ class ExceptionDump(object):
         """Create a hash for this traceback object.  This is most suitable for
            searching bug filing systems for duplicates.  The hash is composed
            of the basename of each file in the stack, the method names, and
-           the bit of code.  Line numbers and the actual exception message
-           itself are left out.
+           the bit of code.  Line numbers are left out.
         """
         import hashlib
         s = ""
@@ -505,8 +504,7 @@ class ExceptionDump(object):
                 if isinstance(text, list):
                     text = "".join(text)
                 s += "%s %s %s\n" % (os.path.basename(file), func, text)
-        else:
-            s = "%s %s" % (self.type, self.value)
+        s += "%s %s" % (self.type, self.value)
 
         return hashlib.sha256(s.encode("utf-8")).hexdigest()
 
