@@ -15,6 +15,7 @@ Source0: https://github.com/rhinstaller/python-meh/archive/%{name}-%{version}.ta
 
 License: GPL-2.0-or-later
 BuildArch: noarch
+BuildRequires: make
 BuildRequires: gettext
 BuildRequires: intltool
 BuildRequires: libreport-gtk >= %{libreportver}
