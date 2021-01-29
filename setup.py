@@ -2,9 +2,14 @@
 
 from distutils.core import setup
 
-setup(name='python-meh', version='0.50',
+setup(name='python-meh',
+      version='0.50',
       description='Python module for handling exceptions',
-      author='Chris Lumens', author_email='clumens@redhat.com',
-      url='http://git.fedoraproject.org/git/?p=python-meh.git',
-      data_files = [('/usr/share/python-meh', ['ui/exception-dialog.glade'])],
+      license="GPL-2.0+",
+      author='Chris Lumens',
+      author_email='clumens@redhat.com',
+      maintainer='Anaconda maintenance team',
+      maintainer_email='anaconda-maint-list@redhat.com',
+      url='https://github.com/rhinstaller/python-meh',
+      data_files=[('/usr/share/python-meh', ['ui/exception-dialog.glade'])],
       packages=['meh', 'meh.ui'])
