@@ -3,7 +3,7 @@
 Summary:  A python library for handling exceptions
 Name: python-meh
 Url: https://github.com/rhinstaller/python-meh
-Version: 0.50
+Version: 0.50.1
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -84,6 +84,10 @@ make DESTDIR=%{buildroot} install
 %{_datadir}/python-meh
 
 %changelog
+* Tue Sep 14 2021 Martin Kolman <mkolman@redhat.com> - 0.50.1-1
+- Update translations (mkolman)
+  Resolves: rhbz#1962117
+
 * Tue Sep 29 2020 Martin Kolman <mkolman@redhat.com> - 0.50-1
 - Merge pull request #33 from mzidek-gh/master (mkolman)
 - dump: Use exception's type and value when calculating hash (mzidek)
