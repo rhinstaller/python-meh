@@ -13,7 +13,7 @@ Release: 1%{?dist}
 #   cd python-meh && make archive
 Source0: https://github.com/rhinstaller/python-meh/archive/%{name}-%{version}.tar.gz
 
-License: GPLv2+
+License: GPL-2.0-or-later
 BuildArch: noarch
 BuildRequires: gettext
 BuildRequires: intltool
