@@ -373,10 +373,11 @@ class ExceptionDump(object):
 
             # Don't dump objects that are in our skip list, though ones that are
             # None are probably okay.
-            if eval("instance.%s is not None" % key) and \
-               eval("id(instance.%s)" % key) in skipList:
+            if getattr(instance, key, None) is not None and \
+               id(getattr(instance, key)) in skipList:
                 ret += "%s%s: Skipped\n" % (pad, curkey)
                 continue
+
 
             if isinstance(value, list):
                 ret += "%s%s: [" % (pad, curkey)
@@ -450,8 +451,8 @@ class ExceptionDump(object):
         # and ignore them.
         for k in self.conf.attrSkipList:
             try:
-                eval("idSkipList.append(id(obj.%s))" % k, None, localVars)
-            except:
+                idSkipList.append(id(getattr(localVars["obj"], k)))
+            except AttributeError:
                 pass
 
         # Write local variables to the given file descriptor, ignoring any of
