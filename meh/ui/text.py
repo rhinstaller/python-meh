@@ -79,7 +79,7 @@ class TextWindow(object):
 
     @property
     def _usable_width(self):
-        return os.environ.get("COLUMNS", 80) - 1
+        return int(os.environ.get("COLUMNS", 80)) - 1
 
     def _print_rule(self):
         rule = self._usable_width * "="
