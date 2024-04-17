@@ -20,7 +20,14 @@ from meh import MAIN_RESPONSE_DEBUG, MAIN_RESPONSE_SAVE, MAIN_RESPONSE_SHELL, MA
 import bdb
 import os
 import sys
-import report
+
+LIBREPORT_AVAILABLE = False
+try:
+    import report
+    LIBREPORT_AVAILABLE = True
+except ImportError:
+    print("python-meh: libreport is not available in this environment - bug reporting disabled", file=sys.stderr)
+
 import traceback
 import subprocess
 

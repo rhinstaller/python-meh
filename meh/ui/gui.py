@@ -20,7 +20,13 @@ from meh import MAIN_RESPONSE_DEBUG, MAIN_RESPONSE_NONE, MAIN_RESPONSE_QUIT, MAI
 from meh.ui import AbstractIntf, AbstractSaveExceptionWindow, AbstractMainExceptionWindow, AbstractMessageWindow
 import os
 import sys
-import report
+
+LIBREPORT_AVAILABLE = False
+try:
+    import report
+    LIBREPORT_AVAILABLE = True
+except ImportError:
+    print("libreport is not available in this environment - bug reporting disabled", file=sys.stderr)
 
 import gi
 gi.require_version("Gtk", "3.0")
@@ -29,6 +35,16 @@ from gi.repository import Gtk
 
 import gettext
 _ = lambda x: gettext.translation("python-meh", fallback=True).gettext(x) if x != "" else ""
+
+REPORT_OR_QUIT = _("This program has encountered an unknown error. "
+                   "You may report the bug below or quit the program.")
+
+REPORT_MANUALLY_OR_QUIT = _(
+    "This program has encountered an unknown error.\n"
+    "You may want to consult the documentation for how to "
+    "gather logs and report a bug.\n"
+    "Or you can quit the program."
+)
 
 def find_glade_file(file):
     path = os.environ.get("GLADEPATH", "./:ui/:/tmp/updates/:/tmp/updates/ui/:/usr/share/python-meh/")
@@ -98,7 +114,15 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         self._traceback_buffer.set_text(longTraceback)
         self._response = MAIN_RESPONSE_QUIT
 
+
         self._debug_button = builder.get_object("debugButton")
+        self._report_button = builder.get_object("reportButton")
+        self._dialog_label = builder.get_object("explainLabel")
+
+        if LIBREPORT_AVAILABLE:
+            self._dialog_label.set_text(REPORT_OR_QUIT)
+        else:
+            self._dialog_label.set_text(REPORT_MANUALLY_OR_QUIT)
 
         allowDebug = kwargs.get("allowDebug", sys.stdout.isatty)
 
@@ -117,6 +141,11 @@ class MainExceptionWindow(AbstractMainExceptionWindow):
         # keep our window above dialogs
         self._main_window.set_modal(True)
         self._main_window.set_keep_above(True)
+
+        # hide the report button if libreport is not available
+        if not LIBREPORT_AVAILABLE:
+            self._report_button.hide()
+
         Gtk.main()
         self.destroy()
         return self._response

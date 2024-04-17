@@ -66,8 +66,7 @@
             <property name="valign">start</property>
             <property name="margin_left">40</property>
             <property name="margin_right">40</property>
-            <property name="label" translatable="yes">This program has encountered an unknown error. You may
-report the bug below or quit the program.</property>
+            <property name="label">""</property>
           </object>
           <packing>
             <property name="expand">False</property>
