@@ -18,13 +18,14 @@ BuildArch: noarch
 BuildRequires: make
 BuildRequires: gettext
 BuildRequires: intltool
+%if 0%{?rhel} < 10 || 0%{?fedora}
 BuildRequires: libreport-gtk >= %{libreportver}
 BuildRequires: libreport-cli >= %{libreportver}
-
+BuildRequires: python3-libreport >= %{libreportver}
+%endif
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: python3-dbus
-BuildRequires: python3-libreport >= %{libreportver}
 
 %global _description\
 The python-meh package is a python library for handling, saving, and reporting \
@@ -40,8 +41,10 @@ Obsoletes: python2-meh < 0.46-1
 Requires: python3
 Requires: python3-dbus
 Requires: python3-rpm
+%if 0%{?rhel} < 10 || 0%{?fedora}
 Requires: libreport-cli >= %{libreportver}
 Requires: python3-libreport >= %{libreportver}
+%endif
 
 %description -n python3-meh
 The python3-meh package is a python 3 library for handling, saving, and reporting
@@ -54,7 +57,9 @@ Obsoletes: python-meh-gui < 0.46-1
 Obsoletes: python2-meh-gui < 0.46-1
 Requires: python3-meh = %{version}-%{release}
 Requires: python3-gobject, gtk3
+%if 0%{?rhel} < 10 || 0%{?fedora}
 Requires: libreport-gtk >= %{libreportver}
+%endif
 
 %description -n python3-meh-gui
 The python3-meh-gui package provides a GUI for the python3-meh library.

@@ -21,9 +21,16 @@ from __future__ import print_function
 
 from meh import MAIN_RESPONSE_DEBUG, MAIN_RESPONSE_SAVE, MAIN_RESPONSE_SHELL, MAIN_RESPONSE_QUIT
 from meh.ui import AbstractIntf, AbstractSaveExceptionWindow, AbstractMainExceptionWindow, AbstractMessageWindow
-import report
-import report.io.TextIO
-from report import LIBREPORT_WAIT, LIBREPORT_RUN_CLI
+
+
+LIBREPORT_AVAILABLE = False
+try:
+    import report
+    import report.io.TextIO
+    from report import LIBREPORT_WAIT, LIBREPORT_RUN_CLI
+    LIBREPORT_AVAILABLE = True
+except ImportError:
+    print("libreport is not available in this environment - bug reporting disabled")
 
 import os
 import sys
@@ -158,14 +165,17 @@ class MainExceptionWindow(TextWindow, AbstractMainExceptionWindow):
         TextWindow.__init__(self, _("An unknown error has occurred"),
                             *args, **kwargs)
         self._short_traceback = shortTraceback
-        self._menu_items = [(_("Report Bug"), MAIN_RESPONSE_SAVE),
-                            (_("Run shell"), MAIN_RESPONSE_SHELL),
+        self._menu_items = [(_("Run shell"), MAIN_RESPONSE_SHELL),
                             (_("Quit"), MAIN_RESPONSE_QUIT)]
 
         allowDebug = kwargs.get("allowDebug", sys.stdout.isatty)
 
         if allowDebug and allowDebug():
             self._menu_items.insert(1, (_("Debug"), MAIN_RESPONSE_DEBUG))
+
+        # only enable error reporting if libreport is available
+        if LIBREPORT_AVAILABLE:
+            self._menu_items.insert(0, (_("Report Bug"), MAIN_RESPONSE_SAVE))
 
     def run(self, *args, **kwargs):
         self.print_header()
