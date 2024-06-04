@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='python-meh',
-      version='0.51',
+      version='0.52',
       description='Python module for handling exceptions',
       license="GPL-2.0+",
       author='Chris Lumens',
